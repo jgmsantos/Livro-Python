@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 # Utiliza o separador '\t' que quer dizer TAB e cria o título para cada uma das colunas.
 df = pd.read_csv('../dados/texto/temperatura.txt', sep= '\t', names=['Mês', 'Climatologia', '2019', '2020'])
 
-x = df['Mês']  # Importa a coluna Mês.
-y = df['Climatologia'] # Importa a coluna Climatologia.
+x = df['Mês']  # Importa os valores da coluna Mês.
+y = df['Climatologia'] # Importa os valores da coluna Climatologia.
 
-plt.plot(x, y)  # Gera o plot.
+plt.plot(x, y, color='green', marker='o', linestyle='solid', linewidth=10, markersize=10, alpha=150)  # Gera o plot.
 plt.show()  # Mostra na tela o resultado.
