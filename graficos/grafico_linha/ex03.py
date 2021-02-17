@@ -16,21 +16,21 @@ fig, ax = plt.subplots(figsize=(8, 4))
 # Plot da figura:
 ax.plot(x, y, color='green', marker='o', linestyle='solid', linewidth=2, markersize=5, label='Temperatura')
 
-# Título principal da figura:
+# Título principal da figura.
 plt.title('Climatologia de Temperatura')
 
-# Formatação do eixo x:
+# Formatação do eixo x.
 plt.xlabel('Meses', fontsize=10)  # Título do eixo x e o seu tamanho.
 plt.xticks(fontsize=10)  # Tamanho dos rótulos do eixo x.
 
-# Formatação do eixo y:
+# Formatação do eixo y.
 plt.ylabel('Temperatura (ºC)', fontsize=10)  # Título do eixo y e o seu tamanho.
 ax.set_ylim(25, 28)  # Mínimo e máximo valor do eixo y.
 ax.set_yticks(ticks=[25, 25.5, 26, 26.5 , 27, 27.5, 28])  # Rótulos do eixo y definido pelo usuário.
 plt.yticks(fontsize=10)  # Tamanho dos rótulos do eixo y.
 plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 
-#  Gera a legenda sem borda, define localização e o seu tamanho:
+#  Gera a legenda sem borda, define localização e o seu tamanho.
 plt.legend(frameon =False, loc='upper left', fontsize=10)
 
 #  Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.

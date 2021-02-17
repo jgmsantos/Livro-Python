@@ -14,25 +14,25 @@ y3 = df['2020']  # Importa os valores da coluna 2020.
 
 fig, ax = plt.subplots()
 
-# Título principal da figura:
+# Título principal da figura.
 plt.title('Climatologia de Temperatura')
 
-# Formatação do eixo x:
+# Formatação do eixo x.
 plt.xlabel('Mês', fontsize=10)  # Título do eixo x e o seu tamanho.
 
-# Formatação do eixo y:
+# Formatação do eixo y.
 plt.ylabel('Temperatura (ºC)', fontsize=10)  # Título do eixo y e o seu tamanho.
 plt.ylim(25, 28)  # Mínimo e máximo valor do eixo y.
 ax.set_yticks(ticks=[25, 25.5, 26, 26.5 , 27, 27.5, 28])  # Rótulos do eixo y definido pelo usuário.
 plt.yticks(fontsize=10)  # Tamanho dos rótulos do eixo y.
 plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 
-# Plot da figura:
+# Plot da figura.
 plt.scatter(x, y1, color='green', marker='o', label='Climatologia')
 plt.scatter(x, y2, color='red', marker='o', label='2019')
 plt.scatter(x, y3, color='blue', marker='o', label='2020')
 
-#  Gera a legenda sem borda, define localização e o seu tamanho:
+#  Gera a legenda sem borda, define localização e o seu tamanho.
 plt.legend(frameon =False, loc='lower left', fontsize=10)
 
 #  Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.

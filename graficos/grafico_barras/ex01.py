@@ -24,15 +24,15 @@ fig, ax = plt.subplots(figsize=(6,3))  # Largua e altura da figura.
 ax.bar(x, above_threshold, 0.75, color="red")
 ax.bar(x, below_threshold, 0.75, color="blue")
 
-# Título principal da figura:
+# Título principal da figura.
 plt.title('Anomalia de Temperatura entre o ano 2020 e a Climatologia')
 
-# Formatação do eixo x:
+# Formatação do eixo x.
 plt.xlabel('Mês', fontsize=10)  # Título do eixo x e o seu tamanho.
 plt.xticks(fontsize=10)  # Tamanho dos rótulos do eixo x.
 plt.xlim(0.5, 12.5)  # Define o mínimo e o máximo valor do eixo x.
 
-# Formatação do eixo y:
+# Formatação do eixo y.
 plt.ylabel('Temperatura (ºC)', fontsize=10)  # Título do eixo y e o seu tamanho.
 ax.set_ylim(-1.5, 1.5)  # Mínimo e máximo valor do eixo y.
 ax.set_yticks(ticks=[-1.5, -1.0, -0.5, 0, 0.5, 1.0, 1.5])  # Rótulos do eixo y definido pelo usuário.
@@ -42,5 +42,5 @@ plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 # Linha no valor zero, espessura = 0.5 e cor = black.
 plt.axhline(linestyle='-', y=0, linewidth=0.5, color='black')
 
-#  Salva a figura:
-plt.savefig('ex01.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)  # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
+# Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
+plt.savefig('ex01.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)  

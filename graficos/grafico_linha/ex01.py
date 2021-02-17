@@ -10,5 +10,8 @@ df = pd.read_csv('../../dados/texto/temperatura.txt', sep= '\t', names=['Mês', 
 x = df['Mês']  # Importa a coluna Mês.
 y = df['Climatologia'] # Importa a coluna Climatologia.
 
-plt.plot(x, y)  # Gera o plot.
-plt.show()  # Mostra na tela o resultado.
+# Gera o plot.
+plt.plot(x, y) 
+
+# Mostra na tela o resultado.
+plt.show()  

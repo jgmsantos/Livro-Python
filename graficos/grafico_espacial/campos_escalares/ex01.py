@@ -2,27 +2,49 @@ import matplotlib.pyplot as plt
 import xarray as xr
 import pandas as pd
 import numpy as np
-import cf_units
-import datetime
-import matplotlib as mpl
+from matplotlib.cm import get_cmap
+from matplotlib import cm
+import geopandas as gpd
+from cartopy.feature import ShapelyFeature
+import cartopy.io.shapereader as shpreader
+import cartopy.crs as ccrs
+import cartopy.feature as cfeature
 
-fig, ax = plt.subplots()
+fig, ax = plt.subplots(figsize=(3,3))  # Define o tamanho da figura.
+ax = plt.axes(projection=ccrs.PlateCarree())
 
 #  Abertura do arquivo com o xarray.
-ds = xr.open_dataset('../../../dados/netcdf/PREC.IMERG.2020.amazonia.nc', decode_times=False)
+ds = xr.open_dataset('../../../dados/netcdf/TMED.CPTEC.CLIMA.amazonia.nc', decode_times=False)
 
-prec = ds.sel(time='0').prec.plot()  # Seleciona um tempo em particular e visualiza a variável.
+#  Abertura do arquivo shapefile.
+shape_bioma_amazonia = ShapelyFeature(shpreader.Reader('../../../dados/shapefile/bioma_amazonia/amazonia.shp').geometries(), ccrs.PlateCarree(), facecolor='none', edgecolor='black', linewidth=0.5)
+shape_estados_brasil = ShapelyFeature(shpreader.Reader('../../../dados/shapefile/brasil/Brasil.shp').geometries(), ccrs.PlateCarree(), facecolor='none', edgecolor='gray', linewidth=0.5)
 
-#  Título principal da figura.
-plt.title('Precpipitação na Amazônia')
+#  Seleciona o primeiro tempo e visualiza a variável. O plt.contourRepresenta apenas o contorno.
+#  O plt.contourf, o campo preenchido.
+plt.contour(ds['lon'], ds['lat'], ds['tmed'][0,:,:], colors="black", linestyles='solid', linewidths=0.5, levels=[25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29])
+plt.contourf(ds['lon'], ds['lat'], ds['tmed'][0,:,:], cmap=get_cmap("jet"), levels=[25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29])
 
-#  Formatação do eixo x:
-plt.xlabel('Longitude')
+#  Título principal da figura e tamanho.
+plt.title('Temperatura no bioma Amazônia', fontsize=8)
 
-#  Formatação do eixo y:
-plt.ylabel('Latitude')
+#  Formatação do eixo x e tamanho.
+plt.xlabel('Longitude', fontsize=7)  # Define o tamanho do título do eixo x.
+plt.xticks(fontsize=7)  # Define o tamanho dos rótulos do eixo x.
 
-cbar = fig.colorbar(prec, orientation='horizontal')
+#  Formatação do eixo y e tamanho.
+plt.ylabel('Latitude', fontsize=7)  # Define o tamanho do título do eixo y.
+plt.yticks(fontsize=7)  # Define o tamanho dos rótulos do eixo y.
+plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
+
+# Gera a barra de corres, sua orientação, proximidade (pad) do eixo y direito e valores de temperatura definidos pelo usuário.
+cbar = plt.colorbar(ax = ax, shrink=0.98, orientation='horizontal', pad=0.17, ticks=[25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29])
+cbar.ax.tick_params(labelsize=6)  # Tamanho dos rótulos da barra de cores.
+ax.set_label('(ºC)')  # Unidade da barra de cores.
+
+#  Adiciona o shapefile ao mapa. 
+ax.add_feature(shape_bioma_amazonia)
+ax.add_feature(shape_estados_brasil)
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
 plt.savefig('ex01.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
