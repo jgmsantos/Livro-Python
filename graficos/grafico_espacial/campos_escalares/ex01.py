@@ -17,8 +17,12 @@ ax = plt.axes(projection=ccrs.PlateCarree())
 ds = xr.open_dataset('../../../dados/netcdf/TMED.CPTEC.CLIMA.amazonia.nc', decode_times=False)
 
 #  Abertura do arquivo shapefile.
-shape_bioma_amazonia = ShapelyFeature(shpreader.Reader('../../../dados/shapefile/bioma_amazonia/amazonia.shp').geometries(), ccrs.PlateCarree(), facecolor='none', edgecolor='black', linewidth=0.5)
-shape_estados_brasil = ShapelyFeature(shpreader.Reader('../../../dados/shapefile/brasil/Brasil.shp').geometries(), ccrs.PlateCarree(), facecolor='none', edgecolor='gray', linewidth=0.5)
+shape_bioma_amazonia = ShapelyFeature(shpreader.Reader('../../../dados/shapefile/bioma_amazonia/amazonia.shp').geometries(), ccrs.PlateCarree(), facecolor='none', edgecolor='black', linewidth=1.0)
+shape_estados_brasil = ShapelyFeature(shpreader.Reader('../../../dados/shapefile/brasil/Brasil.shp').geometries(), ccrs.PlateCarree(), facecolor='none', edgecolor='black', linewidth=0.5)
+
+#  Adiciona o shapefile ao mapa.
+ax.add_feature(shape_bioma_amazonia)
+ax.add_feature(shape_estados_brasil)
 
 #  Seleciona o primeiro tempo e visualiza a variável. O plt.contourRepresenta apenas o contorno.
 #  O plt.contourf, o campo preenchido.
@@ -41,10 +45,6 @@ plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 cbar = plt.colorbar(ax = ax, shrink=0.98, orientation='horizontal', pad=0.17, ticks=[25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29])
 cbar.ax.tick_params(labelsize=6)  # Tamanho dos rótulos da barra de cores.
 ax.set_label('(ºC)')  # Unidade da barra de cores.
-
-#  Adiciona o shapefile ao mapa. 
-ax.add_feature(shape_bioma_amazonia)
-ax.add_feature(shape_estados_brasil)
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
 plt.savefig('ex01.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
