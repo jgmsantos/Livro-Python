@@ -1,5 +1,6 @@
 import pandas as pd
 import matplotlib.pyplot as plt
+import numpy as np
 
 #  Abertura do arquivo temperatura.txt com o separador TAB. Adiciona também o título de cada coluna.
 #  O arquivo tem formato de 12 linhas por 4 colunas. A primeira coluna é o mês, a segunda, a climatologia, 
@@ -11,31 +12,35 @@ x = df['Mês']  #  Importa os valores da coluna Mês.
 y1 = df['Climatologia']  #  Importa os valores da coluna Climatologia.
 y2 = df['2020']  #  Importa os valores da coluna 2020.
 
-anomalia = y2 - y1 #  Anomalia = desvio em relação a média.
+anomalia = y2 - y1 #  Anomalia = desvio em relação a média (climatologia).
 
-fig, ax = plt.subplots()
+#  Separa os valores mínimos e máximos.
+above_threshold = np.maximum(anomalia - 0, 0)
+below_threshold = np.minimum(anomalia, 0)
 
-ax.plot(x, y1, x, y2, color='black')
+#  Gera o plot com base nos limiares e separa o que é positivo (negativo) com vermelho (azul).
+fig, ax = plt.subplots(figsize=(6,3))  #  Largua e altura da figura.
 
-ax.fill_between(x, y1, y2, where=(y2 > y1), facecolor='red', alpha=0.5, label='Anomalia positiva (2020>clima)')
-ax.fill_between(x, y1, y2, where=(y2 < y1), facecolor='blue', alpha=0.5, label='Anomalia negativa (2020<clima)')
+ax.bar(x, above_threshold, 0.75, color="red")
+ax.bar(x, below_threshold, 0.75, color="blue")
 
 #  Título principal da figura.
-plt.title('Diferença de Temperatura entre o ano 2020 e a Climatologia')
+plt.title('Anomalia de Temperatura entre o ano 2020 e a Climatologia')
 
 #  Formatação do eixo x.
 plt.xlabel('Mês', fontsize=10)  #  Título do eixo x e o seu tamanho.
 plt.xticks(fontsize=10)  #  Tamanho dos rótulos do eixo x.
+plt.xlim(0.5, 12.5)  #  Define o mínimo e o máximo valor do eixo x.
 
 #  Formatação do eixo y.
 plt.ylabel('Temperatura (ºC)', fontsize=10)  #  Título do eixo y e o seu tamanho.
-ax.set_ylim(25, 29)  #  Mínimo e máximo valor do eixo y.
-ax.set_yticks(ticks=[25, 25.5, 26, 26.5 , 27, 27.5, 28, 28.5, 29])  #  Rótulos do eixo y definido pelo usuário.
+ax.set_ylim(-1.5, 1.5)  #  Mínimo e máximo valor do eixo y.
+ax.set_yticks(ticks=[-1.5, -1.0, -0.5, 0, 0.5, 1.0, 1.5])  #  Rótulos do eixo y definido pelo usuário.
 plt.yticks(fontsize=10)  #  Tamanho dos rótulos do eixo y.
 plt.tick_params(axis='y', right=True)  #  Habilita o tickmark do eixo direito.
 
-#  Gera a legenda sem borda, define localização e o seu tamanho.
-plt.legend(frameon =False, loc='upper left', fontsize=10)
+#  Linha no valor zero, espessura = 0.5 e cor = black.
+plt.axhline(linestyle='-', y=0, linewidth=0.5, color='black')
 
 #  Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
-plt.savefig('ex05.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
+plt.savefig('ex04.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)  

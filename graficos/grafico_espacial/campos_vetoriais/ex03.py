@@ -10,8 +10,8 @@ dsv = xr.open_dataset('../../../dados/netcdf/vwnd.nc')
 u = dsu['uwnd'][0,9,:,:]  # Primeiro tempo, último nível vertical, todas as lat e lon.
 v = dsv['vwnd'][0,9,:,:]
 vel = np.sqrt(u*u + v*v)  # Calcula a velocidade do vento (m/s).
-lat = dsu['lat']  # Importanto as coordenadas de lat
-lon = dsu['lon']  # e lon.
+lat = dsu['lat']  #  Importando as coordenadas de lat
+lon = dsu['lon']  #  e lon.
 
 #  Plota o vetor do vento e sua magnitude (vel). headwidth = tamanho da ponta do vetor, headlength = comprimento da ponta do vetor, 
 #  color = cor dos vetores.
@@ -25,20 +25,20 @@ plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 plt.title('Vento em 200hPa', fontsize=10)
 
 #  Formatação do eixo x e tamanho.
-plt.xlabel('Longitude', fontsize=9)  # Define o tamanho do título do eixo x.
-plt.xticks(fontsize=8)  # Define o tamanho dos rótulos do eixo x.
+plt.xlabel('Longitude', fontsize=9)  #  Define o tamanho do título do eixo x.
+plt.xticks(fontsize=8)  #  Define o tamanho dos rótulos do eixo x.
 
 #  Formatação do eixo y e tamanho.
-plt.ylabel('Latitude', fontsize=9)  # Define o tamanho do título do eixo y.
-plt.yticks(fontsize=8)  # Define o tamanho dos rótulos do eixo y.
-plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
+plt.ylabel('Latitude', fontsize=9)  #  Define o tamanho do título do eixo y.
+plt.yticks(fontsize=8)  #  Define o tamanho dos rótulos do eixo y.
+plt.tick_params(axis='y', right=True)  #  Habilita o tickmark do eixo direito.
 
-# Gera a barra de corres, format = formata os valores, shrink = tamanho da barra de cores, orientation = orientação da barra, 
-# pad = proximidade do eixo x inferior.
+#  Gera a barra de corres, format = formata os valores, shrink = tamanho da barra de cores, orientation = orientação da barra, 
+#  pad = proximidade do eixo x inferior.
 cbar = plt.colorbar(format='%.0f', shrink=1, orientation='horizontal', pad=0.15)
-cbar.set_label('(m/s)')  # Unidade da barra de cores.
+cbar.set_label('(m/s)')  #  Unidade da barra de cores.
 
-# Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
+#  Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
 plt.savefig('ex03.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
 
 plt.show()

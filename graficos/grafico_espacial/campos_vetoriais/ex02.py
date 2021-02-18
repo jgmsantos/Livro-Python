@@ -17,9 +17,9 @@ vetor = plt.quiver(lon, lat, u, v, headwidth=4, headlength=5, color='black')
 #  Posição x, y onde desenhar o vetor, 30 = unidade (m/s) que representa o vetor, r'$30 \frac{m}{s}$' = texto que vai aparecer na 
 #  figura, labelpos = em qual posição do vetor deve-se adicionar o label, coordinates = qual eixo deve-se inserir o label.
 vetorkey = plt.quiverkey(vetor, 0.83, 0.9, 30, r'$30 \frac{m}{s}$', labelpos='E', coordinates='figure')
-plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
+plt.tick_params(axis='y', right=True)  #  Habilita o tickmark do eixo direito.
 
-# Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
+#  Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
 plt.savefig('ex02.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
 
 plt.show()  

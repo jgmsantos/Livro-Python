@@ -17,7 +17,7 @@ lon = dsu['lon']
 plt.barbs(lon, lat, u, v, fill_empty=True, length=5, sizes=dict(emptybarb=0.25, spacing=0.2, height=0.5), 
           barbcolor='black', barb_increments=dict(flag=50))
 
-plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
+plt.tick_params(axis='y', right=True)  #  Habilita o tickmark do eixo direito.
 
-# Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
+#  Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
 plt.savefig('ex01.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
