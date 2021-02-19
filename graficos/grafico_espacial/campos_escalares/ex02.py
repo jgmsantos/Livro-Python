@@ -37,9 +37,8 @@ plt.yticks(fontsize=7)  #  Define o tamanho dos rótulos do eixo y.
 plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 
 #  Gera a barra de corres, sua orientação, proximidade (pad) do eixo x inferior e valores de temperatura definidos pelo usuário.
-cbar = plt.colorbar(ax = ax, shrink=0.98, orientation='horizontal', pad=0.17, ticks=[25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29])
+cbar = plt.colorbar(ax = ax, shrink=0.98, orientation='horizontal', pad=0.03, ticks=[25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29])
 cbar.ax.tick_params(labelsize=6)  # Tamanho dos rótulos da barra de cores.
-ax.set_label('(ºC)')  # Unidade da barra de cores.
 
 #  Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
 plt.savefig('ex02.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
