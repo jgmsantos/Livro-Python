@@ -8,9 +8,9 @@ import numpy as np
 # O arquivo tem formato de 12 linhas por 4 colunas. A primeira coluna é o mês, a segunda, a climatologia, 
 # a terceria, o ano de 2019 e a quarta, o ano de 2020.
 # Utiliza o separador '\t' que quer dizer TAB e cria o título para cada uma das colunas.
-df = pd.read_csv('../../dados/texto/vento_velocidade_direcao.txt', sep= '\t', names=['Data', 'Velocidade', 'Direcao Graus', 'Direcao Nome'])
+df = pd.read_csv('../../dados/texto/vento_velocidade_direcao.txt', sep= '\t', names=['Data', 'Velocidade', 'Direcao Graus'])
 
-velocidade = df['Velocidade']  #Importa a velocidade do vento (m/s).
+velocidade = df['Velocidade']  # Importa a velocidade do vento (m/s).
 direcao_graus = df['Direcao Graus']  # Importa a direção do vento em graus.
 
 ax = WindroseAxes.from_ax()
@@ -27,5 +27,3 @@ ax.set_xticklabels(['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'])  # Suporta até
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
 plt.savefig('ex01.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
-
-plt.show()

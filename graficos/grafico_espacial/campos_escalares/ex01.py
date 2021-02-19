@@ -41,17 +41,17 @@ ds = xr.open_dataset('../../../dados/netcdf/TMED.CPTEC.CLIMA.amazonia.nc', decod
 
 plot = ds.tmed[0,:,:].plot.contourf(levels=[25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29], ax=ax, transform=ccrs.PlateCarree(), cmap='jet', vmin=25, vmax=29, add_colorbar=False)
 
-#  Título principal da figura e tamanho.
+# Título principal da figura e tamanho.
 plt.title('Temperatura no bioma Amazônia', fontsize=8)
 
-#  Formatação do eixo x e tamanho.
-plt.xlabel('Longitude', fontsize=7)  #  Define o tamanho do título do eixo x.
-plt.xticks(fontsize=7)  #  Define o tamanho dos rótulos do eixo x.
+# Formatação do eixo x e tamanho.
+plt.xlabel('Longitude', fontsize=7)  # Define o tamanho do título do eixo x.
+plt.xticks(fontsize=7)  # Define o tamanho dos rótulos do eixo x.
 
-#  Formatação do eixo y e tamanho.
-plt.ylabel('Latitude', fontsize=7)  #  Define o tamanho do título do eixo y.
-plt.yticks(fontsize=7)  #  Define o tamanho dos rótulos do eixo y.
-plt.tick_params(axis='y', right=True)  #  Habilita o tickmark do eixo direito.
+# Formatação do eixo y e tamanho.
+plt.ylabel('Latitude', fontsize=7)  # Define o tamanho do título do eixo y.
+plt.yticks(fontsize=7)  # Define o tamanho dos rótulos do eixo y.
+plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 
 cbaxes1 = fig.add_axes([0.01, 0.11, 0.95, 0.05]) 
 cbar = fig.colorbar(plot, cax=cbaxes1, drawedges=True, orientation='horizontal')
@@ -59,5 +59,5 @@ cbar.ax.tick_params(labelsize=7)
 
 plt.subplots_adjust(left=None, bottom=0.3, right=None, top=None, wspace=None, hspace=None)
 
-#  Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
+# Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
 plt.savefig('ex01.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
