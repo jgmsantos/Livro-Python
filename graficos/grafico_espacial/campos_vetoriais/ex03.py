@@ -42,7 +42,7 @@ dsv = xr.open_dataset('../../../dados/netcdf/vwnd.nc')
 # Importando variáveis.
 u = dsu['uwnd'][0,9,:,:]
 v = dsv['vwnd'][0,9,:,:]
-vel = np.sqrt(u*u + v*v)  # Calcula a velocidade do vento (m/s).
+vel = np.sqrt(u ** 2 + v ** 2)  # Calcula a velocidade do vento (m/s).
 lat = dsu['lat']
 lon = dsu['lon']
 
