@@ -1,5 +1,6 @@
 from windrose import WindroseAxes
 from windrose import WindAxes
+from windrose import windrose
 from matplotlib import pyplot as plt
 import pandas as pd
 import numpy as np
@@ -15,16 +16,27 @@ direcao_graus = df['Direcao Graus']  # Importa a direção do vento em graus.
 
 ax = WindroseAxes.from_ax()
 
-# normed = normaliza os dados para mostrar em porcentagemTrue, opening = largura das pétalas da rosa dos ventos, 
-# edgecolor = cor da borda das pétalas, alpha = aplica efeito de transparência na cor.
-x = ax.bar(direcao_graus, velocidade, normed=True, opening=0.8, edgecolor='black', bins=5, alpha=0.5)
+# Frequência de cada direção do vento para todas as velocidades.
+ax.bar(direcao_graus, velocidade, normed=True, nsector=16)
+table = ax._info['table']
+wd_freq = np.sum(table, axis=0)
 
-# Configuração da rosa dos ventos.
-ax.set_legend(frameon=True, loc='lower left', title='(m/s)', bbox_to_anchor=(0.55, 0.1))
-ax.set_theta_zero_location("N")  # Define a referência da figura.
-ax.set_theta_direction(-1)  # Rotaciona a figura para ficar correta.
-ax.set_theta_offset(2.36)  # Rotaciona o círculo.
-ax.set_xticklabels(['NW', 'N', 'NE', 'E', 'SE', 'S', 'SW', 'W'])  # Suporta até 8 rótulos.
+# Geração do gráfico de barras com as frequências.
+direction = ax._info['dir']
+wd_freq = np.sum(table, axis=0)
+
+print(wd_freq)
+print(np.arange(16))
+
+plt.bar(np.arange(16), wd_freq, align='center', left=0)  # Plot da figura de barras.
+
+# Formatação do eixo x.
+xlabels = ('N','','N-E','','E','','S-E','','S','','S-O','','O','','N-O','')
+xticks=arange(16)
+gca().set_xticks(xticks)
+draw()
+gca().set_xticklabels(xlabels)
+draw()
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
-plt.savefig('ex01.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
+plt.savefig('ex02.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
