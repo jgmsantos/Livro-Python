@@ -1,0 +1,3 @@
+Aragem	15
+Brisa Fraca	41
+Brisa Leve	67
