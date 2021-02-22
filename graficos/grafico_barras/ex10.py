@@ -11,8 +11,7 @@ def define_label (ax, rects, values):
 
 
 # Abertura do arquivo utilizando o separador espaço e adicionando título como primeira linha.
-df = pd.read_csv('../../dados/texto/numero_dias_sem_chuva.txt', sep= '\t', names=['Mês','NDSC'])
-#df = df.astype(int)  # Define o conjunto de dados como valor inteiro.
+df = pd.read_csv('../../dados/texto/media_mensal.txt', sep= '\t', names=['Mês','NDSC', 'UR', 'TEMP', 'PREC'])
 
 total_meses = 4 # Total de meses a serem utilizados.
 meses = df['Mês']  # Nome dos rótulos que vão aparecer no eixo x.
