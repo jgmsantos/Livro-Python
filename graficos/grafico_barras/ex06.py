@@ -11,7 +11,7 @@ def define_label (ax, rects, values):
 
 
 # Abertura do arquivo utilizando o separador espaço e adicionando título como primeira linha.
-df = pd.read_csv('../../dados/texto/spi.classes.pantanal.txt', sep= ' ', names=['2019','2020'])
+df = pd.read_csv('../../dados/texto/spi.classes.txt', sep= ' ', names=['2019','2020'])
 df = df.astype(int)  # Define o conjunto de dados como valor inteiro.
 
 total_classes = 3 # Total de classes avaliada.

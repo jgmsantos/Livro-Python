@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import netCDF4 as nc
 import xarray as xr
 
-ds = nc.Dataset('../../dados/netcdf/SPI_pantanal.nc')
+ds = nc.Dataset('../../dados/netcdf/SPI.nc')
 
 largura_barra = 0.25  # Largura da barra.
 maximo_valor_y = 3.0  # Máximo valor do eixo y.

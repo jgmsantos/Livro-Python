@@ -10,7 +10,7 @@ df = pd.read_csv('../../dados/texto/precipitacao.txt', sep= '\t', names=['Mês',
 x = df['Mês']  # Importa a coluna Mês.
 y = df['Climatologia']  # Importa a coluna Climatologia.
 
-# Explicar isso. Comprimento e altura da figura.
+# Comprimento e altura da figura.
 fig, ax = plt.subplots(figsize=(7, 4))
 
 # Gera o plot.
