@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import netCDF4 as nc
 import xarray as xr
 
-ds = nc.Dataset('../../dados/netcdf/SPI.nc')
+ds = nc.Dataset('../../dados/netcdf/spi.nc')
 
 largura_barra = 0.25  # Largura da barra.
 maximo_valor_y = 3.0  # Máximo valor do eixo y.
@@ -29,13 +29,13 @@ fig, ax = plt.subplots(figsize=(6,3))  # Largua e altura da figura.
 ax.bar(x, below_threshold, 0.75, color="r")
 ax.bar(x, above_threshold, 0.75, color="b", bottom=below_threshold)
 
-plt.axhline(linestyle='--', y=2, linewidth=0.5, color='black')  # Linha no valor zero, espessura = 0.5 e cor = black.
-plt.axhline(linestyle='--', y=1.5, linewidth=0.5, color='black')  # Linha no valor zero, espessura = 0.5 e cor = black.
-plt.axhline(linestyle='--', y=1, linewidth=0.5, color='black')  # Linha no valor zero, espessura = 0.5 e cor = black.
+plt.axhline(linestyle='--', y=2, linewidth=0.5, color='black')  # Linha no valor 2, espessura = 0.5 e cor = black.
+plt.axhline(linestyle='--', y=1.5, linewidth=0.5, color='black')  # Linha no valor 1.5, espessura = 0.5 e cor = black.
+plt.axhline(linestyle='--', y=1, linewidth=0.5, color='black')  # Linha no valor 1, espessura = 0.5 e cor = black.
 plt.axhline(linestyle='-', y=0, linewidth=0.5, color='black')  # Linha no valor zero, espessura = 0.5 e cor = black.
-plt.axhline(linestyle='--', y=-2, linewidth=0.5, color='black')  # Linha no valor zero, espessura = 0.5 e cor = black.
-plt.axhline(linestyle='--', y=-1.5, linewidth=0.5, color='black')  # Linha no valor zero, espessura = 0.5 e cor = black.
-plt.axhline(linestyle='--', y=-1, linewidth=0.5, color='black')  # Linha no valor zero, espessura = 0.5 e cor = black.
+plt.axhline(linestyle='--', y=-2, linewidth=0.5, color='black')  # Linha no valor -2, espessura = 0.5 e cor = black.
+plt.axhline(linestyle='--', y=-1.5, linewidth=0.5, color='black')  # Linha no valor -1.5, espessura = 0.5 e cor = black.
+plt.axhline(linestyle='--', y=-1, linewidth=0.5, color='black')  # Linha no valor -1, espessura = 0.5 e cor = black.
 
 # Linhas horizontal dos valores positivos de SPI.
 plt.text(-0.3, 2.05, 'Extremamente Úmido', fontsize=tamanho_fonte_texto)
@@ -55,16 +55,15 @@ plt.title('SPI no bioma Pantanal', fontsize=10)
 #  Formatação do eixo y:
 plt.ylabel('SPI (Adimensional)', fontsize=10)  # Tamanho do título do eixo y.
 plt.ylim(minimo_valor_y, maximo_valor_y-0.5)  # Define o mínimo e máximo valor do eixo y.
-plt.yticks(np.arange(minimo_valor_y, maximo_valor_y, step=0.5), fontsize=7)  # Define o mínimo e máximo valor do eixo y, tamanho dos seus rótulos.
+# Define o mínimo e máximo valor do eixo y, tamanho dos seus rótulos.
+plt.yticks(np.arange(minimo_valor_y, maximo_valor_y, step=0.5), fontsize=7)  
 plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 
 #  Formatação do eixo x:
 plt.xlim(-0.5, 20.5)  # Define o mínimo e o máximo valor do eixo x.
 plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
-plt.xticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], datas, fontsize=7)  # Rótulos do eixo x, tamanho e orientação.
+# Rótulos do eixo x, tamanho e orientação.
+plt.xticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], datas, fontsize=7)  
 
-#  Salva a figura:
-plt.savefig('ex07.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)  # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
-
-#  Mostra o gráfico na tela:
-#plt.show()
+# Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
+plt.savefig('ex07.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
