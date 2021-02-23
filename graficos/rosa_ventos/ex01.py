@@ -7,10 +7,10 @@ import numpy as np
 # Abertura do arquivo vento_velocidade_direcao.txt com o separador TAB. Adiciona também o título de cada coluna.
 # O arquivo tem formato de 123 linhas por 3 colunas. A primeira coluna é a data, a segunda, a velocidade e a  
 # a terceria, a direção do vento.
-df = pd.read_csv('../../dados/texto/vento_velocidade_direcao.txt', sep= '\t', names=['Data', 'Velocidade', 'Direcao Graus'])
+df = pd.read_csv('../../dados/texto/variaveis_meteorologicas.txt', sep= '\t', names=['Data', 'Umidade Relativa', 'Temperatura', 'Precipitacao', 'Velocidade', 'Direcao'])
 
 velocidade = df['Velocidade']  # Importa a velocidade do vento (m/s).
-direcao_graus = df['Direcao Graus']  # Importa a direção do vento (graus).
+direcao_graus = df['Direcao']  # Importa a direção do vento (graus).
 
 ax = WindroseAxes.from_ax()
 

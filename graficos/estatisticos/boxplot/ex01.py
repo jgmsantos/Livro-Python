@@ -2,9 +2,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-df = pd.read_csv('../../../dados/texto/umidade_relativa_temperatura.txt', sep= '\t', names=['Data', 'Umidade Relativa', 'Temperatura'])
+df = pd.read_csv('../../../dados/texto/variaveis_meteorologicas.txt', sep= '\t', names=['Data', 'Umidade Relativa', 'Temperatura', 'Precipitacao', 'VelVento', 'DirVento'])
 
-UR = df['Umidade Relativa']  # Importa os valores de umidade relativa.
+# Importa os valores de umidade relativa.
+UR = df['Umidade Relativa']  
 
 plt.boxplot(UR, showfliers=True, notch= False, patch_artist=True)
 
@@ -13,7 +14,8 @@ plt.title('Boxplot de Umidade Relativa', fontsize=12)
 
 # Formatação do eixo x.
 plt.xticks(ticks=None, labels=None)  # Rótulos do eixo y definido pelo usuário.
-plt.tick_params(axis='x', which='both', bottom=False, top=False, labelbottom=False)  # Desabilita os rótulos de ambos os eixos esquerdo e direito.
+# Desabilita os rótulos de ambos os eixos esquerdo e direito.
+plt.tick_params(axis='x', which='both', bottom=False, top=False, labelbottom=False)  
 
 # Formatação do eixo y.
 plt.ylabel('Umidade Relativa (%)', fontsize=10)  # Título do eixo y e o seu tamanho.

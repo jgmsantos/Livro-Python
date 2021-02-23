@@ -13,5 +13,5 @@ y = df['Climatologia']  # Importa a coluna Climatologia.
 # Gera o plot.
 plt.bar(x, y) 
 
-# Mostra na tela o resultado.
-plt.show()  
+#   Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
+plt.savefig('ex01.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)  

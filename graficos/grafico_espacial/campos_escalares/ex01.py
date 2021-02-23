@@ -37,7 +37,7 @@ states = NaturalEarthFeature(category='cultural', scale='50m', facecolor='none',
 ax.add_feature(states, edgecolor='black', linestyle='-', linewidth=0.5)
 
 # Abertura do arquivo com o xarray.
-ds = xr.open_dataset('../../../dados/netcdf/TMED.CPTEC.CLIMA.amazonia.nc', decode_times=False)
+ds = xr.open_dataset('../../../dados/netcdf/tmed.clima.amazonia.nc', decode_times=False)
 
 plot = ds.tmed[0,:,:].plot.contourf(levels=[25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29], ax=ax, transform=ccrs.PlateCarree(), cmap='jet', vmin=25, vmax=29, add_colorbar=False)
 

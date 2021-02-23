@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-df = pd.read_csv('../../../dados/texto/umidade_relativa_temperatura.txt', sep= '\t', names=['Data', 'Umidade Relativa', 'Temperatura'])
+df = pd.read_csv('../../../dados/texto/variaveis_meteorologicas.txt', sep= '\t', names=['Data', 'Umidade Relativa', 'Temperatura', 'Precipitacao', 'VelVento', 'DirVento'])
 
 UR = df['Umidade Relativa']  # Importa os valores de umidade relativa.
 TEMP = df['Temperatura']  # Importa os valores de temperatura.

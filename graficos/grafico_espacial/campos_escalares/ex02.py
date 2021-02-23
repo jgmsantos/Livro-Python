@@ -9,7 +9,7 @@ fig, ax = plt.subplots(figsize=(3,3))  #  Define o tamanho da figura.
 ax = plt.axes(projection=ccrs.PlateCarree())
 
 # Abertura do arquivo com o xarray.
-ds = xr.open_dataset('../../../dados/netcdf/TMED.CPTEC.CLIMA.amazonia.nc', decode_times=False)
+ds = xr.open_dataset('../../../dados/netcdf/tmed.clima.amazonia.nc', decode_times=False)
 
 # Abertura do arquivo shapefile.
 shape_bioma_amazonia = ShapelyFeature(shpreader.Reader('../../../dados/shapefile/bioma_amazonia/amazonia.shp').geometries(), ccrs.PlateCarree(), facecolor='none', edgecolor='black', linewidth=1.0)
