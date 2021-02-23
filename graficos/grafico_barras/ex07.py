@@ -60,7 +60,8 @@ plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 
 #  Formatação do eixo x:
 plt.xlim(-0.5, 20.5)  # Define o mínimo e o máximo valor do eixo x.
-plt.xticks(np.arange(21), datas, fontsize=7, rotation='vertical')  # Rótulos do eixo x, tamanho e orientação.
+plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
+plt.xticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], datas, fontsize=7)  # Rótulos do eixo x, tamanho e orientação.
 
 #  Salva a figura:
 plt.savefig('ex07.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)  # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.

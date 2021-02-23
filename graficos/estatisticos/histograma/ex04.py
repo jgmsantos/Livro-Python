@@ -11,25 +11,25 @@ def define_label (ax, rects, values):
 
 df = pd.read_csv('../../../dados/texto/variaveis_meteorologicas.txt', sep= '\t', names=['Data', 'UR', 'TEMP', 'PREC', 'VelVento', 'DirVento' ])
 
-x = df['UR']  # Importa os valores de umidade relativa.
-classes = ['[18-31]', '[31-44]', '[44-57]', '[57-70]', '[70-83]', '[83-96]']
+x = df['VelVento']  # Importa os valores de umidade relativa.
+classes = ['[0.2-1.0]', '[1.0-1.8]', '[1.8-2.6]', '[2.6-3.4]', '[3.4-4.2]', '[4.2-5.0]']
 
 # Valores do histograma.
 valores_histograma = np.histogram(x, bins=6)
-print(valores_histograma)
+print((valores_histograma))
 
 fig, ax = plt.subplots(figsize=(6,3))  # Largua e altura da figura.
 
-ax.hist(x, bins=6, histtype='bar', color='green', alpha=0.45, rwidth=0.8) 
+ax.hist(x, bins=6, histtype='bar', color='wheat', alpha=0.75, rwidth=0.8) 
 
 # Título principal da figura.
-plt.title('Histograma de Umidade Relativa', fontsize=10)
+plt.title('Histograma de Velocidade do vento', fontsize=10)
 
 # Formatação do eixo x.
-plt.xlabel('Classes (%)', fontsize=8)  # Título do eixo x e o seu tamanho.
-ax.set_xlim(15, 100, 10)  # Define o mínimo e o máximo valor do eixo x.
+plt.xlabel('Classes (m/s)', fontsize=8)  # Título do eixo x e o seu tamanho.
+ax.set_xlim(0, 5, 3)  # Define o mínimo e o máximo valor do eixo x.
 plt.setp(ax.get_xticklabels(), rotation=0, ha="center", rotation_mode="anchor")
-plt.xticks([24.5, 37.5, 50.5, 63.5, 76.5, 89.5], classes, fontsize=8)  # Rótulos do eixo x e tamanho.
+plt.xticks([0.6, 1.4, 2.2, 3.0, 3.8, 4.6], classes, fontsize=8)  # Rótulos do eixo x e tamanho.
 
 # Formatação do eixo y.
 plt.ylabel('Frequência', fontsize=10)  # Título do eixo y e o seu tamanho.
@@ -42,4 +42,4 @@ plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 define_label(ax, ax.containers[0].patches, valores_histograma[0])
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
-plt.savefig('ex01.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
+plt.savefig('ex04.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)

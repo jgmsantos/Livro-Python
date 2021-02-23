@@ -15,7 +15,7 @@ temp = df['TEMP']
 fig, ax = plt.subplots(figsize=(6,3))  # Largua e altura da figura.
 
 # Plot do gráfico de barra.
-ax.bar(x, ur, 0.75, color="blue", alpha=0.5, label='Precipitação')
+ax.bar(x, ur, 0.75, color="blue", alpha=0.5, label='Umidade Relativa')
 
 ax2 = ax.twinx()
 
@@ -26,7 +26,7 @@ ax2.plot(x, temp, color="chocolate", alpha=0.5, label='Temperatura')
 plt.title('Umidade Relativa e Temperatura: Serra do Cipó', fontsize=10)
 
 #  Formatação do eixo y esquerdo.
-ax.set_ylabel('Precipitação (mm/dia)', fontsize=7)  # Tamanho do título do eixo y.
+ax.set_ylabel('Umidade Relativa (%)', fontsize=7)  # Tamanho do título do eixo y.
 ax.set_ylim(0, 100)  # Define o mínimo e máximo valor do eixo y.
 ax.set_yticks(np.arange(0, 105, step=10))  # Define o mínimo e máximo valor do eixo y.
 ax.tick_params(labelsize=7)  # Tamanho dos seus rótulos do eixo y esquerdo.

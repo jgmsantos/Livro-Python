@@ -28,7 +28,7 @@ define_label(ax, ax.containers[0].patches, ndsc)
 
 # Formatação do eixo y.
 plt.ylim(0, 35)  # Define o mínimo e máximo valor do eixo y.
-plt.ylabel('Número de Dias Sem Chuva (Total de dias)', fontsize=10)  # Tamanho do título do eixo y.
+plt.ylabel('Total de dias', fontsize=10)  # Tamanho do título do eixo y.
 plt.yticks(fontsize=10)  # Tamanho dos rótulos do eixo y.
 plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 
@@ -37,7 +37,7 @@ plt.xticks(meses, fontsize=10)  # Rótulos do eixo x e tamanho.
 plt.xlabel('Mês', fontsize=10)  # Tamanho do título do eixo x.
 
 # Título da figura.
-plt.title('Número de dias sem chuva')
+plt.title('Número de Dias Sem Chuva')
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
 plt.savefig('ex10.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
