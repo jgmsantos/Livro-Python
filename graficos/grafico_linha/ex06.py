@@ -27,7 +27,7 @@ plt.title('Risco de Fogo: 01/07 a 31/10/2020', fontsize=10)
 #  Formatação do eixo y:
 plt.ylabel('Risco de Fogo (0-1)', fontsize=9)  # Tamanho do título do eixo y.
 plt.ylim(0, 1.1)  # Define o mínimo e máximo valor do eixo y.
-plt.yticks([0.15, 0.40, 0.70, 0.95, 1], ['0.15', '0.40', '0.70', '0.95', '1'], fontsize=9)  # Define o mínimo e máximo valor do eixo y, tamanho dos seus rótulos.
+plt.yticks([0.15, 0.40, 0.70, 0.95, 1], ['Mínimo', 'Baixo', 'Médio', 'Alto', 'Crítico'], fontsize=9)  # Define o mínimo e máximo valor do eixo y, tamanho dos seus rótulos.
 plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 
 #  Formatação do eixo x:
