@@ -1,7 +1,6 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from scipy.interpolate import make_interp_spline, BSpline
 
 # Abertura do arquivo utilizando o separador espaço e adicionando título como primeira linha.
 df = pd.read_csv('../../dados/texto/media_mensal.txt', sep= '\t', names=['Mês','NDSC', 'UR', 'TEMP', 'PREC'])
