@@ -20,7 +20,7 @@ ax.bar(x, vel_vento, 0.75, color="blue", alpha=0.5, label='Velocidade do Vento')
 ax2 = ax.twinx()
 
 # Plot do gráfico de linha.
-ax2.plot(x, dir_vento, color="red", alpha=0.5, label='Direção do vento')
+ax2.plot(x, dir_vento, color="red", alpha=0.6, label='Direção do vento')
 
 # Título da figura.
 plt.title('Velocidade e direção do vento: Serra do Cipó', fontsize=10)

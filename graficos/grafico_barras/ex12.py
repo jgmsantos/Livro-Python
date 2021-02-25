@@ -20,7 +20,7 @@ ax.bar(x, ur, 0.75, color="blue", alpha=0.5, label='Umidade Relativa')
 ax2 = ax.twinx()
 
 # Plot do gráfico de linha.
-ax2.plot(x, temp, color="chocolate", alpha=0.5, label='Temperatura')
+ax2.plot(x, temp, color="chocolate", alpha=0.8, label='Temperatura')
 
 # Título da figura.
 plt.title('Umidade Relativa e Temperatura: Serra do Cipó', fontsize=10)
