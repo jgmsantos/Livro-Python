@@ -10,8 +10,6 @@ ur = df['UR']
 temp = df['TEMP']
 prec = df['PREC']
 
-xnew = np.linspace(temp.min(), temp.max(), 4) 
-
 # Gera o plot com base nos limiares e separa o que é positivo (negativo) com vermelho (azul).
 fig, ax = plt.subplots(figsize=(6,3))  # Largua e altura da figura.
 
