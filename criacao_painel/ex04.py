@@ -13,8 +13,8 @@ dir = df['DirVento']
 nlin = 2  # 2 linhas.
 ncol = 2  # 2 coluna.
 
-# figsize define o tamanho e a largura da figura.
-fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(nlin, ncol, figsize=(12,9))
+# O figsize define o tamanho e a largura da figura.
+fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(nlin, ncol, figsize=(12, 9))
 
 # Plot de cada série de dados.
 ax1.bar(mes, ur, color='green', alpha=0.5, width=0.6)
@@ -23,7 +23,7 @@ ax3.bar(mes, vel, color='orange', alpha=0.5, width=0.6)
 ax4.bar(mes, dir, color='blue', alpha=0.5, width=0.6)
 
 # Título principal da figura.
-fig.suptitle('Variáveis meteorológicas', fontsize=18)  
+fig.suptitle('Variáveis meteorológicas', fontsize=14)  
 
 # Título de cada figura e o seu tamanho.
 ax1.set_title('Climatologia de Umidade Relativa', fontsize=14)

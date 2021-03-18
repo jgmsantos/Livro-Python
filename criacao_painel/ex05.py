@@ -12,7 +12,7 @@ vel = df['VelVento']
 dir = df['DirVento']
 tempk = temp + 273.15  # De Celsius para Kelvin.
 
-# Tamanho e altura da figura.
+# O figsize define o tamanho e a largura da figura.
 plt.figure(figsize=(6, 4))
 
 nlin = 3  # 2 linhas.
@@ -38,7 +38,7 @@ ax5 = plt.subplot(gs[-1, -2])
 ax5.bar(mes, vel, color='orange', alpha=0.5, width=0.6)
 
 # Título principal da figura.
-plt.suptitle('Variáveis meteorológicas', fontsize=10)  
+plt.suptitle('Variáveis meteorológicas', fontsize=7)  
 
 # Título de cada figura e o seu tamanho.
 ax1.set_title('Umidade Relativa', fontsize=7)

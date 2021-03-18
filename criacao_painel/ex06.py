@@ -35,7 +35,7 @@ ax5 = plt.subplot2grid((3, 8), (2, 2), colspan=4)
 ax5.bar(mes, tempk, color='gray', alpha=0.5, width=0.6)
 
 # Título principal da figura.
-plt.suptitle('Variáveis meteorológicas', fontsize=10, y=0.96)
+plt.suptitle('Variáveis meteorológicas', fontsize=9, y=0.96)
 
 # Título de cada figura e o seu tamanho.
 ax1.set_title('Umidade Relativa', fontsize=9)
@@ -45,17 +45,17 @@ ax4.set_title('Direção do vento', fontsize=9)
 ax5.set_title('Temperatura em Kelvin', fontsize=9)
 
 # Tamanho dos rótulos do eixo x inferior.
-ax1.tick_params(labelsize=8)  
-ax2.tick_params(labelsize=8)
-ax3.tick_params(axis='x', labelsize=8)
-ax4.tick_params(axis='x', labelsize=8)
-ax5.tick_params(axis='x', labelsize=8)
+ax1.tick_params(labelsize=9)  
+ax2.tick_params(labelsize=9)
+ax3.tick_params(axis='x', labelsize=9)
+ax4.tick_params(axis='x', labelsize=9)
+ax5.tick_params(axis='x', labelsize=9)
 
 # Título do eixo y e o seu tamanho.
-ax1.set_ylabel('UR (%)', fontsize=8)
-ax2.set_ylabel('TEMPC (ºC)', fontsize=8)
-ax3.set_ylabel('VEL (m/s)', fontsize=8)
-ax4.set_ylabel('DIR (grau)', fontsize=8)
+ax1.set_ylabel('UR (%)', fontsize=9)
+ax2.set_ylabel('TEMPC (ºC)', fontsize=9)
+ax3.set_ylabel('VEL (m/s)', fontsize=9)
+ax4.set_ylabel('DIR (grau)', fontsize=9)
 ax5.set_ylabel('TEMPK (K)', fontsize=8)
 
 # Define os valores mínimo e máximo do eixo y de cada ax.
@@ -73,11 +73,11 @@ ax4.set_yticks(ticks=[0, 25, 50, 75, 100])
 ax5.set_yticks(ticks=[280, 285, 290, 295, 300])
 
 # Tamanho dos rótulos do eixo y esquerdo.
-ax1.tick_params(axis='y', right=True, labelsize=8)
-ax2.tick_params(axis='y', right=True, labelsize=8)
-ax3.tick_params(axis='y', right=True, labelsize=8)
-ax4.tick_params(axis='y', right=True,labelsize=8)
-ax5.tick_params(axis='y', right=True,labelsize=8)
+ax1.tick_params(axis='y', right=True, labelsize=9)
+ax2.tick_params(axis='y', right=True, labelsize=9)
+ax3.tick_params(axis='y', right=True, labelsize=9)
+ax4.tick_params(axis='y', right=True,labelsize=9)
+ax5.tick_params(axis='y', right=True,labelsize=9)
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
 plt.savefig('ex06.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
