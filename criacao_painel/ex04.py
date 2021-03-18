@@ -47,7 +47,7 @@ ax4.tick_params(axis='x', top=True, labelsize=14)
 ax1.set_ylabel('Umidade Relativa (%)', fontsize=14)  # Título do eixo y e o seu tamanho.
 ax2.set_ylabel('Temperatura (ºC)', fontsize=14)  # Título do eixo y e o seu tamanho.
 ax3.set_ylabel('Velocidade do vento (m/s)', fontsize=14)  # Título do eixo y e o seu tamanho.
-ax4.set_ylabel('Direção do vento (grau)', fontsize=14)  # Título do eixo y e o seu tamanho.
+ax4.set_ylabel('Direção do vento (graus)', fontsize=14)  # Título do eixo y e o seu tamanho.
 
 # Habilita o tickmark do eixo direito e define o tamanho dos rótulos do eixo y esquerdo.
 ax1.tick_params(axis='y', right=True, labelsize=14)  

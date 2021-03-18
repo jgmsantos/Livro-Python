@@ -58,7 +58,7 @@ ax5.tick_params(axis='x', labelsize=5, rotation=90)
 ax1.set_ylabel('UR (%)', fontsize=7)
 ax2.set_ylabel('TEMPC (ºC)', fontsize=7)
 ax3.set_ylabel('TEMPK (K)', fontsize=7)
-ax4.set_ylabel('DIR (grau)', fontsize=7)
+ax4.set_ylabel('DIR (graus)', fontsize=7)
 ax5.set_ylabel('VEL (m/s)', fontsize=7)
 
 # Define os valores mínimo e máximo do eixo y de cada ax.

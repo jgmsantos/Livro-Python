@@ -53,9 +53,9 @@ plt.title('SPI no bioma Pantanal', fontsize=8)
 
 #  Formatação do eixo x:
 plt.xlim(-0.5, 20.5)  # Define o mínimo e o máximo valor do eixo x.
-plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
 # Rótulos do eixo x, tamanho e orientação.
-plt.xticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], datas, fontsize=8)  
+plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
+plt.xticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], datas, fontsize=8)
 
 #  Formatação do eixo y:
 plt.ylabel('SPI (Adimensional)', fontsize=8)  # Tamanho do título do eixo y.
