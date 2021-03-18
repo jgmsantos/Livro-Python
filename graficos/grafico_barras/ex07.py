@@ -4,12 +4,11 @@ import matplotlib.pyplot as plt
 import netCDF4 as nc
 import xarray as xr
 
+# Abertura do arquivo.
 ds = nc.Dataset('../../dados/netcdf/spi.nc')
 
-largura_barra = 0.25  # Largura da barra.
 maximo_valor_y = 3.0  # Máximo valor do eixo y.
 minimo_valor_y = -2.5  # Mínimo valor do eixo y.
-tamanho_fonte_texto = 7
 x = np.arange(21)  # Desde 01/2019 a 09/2020 = 21 meses.
 datas = ['201901', '201902', '201903', '201904', '201905', '201906', '201907', '201908', '201909', '201910', '201911', '201912', '202001', '202002', '202003', '202004', '202005', '202006', '202007', '202008', '202009']
 
@@ -20,14 +19,14 @@ datas = ['201901', '201902', '201903', '201904', '201905', '201906', '201907', '
 y = ds['spi'][468:489, 0, 0, 0]
 
 # Separa os valores mínimos e máximos.
-above_threshold = np.maximum(y - 0, 0)
-below_threshold = np.minimum(y, 0)
+acima_limiar = np.maximum(y - 0, 0)
+abaixo_limiar = np.minimum(y, 0)
+
+fig, ax = plt.subplots(figsize=(6,3))  # Largura e altura da figura.
 
 # Gera o plot com base nos limiares e separa o que é positivo (negativo) com vermelho (azul).
-fig, ax = plt.subplots(figsize=(6,3))  # Largua e altura da figura.
-
-ax.bar(x, below_threshold, 0.75, color="r")
-ax.bar(x, above_threshold, 0.75, color="b", bottom=below_threshold)
+ax.bar(x, abaixo_limiar, 0.75, color="r", alpha=0.5)
+ax.bar(x, acima_limiar, 0.75, color="b", bottom=abaixo_limiar, alpha=0.5)
 
 plt.axhline(linestyle='--', y=2, linewidth=0.5, color='black')  # Linha no valor 2, espessura = 0.5 e cor = black.
 plt.axhline(linestyle='--', y=1.5, linewidth=0.5, color='black')  # Linha no valor 1.5, espessura = 0.5 e cor = black.
@@ -38,32 +37,32 @@ plt.axhline(linestyle='--', y=-1.5, linewidth=0.5, color='black')  # Linha no va
 plt.axhline(linestyle='--', y=-1, linewidth=0.5, color='black')  # Linha no valor -1, espessura = 0.5 e cor = black.
 
 # Linhas horizontal dos valores positivos de SPI.
-plt.text(-0.3, 2.05, 'Extremamente Úmido', fontsize=tamanho_fonte_texto)
-plt.text(-0.3, 1.55, 'Muito Úmido', fontsize=tamanho_fonte_texto)
-plt.text(-0.3, 1.05, 'Moderadamente Úmido', fontsize=tamanho_fonte_texto)
-plt.text(-0.3, 0.80, 'Próximo do normal', fontsize=tamanho_fonte_texto)
+plt.text(-0.3, 2.05, 'Extremamente Úmido', fontsize=8)
+plt.text(-0.3, 1.55, 'Muito Úmido', fontsize=8)
+plt.text(-0.3, 1.05, 'Moderadamente Úmido', fontsize=8)
+plt.text(-0.3, 0.80, 'Próximo do normal', fontsize=8)
 
 # Linhas horizontal dos valores negativos de SPI.
-plt.text(-0.3, -2.18, 'Extremamente seco', fontsize=tamanho_fonte_texto)
-plt.text(-0.3, -1.68, 'Severamente seco', fontsize=tamanho_fonte_texto)
-plt.text(-0.3, -1.18, 'Moderadamente seco', fontsize=tamanho_fonte_texto)
-plt.text(-0.3, -0.92, 'Próximo do normal', fontsize=tamanho_fonte_texto)
+plt.text(-0.3, -2.18, 'Extremamente seco', fontsize=8)
+plt.text(-0.3, -1.68, 'Severamente seco', fontsize=8)
+plt.text(-0.3, -1.18, 'Moderadamente seco', fontsize=8)
+plt.text(-0.3, -0.92, 'Próximo do normal', fontsize=8)
 
 # Título da figura.
-plt.title('SPI no bioma Pantanal', fontsize=10)
-
-#  Formatação do eixo y:
-plt.ylabel('SPI (Adimensional)', fontsize=10)  # Tamanho do título do eixo y.
-plt.ylim(minimo_valor_y, maximo_valor_y-0.5)  # Define o mínimo e máximo valor do eixo y.
-# Define o mínimo e máximo valor do eixo y, tamanho dos seus rótulos.
-plt.yticks(np.arange(minimo_valor_y, maximo_valor_y, step=0.5), fontsize=7)  
-plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
+plt.title('SPI no bioma Pantanal', fontsize=8)
 
 #  Formatação do eixo x:
 plt.xlim(-0.5, 20.5)  # Define o mínimo e o máximo valor do eixo x.
 plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
 # Rótulos do eixo x, tamanho e orientação.
-plt.xticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], datas, fontsize=7)  
+plt.xticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], datas, fontsize=8)  
+
+#  Formatação do eixo y:
+plt.ylabel('SPI (Adimensional)', fontsize=8)  # Tamanho do título do eixo y.
+plt.ylim(minimo_valor_y, maximo_valor_y-0.5)  # Define o mínimo e máximo valor do eixo y.
+# Define o mínimo e máximo valor do eixo y, tamanho dos seus rótulos.
+plt.yticks(np.arange(minimo_valor_y, maximo_valor_y, step=0.5), fontsize=8)  
+plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
 plt.savefig('ex07.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)

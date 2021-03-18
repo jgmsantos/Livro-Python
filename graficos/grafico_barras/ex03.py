@@ -3,9 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # Abertura do arquivo temperatura.txt com o separador TAB. Adiciona também o título de cada coluna.
-# O arquivo tem formato de 12 linhas por 4 colunas. A primeira coluna é o mês, a segunda, a climatologia, 
-# a terceria, o ano de 2019 e a quarta, o ano de 2020.
-# Utiliza o separador '\t' que quer dizer TAB e cria o título para cada uma das colunas.
+# A primeira coluna é o mês, a segunda, a climatologia, a terceria, o ano de 2019 e a quarta, o ano de 2020.
 df = pd.read_csv('../../dados/texto/precipitacao.txt', sep= '\t', names=['Mês', 'Climatologia', '2019', '2020'])
 
 x = df['Mês']  # Importa os valores da coluna Mês.
@@ -13,8 +11,7 @@ y1 = df['Climatologia']  # Importa os valores da coluna Climatologia.
 y2 = df['2019']  # Importa os valores da coluna 2019.
 y3 = df['2020']  # Importa os valores da coluna 2020.
 
-# Comprimento e altura da figura.
-plt.figure(figsize=(8, 4))
+plt.figure(figsize=(8, 4))  # Largura e altura da figura.
 
 # Posição onde serão geradas as barras.
 x1 = np.arange(len(y1))  # [ 0  1  2  3  4  5  6  7  8  9 10 11 12]. Vetor com os índices.
@@ -31,19 +28,19 @@ plt.bar(x3, y3, color='blue', width=0.25, label='2020', alpha=0.30)
 plt.title('Precipitação no bioma Amazônia')
 
 # Formatação do eixo x.
-plt.xlabel('Mês', fontsize=10)  # Título do eixo x e o seu tamanho.
-plt.xticks([r + 0.25 for r in range(len(y1))], x, fontsize=10)  # Tamanho dos rótulos do eixo x.
+plt.xlabel('Mês', fontsize=8)  # Título do eixo x e o seu tamanho.
+plt.xticks([r + 0.25 for r in range(len(y1))], x, fontsize=8)  # Tamanho dos rótulos do eixo x.
 plt.xlim(0.5, 13)  # Mínimo e máximo valor do eixo x.
 
 # Formatação do eixo y.
-plt.ylabel('Precipitação (mm/dia)', fontsize=10) # Título do eixo y e o seu tamanho.
+plt.ylabel('Precipitação (mm/mês)', fontsize=8) # Título do eixo y e o seu tamanho.
 plt.ylim(0, 300)  # Mínimo e máximo valor do eixo y.
 plt.yticks(ticks=[0, 50, 100, 150, 200, 250, 300])  # Rótulos do eixo y definido pelo usuário.
-plt.yticks(fontsize=10)  # Tamanho dos rótulos do eixo y.
+plt.yticks(fontsize=8)  # Tamanho dos rótulos do eixo y.
 plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 
 # Gera a legenda sem borda, define localização e o seu tamanho.
-plt.legend(frameon =False, loc='upper right', fontsize=10)
+plt.legend(frameon =False, loc='upper right', fontsize=8)
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
 plt.savefig('ex03.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)

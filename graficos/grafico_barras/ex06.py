@@ -2,19 +2,18 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-#### Funções:
 # Função que adiciona o label nas barras e a unidade de porcentagem (%).
 def define_label (ax, rects, values):
     for rect, value in zip(rects, values):
         height = rect.get_height()
-        ax.text(rect.get_x() + rect.get_width() / 2, height, f'{value}%', ha='center', va='bottom')
+        ax.text(rect.get_x() + rect.get_width() / 2, height, f'{value}%', ha='center', va='bottom', fontsize=8)
 
 
-# Abertura do arquivo utilizando o separador espaço e adicionando título como primeira linha.
+# Abertura do arquivo utilizando o separador espaço e adiciona o título como primeira linha.
 df = pd.read_csv('../../dados/texto/spi.classes.txt', sep= ' ', names=['2019','2020'])
 df = df.astype(int)  # Define o conjunto de dados como valor inteiro.
 
-total_classes = 3 # Total de classes avaliada.
+total_classes = 3  # Total de classes avaliada.
 classes = ['Eventos Úmidos', 'Eventos Normais', 'Eventos Secos']  # Nome dos rótulos que vão aparecer no eixo x.
 ANO_ANTERIOR='2019'
 ANO_ATUAL='2020'
@@ -37,18 +36,18 @@ ax.bar(x2, ano2020, width=largura_barra, color='#dceec8', label=ANO_ATUAL)
 define_label(ax, ax.containers[0].patches, ano2019)
 define_label(ax, ax.containers[1].patches, ano2020)
 
-# Formatação do eixo y.
-plt.ylim(0, 100)  # Define o mínimo e máximo valor do eixo y.
-plt.ylabel('Porcentagem (%)', fontsize=10)  # Tamanho do título do eixo y.
-plt.yticks(fontsize=10)  # Tamanho dos rótulos do eixo y.
-plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
+# Título da figura.
+plt.title('Bioma Pantanal', fontsize=8)
 
 # Formatação do eixo x.
-plt.xticks(np.arange(total_classes),classes, fontsize=10)  # Rótulos do eixo x e tamanho.
-plt.xlabel('Tipos de eventos', fontsize=10)  # Tamanho do título do eixo x.
+plt.xticks(np.arange(total_classes),classes, fontsize=8)  # Rótulos do eixo x e tamanho.
+plt.xlabel('Tipos de eventos', fontsize=8)  # Tamanho do título do eixo x.
 
-# Título da figura.
-plt.title('Bioma Pantanal')
+# Formatação do eixo y.
+plt.ylim(0, 100)  # Define o mínimo e máximo valor do eixo y.
+plt.ylabel('Porcentagem (%)', fontsize=8)  # Tamanho do título do eixo y.
+plt.yticks(fontsize=8)  # Tamanho dos rótulos do eixo y.
+plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 
 # Gera a legenda.
 plt.legend(frameon =False)  # Desliga a borda da legenda.

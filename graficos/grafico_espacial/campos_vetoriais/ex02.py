@@ -56,15 +56,15 @@ vetorkey = plt.quiverkey(vetor, 0.76, 0.9, 30, r'$30m.s^{-1}$', labelpos='E', co
 plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 
 # Título principal da figura e tamanho.
-plt.title('Vento em 200hPa', fontsize=7)
+plt.title('Vento em 200hPa', fontsize=8)
 
 # Formatação do eixo x e tamanho.
-plt.xlabel('Longitude', fontsize=6)  # Define o tamanho do título do eixo x.
-plt.xticks(fontsize=6)  # Define o tamanho dos rótulos do eixo x.
+plt.xlabel('Longitude', fontsize=8)  # Define o tamanho do título do eixo x.
+plt.xticks(fontsize=8)  # Define o tamanho dos rótulos do eixo x.
 
 # Formatação do eixo y e tamanho.
-plt.ylabel('Latitude', fontsize=6)  # Define o tamanho do título do eixo y.
-plt.yticks(fontsize=6)  # Define o tamanho dos rótulos do eixo y.
+plt.ylabel('Latitude', fontsize=8)  # Define o tamanho do título do eixo y.
+plt.yticks(fontsize=8)  # Define o tamanho dos rótulos do eixo y.
 plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.

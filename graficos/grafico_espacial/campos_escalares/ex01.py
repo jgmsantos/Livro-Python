@@ -13,6 +13,7 @@ LonE=-43
 LatS=-17.75
 LatN=5.75
 
+# Largura, altura da figura e projeção do mapa.
 fig, ax = plt.subplots(figsize=(3,3), subplot_kw={'projection': ccrs.PlateCarree()}, ncols=1, nrows=1)
 
 # Criação do mapa com as divisão dos estados brasileiro.
@@ -39,6 +40,7 @@ ax.add_feature(states, edgecolor='black', linestyle='-', linewidth=0.5)
 # Abertura do arquivo com o xarray.
 ds = xr.open_dataset('../../../dados/netcdf/tmed.clima.amazonia.nc', decode_times=False)
 
+# Plot da variável.
 plot = ds.tmed[0,:,:].plot.contourf(levels=[25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29], ax=ax, transform=ccrs.PlateCarree(), cmap='jet', vmin=25, vmax=29, add_colorbar=False)
 
 # Título principal da figura e tamanho.

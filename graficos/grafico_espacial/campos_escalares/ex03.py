@@ -47,12 +47,12 @@ fig, axes = plt.subplots(nrows=3, ncols=4, figsize=(13, 13), gridspec_kw = {'wsp
 
 for lin in [0, 1, 2]:
     for col in [0, 1, 2, 3]:
-        # se precisar montar outros paineis, basta alterar o dataset de entrada
+        # Se precisar montar outros paineis, basta alterar o dataset de entrada.
         figure = dataset['prec'].sel(time=yyyymmdd[lin][col]).plot.pcolormesh(
             ax=axes[lin,col], robust=True, norm=colors.Normalize(vmin=0, vmax=300), cmap='RdYlBu',
             add_colorbar=False, levels=13, add_labels=False)
         axes[lin,col].add_feature(cfeature.COASTLINE)
-        # Adiciona título dos meses.
+        # Adiciona no título os meses.
         axes[lin,col].set_title(title[lin][col], fontsize=18, ha='center')
         # Adiciona o contorno dos estados em cinza.
         axes[lin,col].add_geometries(shapefile.geometry, crs=ccrs.PlateCarree(), facecolor='none', edgecolor='gray', linewidth=0.55)
@@ -60,14 +60,14 @@ for lin in [0, 1, 2]:
         axes[lin,col].add_geometries(shape.geometry, crs=ccrs.PlateCarree(), facecolor='none', edgecolor='k', linewidth=2.5)       
         axes[lin,col].add_feature(cfeature.BORDERS)
 
+# adiciona título ao painel.
+plt.suptitle('Precipitação 2019', fontsize=18, ha='center', y=1, x = 0.53)
+fig.subplots_adjust(top=0.95)
+
 # Adiciona o cbar.
 cbar_ax = fig.add_axes([0.90, 0.25, 0.02, 0.60])
 cbar = fig.colorbar(figure, cax=cbar_ax, pad=0.009, ticks=np.arange(0,325,25), orientation='vertical')
 cbar.ax.tick_params(labelsize=15) 
-
-# adiciona titulo ao painel
-plt.suptitle('Precipitação 2019', fontsize=20, ha='center', y=1, x = 0.53)
-fig.subplots_adjust(top=0.95)
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
 plt.savefig('ex03.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)

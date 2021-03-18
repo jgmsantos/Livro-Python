@@ -59,19 +59,19 @@ plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 plt.title('Vento em 200hPa', fontsize=6)
 
 # Formatação do eixo x e tamanho.
-plt.xlabel('Longitude', fontsize=5)  # Define o tamanho do título do eixo x.
-plt.xticks(fontsize=5)  # Define o tamanho dos rótulos do eixo x.
+plt.xlabel('Longitude', fontsize=6)  # Define o tamanho do título do eixo x.
+plt.xticks(fontsize=6)  # Define o tamanho dos rótulos do eixo x.
 
 # Formatação do eixo y e tamanho.
-plt.ylabel('Latitude', fontsize=5)  # Define o tamanho do título do eixo y.
-plt.yticks(fontsize=5)  # Define o tamanho dos rótulos do eixo y.
+plt.ylabel('Latitude', fontsize=6)  # Define o tamanho do título do eixo y.
+plt.yticks(fontsize=6)  # Define o tamanho dos rótulos do eixo y.
 plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 
 # Gera a barra de corres, format = formata os valores, shrink = tamanho da barra de cores, orientation = orientação da barra, 
 # pad = proximidade do eixo x inferior.
 cbar = plt.colorbar(ax=ax, format='%.0f', shrink=0.65, orientation='horizontal', pad=0.17)
-cbar.ax.tick_params(labelsize=4)  # Tamanho dos rótulos da barra de cores.
-cbar.set_label('('r'$m.s^{-1}$'')', fontsize=4)  # Unidade da barra de cores.
+cbar.ax.tick_params(labelsize=5)  # Tamanho dos rótulos da barra de cores.
+cbar.set_label('('r'$m.s^{-1}$'')', fontsize=6)  # Unidade da barra de cores.
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
 plt.savefig('ex03.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)

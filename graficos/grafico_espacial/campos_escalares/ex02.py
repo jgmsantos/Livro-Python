@@ -5,8 +5,8 @@ from cartopy.feature import ShapelyFeature
 import cartopy.io.shapereader as shpreader
 import cartopy.crs as ccrs
 
-fig, ax = plt.subplots(figsize=(3,3))  #  Define o tamanho da figura.
-ax = plt.axes(projection=ccrs.PlateCarree())
+fig, ax = plt.subplots(figsize=(3,3))  #  Define a largura e altura da figura.
+ax = plt.axes(projection=ccrs.PlateCarree())  # Projeção do mapa.
 
 # Abertura do arquivo com o xarray.
 ds = xr.open_dataset('../../../dados/netcdf/tmed.clima.amazonia.nc', decode_times=False)
@@ -27,13 +27,13 @@ plt.contourf(ds['lon'], ds['lat'], ds['tmed'][0,:,:], cmap=get_cmap("jet"), leve
 # Título principal da figura e tamanho.
 plt.title('Temperatura no bioma Amazônia', fontsize=8)
 
-# Formatação do eixo x e tamanho.
-plt.xlabel('Longitude', fontsize=7)  # Define o tamanho do título do eixo x.
-plt.xticks(fontsize=7)  # Define o tamanho dos rótulos do eixo x.
+# Formatação do eixo x.
+plt.xlabel('Longitude', fontsize=8)  # Define o tamanho do título do eixo x.
+plt.xticks(fontsize=8)  # Define o tamanho dos rótulos do eixo x.
 
-# Formatação do eixo y e tamanho.
-plt.ylabel('Latitude', fontsize=7)  # Define o tamanho do título do eixo y.
-plt.yticks(fontsize=7)  # Define o tamanho dos rótulos do eixo y.
+# Formatação do eixo y.
+plt.ylabel('Latitude', fontsize=8)  # Define o tamanho do título do eixo y.
+plt.yticks(fontsize=8)  # Define o tamanho dos rótulos do eixo y.
 plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 
 # Gera a barra de corres, sua orientação, proximidade (pad) do eixo x inferior e valores de temperatura definidos pelo usuário.

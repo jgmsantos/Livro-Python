@@ -39,4 +39,4 @@ ax.gridlines()
 ax.set_title('LambertConformal', fontsize=12, x=0.5, y=1)
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
-plt.savefig('painel02.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
+plt.savefig('painel01.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)

@@ -7,13 +7,14 @@ df = pd.read_csv('../../../dados/texto/variaveis_meteorologicas.txt', sep= '\t',
 UR = df['Umidade Relativa']  # Importa os valores de umidade relativa.
 TEMP = df['Temperatura']  # Importa os valores de temperatura.
 
+# Gera o plot.
 plt.boxplot([UR, TEMP], showfliers=True, notch= False, patch_artist=True, showmeans=True, meanline=True, boxprops = dict(linestyle='--', linewidth=1, facecolor='white'))
 
 # Título principal da figura.
-plt.title('Boxplot de Umidade Relativa', fontsize=12)
+plt.title('Boxplot de Umidade Relativa', fontsize=8)
 
 # Formatação do eixo x.
-plt.xticks(ticks=[1, 2], labels=['Umidade\nRelativa', 'Temperatura'])  # Rótulos do eixo y definido pelo usuário.
+plt.xticks(ticks=[1, 2], labels=['Umidade\nRelativa', 'Temperatura'], fontsize=8)  # Rótulos do eixo x definido pelo usuário.
 
 # Formatação do eixo y.
 plt.ylim(0, 100)  # Mínimo e máximo valor do eixo y.
