@@ -23,7 +23,8 @@ plt.boxplot([obs, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10], showfliers=True, not
 
 box = plt.boxplot([obs, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10], patch_artist=True)
 
-colors = ['powderblue', 'tan', 'powderblue', 'tan','powderblue', 'tan', 'powderblue', 'tan','powderblue', 'tan', 'powderblue' ]  # Define cores para cara caixa.
+#colors = ['white', 'white', 'white', 'white', 'white', 'white', 'white', 'white', 'white', 'white', 'white']  # Define cores para cara caixa.
+colors = ['silver', 'tan', 'powderblue', 'pink', 'moccasin', 'lightgreen', 'deepskyblue', 'slateblue', 'violet', 'tomato', 'peru']  # Define cores para cara caixa.
  
 for patch, color in zip(box['boxes'], colors):
     patch.set_facecolor(color)
