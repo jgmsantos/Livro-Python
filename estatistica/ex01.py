@@ -7,7 +7,7 @@ df = pd.read_csv('../dados/texto/variaveis_meteorologicas.txt', sep= '\t',
 
 x = df['PREC']  # Importa a precipitação desde 200301 a 202012 = 216 meses.
 
-y = stats.describe(x)  # Cálcula a estatística básica
+y = stats.describe(x)  # Calcula a estatística básica.
 
 print(y)
 

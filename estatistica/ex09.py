@@ -25,5 +25,3 @@ plt.plot(x, res.intercept + res.slope*x, 'r', label=f'y={res.slope:.4f}x+{res.in
 plt.legend()
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
 plt.savefig('ex09.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
-
-

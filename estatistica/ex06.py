@@ -17,4 +17,3 @@ print(y)  # 70
 # Retorna o valor mínimo dado um limite inferior sendo que ele é excluído.
 z = stats.tmin(ur, lowerlimit=70, inclusive=False)
 print(z)  # 71
-

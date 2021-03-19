@@ -13,4 +13,3 @@ print(x)  # 74.32870370370371
 # Exclui os valores igual e abaixo de 60% e igual e acima de 80%.
 y = stats.tmean(ur, limits=(60, 80), inclusive=(False, False))  
 print(y)  # 72.30075187969925
-

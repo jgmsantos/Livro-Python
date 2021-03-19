@@ -14,5 +14,3 @@ print(ds.lon)
 print('=====================================')
 print('Informações sobre a dimensão tempo')
 print(ds.time)
-
-

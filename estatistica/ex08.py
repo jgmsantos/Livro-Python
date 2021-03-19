@@ -11,4 +11,3 @@ y = df['PREC']
 r = stats.spearmanr(x, y)
 
 print(r)  # SpearmanrResult(correlation=0.677086961910298, pvalue=2.5283781966531542e-30)
-

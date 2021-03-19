@@ -7,4 +7,3 @@ print(ds.variables.keys())  # dict_keys(['time', 'lon', 'lat', 'prec'])
 
 print('==========================================')
 print(ds.variables)
-

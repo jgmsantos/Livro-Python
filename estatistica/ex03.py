@@ -11,6 +11,4 @@ y = stats.mode(dir)
 
 print(y)  # ModeResult(mode=array([74]), count=array([15]))
 
-# O valor 74 é o que mais se repete. Foram 15 repetições. 
-
-
+# O valor 74 é o que mais se repete. Foram 15 repetições.

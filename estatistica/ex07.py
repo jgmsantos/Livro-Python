@@ -12,4 +12,3 @@ r = stats.pearsonr(x, y)
 
           #          r                  p-value
 print(r)  # (0.5522538017058155, 1.2107247393256543e-18)
-

@@ -12,4 +12,3 @@ print(x)  # 74.32870370370371
 
 y = stats.tmean(ur, limits=(60, 80))  # Exclui os valores abaixo de 60% e acima de 80%.
 print(y)  # 72.8407643312102
-
