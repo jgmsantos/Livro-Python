@@ -46,7 +46,7 @@ ax.text(-0.15, 16.8, '7', fontsize=9,  rotation=0)
 ax.text(-0.15, 17.8, '8', fontsize=9,  rotation=0)
 ax.text(-0.15, 18.8, '9', fontsize=9,  rotation=0)
 ax.text(-0.15, 19.8, '10', fontsize=9, rotation=0)
-ax.text(-0.17, 21  , 'Tamanho\nmarcador', fontsize=9,  rotation=0)
+ax.text(-0.17, 21  , 'Tamanho\ndo\nmarcador', fontsize=9,  rotation=0)
 
 # Desabilita os 4 eixos do gráfico.
 ax.spines['right'].set_visible(False)
