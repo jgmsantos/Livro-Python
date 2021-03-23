@@ -15,7 +15,7 @@ rcParams.update({"font.size": 12})  # Tamanho da fonte do eixo.
 # Para editar o Diagrama de Taylor.
 # /home/usuario/.miniconda3/nome_seu_projeto/env/lib/python3.9/site-packages/skill_metrics
 
-# Fecha qualquer ambiente gráfico para evitar erro na geração do diagrama.
+# Fecha qualquer ambiente gráfico para evitar erros na geração do diagrama.
 plt.close("all")
 
 obs_key = "Obs"  # Dado observado.
@@ -34,7 +34,6 @@ def make_arrange(taylor_stats, key):
     for stats in taylor_stats:
         data.append(stats[key][1])
     return np.array(data)
-
 
 # Armazena os resultados em arranjos de sdev (desvio padrão), 
 # crmsd (erro quadrático médio) e ccoef (correlação).
