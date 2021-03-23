@@ -5,7 +5,6 @@ import skill_metrics as sm
 import pandas as pd
 
 # Leitura do arquivo no formato ".csv".
-data = pd.read_csv('cachoeira_paulista.csv')
 data = pd.read_csv('../../dados/texto/cmip5/cmip5.csv')
 
 # Define propriedades da figura.
@@ -66,6 +65,17 @@ sm.taylor_diagram(sdev, crmsd, ccoef,
                   titleRMS='off', showlabelsRMS='off', tickRMS=[0.0],
                   colSTD='black', styleSTD=':', widthSTD=1.0, tickSTD=np.arange(0, 125, 25), 
                   colCOR='blue', styleCOR='--', widthCOR=1.0, tickCOR=intervalsCOR)
+
+# Título principal da figura.
+plt.suptitle('Precipitação no bioma Amazônia', y=0.88, fontsize=13)
+
+# Título do eixo x e o seu tamanho.
+plt.xlabel('Observação', fontsize=10)
+plt.xticks(fontsize=10)  #  Tamanho dos rótulos do eixo x.
+
+# Título do eixo y e o seu tamanho.
+plt.ylabel('Desvio padrão', fontsize=10)
+plt.yticks(fontsize=10)  #  Tamanho dos rótulos do eixo y.
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
 plt.savefig('ex01.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
