@@ -85,6 +85,11 @@ print(x)
 x = x.lower()
 print(x)
 
+# String com a primeira letra em maiúscula.
+x = 'egUa, mAno!'
+x = x.title()  # Egua, Mano!
+print(x)
+
 # Divide a string.
 x = x.split()
 print(x)
