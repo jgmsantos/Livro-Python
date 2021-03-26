@@ -31,13 +31,13 @@ define_label(ax, ax.containers[0].patches, y)
 plt.title('Direção predominante do vento - Julho a Outubro/2020', fontsize=8)
 
 # Formatação do eixo x.
-plt.xlabel('Direção', fontsize=8)  # Título do eixo x e o seu tamanho.
+plt.xlabel('Direção', fontsize=8)  # Título do eixo x e o tamanho da fonte.
 plt.xticks(fontsize=8)  # Tamanho dos rótulos do eixo x.
 # Rótulos do eixo x definido pelo usuário.
 ax.set_xticks(ticks=['N', 'NNE', 'NE', 'ENE', 'E', 'SE', 'ESE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'])  
 
 #  Formatação do eixo y.
-plt.ylabel('Frequência (%)', fontsize=8)  #  Título do eixo y e o seu tamanho.
+plt.ylabel('Frequência (%)', fontsize=8)  #  Título do eixo y e o tamanho da fonte.
 plt.yticks(fontsize=8)  #  Tamanho dos rótulos do eixo y.
 plt.tick_params(axis='y', right=True)  #  Habilita o tickmark do eixo direito.
 ax.set_ylim(0, 45)  #  Mínimo e máximo valor do eixo y.

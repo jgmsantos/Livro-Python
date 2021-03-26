@@ -28,7 +28,7 @@ ax2.plot(meses, temp, color="red", marker='o', linestyle='solid', linewidth=2, m
 plt.title('Média Mensal - 2003 a 2020', fontsize=8)
 
 #  Formatação do eixo x.
-plt.xticks(meses, fontsize=8)  # Rótulos do eixo x e tamanho.
+plt.xticks(meses, fontsize=8)  # Rótulos do eixo x e o tamanho da fonte.
 plt.xlabel('Mês', fontsize=8)  # Tamanho do título do eixo x.
 
 # Formatação do eixo y esquerdo.

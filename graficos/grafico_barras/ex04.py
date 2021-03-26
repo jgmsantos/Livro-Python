@@ -26,12 +26,12 @@ ax.bar(x, abaixo_limiar, 0.75, color="blue", alpha=0.5)
 plt.title('Anomalia de Temperatura entre o ano 2020 e a Climatologia', fontsize=8)
 
 # Formatação do eixo x.
-plt.xlabel('Mês', fontsize=8)  # Título do eixo x e o seu tamanho.
+plt.xlabel('Mês', fontsize=8)  # Título do eixo x e o tamanho da fonte.
 plt.xticks(fontsize=8)  # Tamanho dos rótulos do eixo x.
 plt.xlim(0.5, 12.5)  # Define o mínimo e o máximo valor do eixo x.
 
 # Formatação do eixo y.
-plt.ylabel('Temperatura (ºC)', fontsize=8)  # Título do eixo y e o seu tamanho.
+plt.ylabel('Temperatura (ºC)', fontsize=8)  # Título do eixo y e o tamanho da fonte.
 ax.set_ylim(-1.5, 1.5)  # Mínimo e máximo valor do eixo y.
 ax.set_yticks(ticks=[-1.5, -1.0, -0.5, 0, 0.5, 1.0, 1.5])  # Rótulos do eixo y definido pelo usuário.
 plt.yticks(fontsize=8)  # Tamanho dos rótulos do eixo y.

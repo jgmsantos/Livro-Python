@@ -11,23 +11,23 @@ y = df['Climatologia']  # Importa a coluna Climatologia.
 fig, ax = plt.subplots(figsize=(7, 4))  # Largura e altura da figura.
 
 # Gera o plot.
-plt.bar(x, y, color='green', label='Precipitação', width=0.6) 
+plt.bar(x, y, color='green', label='Precipitação', width=0.6, alpha=0.5) 
 
 # Título principal da figura.
 plt.title('Climatologia de precipitação', fontsize=8)
 
 # Formatação do eixo x.
-plt.xlabel('Mês', fontsize=8)  # Título do eixo x e o seu tamanho.
+plt.xlabel('Mês', fontsize=8)  # Título do eixo x e o tamanho da fonte.
 plt.xticks(fontsize=8)  # Tamanho dos rótulos do eixo x.
 
 #  Formatação do eixo y.
-plt.ylabel('Precipitação (mm/dia)', fontsize=8)  #  Título do eixo y e o seu tamanho.
+plt.ylabel('Precipitação (mm/dia)', fontsize=8)  #  Título do eixo y e o tamanho da fonte.
 ax.set_ylim(0, 300)  #  Mínimo e máximo valor do eixo y.
 ax.set_yticks(ticks=[0, 50, 100, 150, 200, 250, 300])  #  Rótulos do eixo y definido pelo usuário.
 plt.yticks(fontsize=8)  #  Tamanho dos rótulos do eixo y.
 plt.tick_params(axis='y', right=True)  #  Habilita o tickmark do eixo direito.
 
-# Gera a legenda sem borda, define localização e o seu tamanho.
+# Gera a legenda sem borda, define localização e o tamanho da fonte.
 plt.legend(frameon =False, loc='upper right', fontsize=8)
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.

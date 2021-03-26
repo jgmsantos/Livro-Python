@@ -37,7 +37,7 @@ define_label(ax, ax.containers[0].patches, ano2019)
 define_label(ax, ax.containers[1].patches, ano2020)
 
 # Formatação do eixo x:
-plt.xticks(np.arange(total_classes),classes, fontsize=8)  # Rótulos do eixo x e tamanho.
+plt.xticks(np.arange(total_classes),classes, fontsize=8)  # Rótulos do eixo x e o tamanho da fonte.
 
 # Formatação do eixo y.
 plt.ylim(0, 100)  # Define o mínimo e máximo valor do eixo y.

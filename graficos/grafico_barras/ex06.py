@@ -40,12 +40,12 @@ define_label(ax, ax.containers[1].patches, ano2020)
 plt.title('Bioma Pantanal', fontsize=8)
 
 # Formatação do eixo x.
-plt.xticks(np.arange(total_classes),classes, fontsize=8)  # Rótulos do eixo x e tamanho.
+plt.xticks(np.arange(total_classes),classes, fontsize=8)  # Rótulos do eixo x e o tamanho da fonte.
 plt.xlabel('Tipos de eventos', fontsize=8)  # Tamanho do título do eixo x.
 
 # Formatação do eixo y.
 plt.ylim(0, 100)  # Define o mínimo e máximo valor do eixo y.
-plt.ylabel('Porcentagem (%)', fontsize=8)  # Tamanho do título do eixo y.
+plt.ylabel('Porcentagem (%)', fontsize=8)  # Tamanho da fonte do título do eixo y.
 plt.yticks(fontsize=8)  # Tamanho dos rótulos do eixo y.
 plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 

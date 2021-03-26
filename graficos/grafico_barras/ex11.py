@@ -20,7 +20,7 @@ plt.title('Precipitação mensal - 2003 a 2020', fontsize=8)
 #  Formatação do eixo x.
 plt.xlim(-1, 216, 1)  # Define o mínimo e o máximo valor do eixo x.
 plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
-plt.xticks(np.arange(0,215,12), meses, fontsize=8)  # Rótulos do eixo x, tamanho e orientação.
+plt.xticks(np.arange(0,215,12), meses, fontsize=8)  # Rótulos do eixo x, tamanho da fonte e orientação.
 
 #  Formatação do eixo y.
 plt.ylabel('Precipitação (mm/mês)', fontsize=8)  # Tamanho do título do eixo y.

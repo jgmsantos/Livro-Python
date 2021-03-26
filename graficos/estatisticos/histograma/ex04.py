@@ -16,13 +16,13 @@ ax.hist(x, bins=[0, 10, 20, 30, 40, 50], histtype='bar', color='blue', alpha=0.4
 plt.title('Histograma de Precipitação: 2003-2020', fontsize=8)
 
 # Formatação do eixo x.
-plt.xlabel('Classes (mm/mês)', fontsize=8)  # Título do eixo x e o seu tamanho.
+plt.xlabel('Classes (mm/mês)', fontsize=8)  # Título do eixo x e o tamanho da fonte.
 ax.set_xlim(0, 60)  # Define o mínimo e o máximo valor do eixo x.
 plt.setp(ax.get_xticklabels(), rotation=0, ha="center", rotation_mode="anchor")
 plt.xticks([5, 15, 25, 35, 45, 55], classes, fontsize=8)  # Rótulos do eixo x e tamanho.
 
 # Formatação do eixo y.
-plt.ylabel('Frequência', fontsize=8)  # Título do eixo y e o seu tamanho.
+plt.ylabel('Frequência', fontsize=8)  # Título do eixo y e o tamanho da fonte.
 ax.set_ylim(0, 140)  # Mínimo e máximo valor do eixo y.
 ax.set_yticks(ticks=range(0, 145, 20))  # Rótulos do eixo y definido pelo usuário.
 plt.yticks(fontsize=8)  # Tamanho dos rótulos do eixo y.

@@ -9,7 +9,7 @@ x = df['Mês']  # Importa a coluna Mês.
 y = df['Climatologia']  # Importa a coluna Climatologia.
 
 # Gera o plot.
-plt.bar(x, y) 
+plt.bar(x, y, alpha=0.5) 
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
 plt.savefig('ex01.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)

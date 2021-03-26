@@ -16,13 +16,13 @@ ax.hist(x, bins=[10, 15, 20, 25, 30, 35], histtype='bar', color='red', alpha=0.4
 plt.title('Histograma de Temperatura: 2003-2020', fontsize=8)
 
 # Formatação do eixo x.
-plt.xlabel('Classes (ºC)', fontsize=8)  # Título do eixo x e o seu tamanho.
+plt.xlabel('Classes (ºC)', fontsize=8)  # Título do eixo x e o tamanho da fonte.
 ax.set_xlim(10, 40)  # Define o mínimo e o máximo valor do eixo x.
 plt.setp(ax.get_xticklabels(), rotation=0, ha="center", rotation_mode="anchor")
 plt.xticks([12.5, 17.5, 22.5, 27.5, 32.5, 37.5], classes, fontsize=8)  # Rótulos do eixo x e tamanho.
 
 # Formatação do eixo y.
-plt.ylabel('Frequência', fontsize=8)  # Título do eixo y e o seu tamanho.
+plt.ylabel('Frequência', fontsize=8)  # Título do eixo y e o tamanho da fonte.
 ax.set_ylim(0, 140)  # Mínimo e máximo valor do eixo y.
 ax.set_yticks(ticks=range(0, 145, 20))  # Rótulos do eixo y definido pelo usuário.
 plt.yticks(fontsize=8)  # Tamanho dos rótulos do eixo y.

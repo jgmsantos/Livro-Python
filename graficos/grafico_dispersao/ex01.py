@@ -21,7 +21,7 @@ plt.title('Climatologia de Temperatura', fontsize=8)
 plt.xlabel('Mês', fontsize=8)  # Título do eixo x e o seu tamanho.
 
 # Formatação do eixo y.
-plt.ylabel('Temperatura (ºC)', fontsize=8)  # Título do eixo y e o seu tamanho.
+plt.ylabel('Temperatura (ºC)', fontsize=8)  # Título do eixo y e o tamanho da fonte.
 plt.ylim(25, 28)  # Mínimo e máximo valor do eixo y.
 ax.set_yticks(ticks=[25, 25.5, 26, 26.5 , 27, 27.5, 28])  # Rótulos do eixo y definido pelo usuário.
 plt.yticks(fontsize=8)  # Tamanho dos rótulos do eixo y.

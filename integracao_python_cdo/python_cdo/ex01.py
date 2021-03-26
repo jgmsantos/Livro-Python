@@ -9,6 +9,10 @@ x = [1, 2, 3, 4, 5, 6, 7, 8, 9]
 y = cdo.fldmean(input='../../dados/netcdf/prec.2020.nc', returnCdf=True).variables['prec'][:]
 
 plt.plot(x,y[:,0,0])
+
+# Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
+plt.savefig('ex01.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
+
 plt.show()
 
 #cdo = Cdo(tempdir='diretorio_arquivos_temporarios')

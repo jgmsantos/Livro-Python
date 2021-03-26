@@ -27,7 +27,7 @@ define_label(ax, ax.containers[0].patches, ndsc)
 plt.title('Número de Dias Sem Chuva', fontsize=8)
 
 # Formatação do eixo x.
-plt.xticks(meses, fontsize=8)  # Rótulos do eixo x e tamanho.
+plt.xticks(meses, fontsize=8)  # Rótulos do eixo x e o tamanho da fonte.
 plt.xlabel('Mês', fontsize=8)  # Tamanho do título do eixo x.
 
 # Formatação do eixo y.

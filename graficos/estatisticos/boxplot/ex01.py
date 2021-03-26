@@ -19,7 +19,7 @@ plt.xticks(ticks=None, labels=None)  # Rótulos do eixo x definido pelo usuário
 plt.tick_params(axis='x', which='both', bottom=False, top=False, labelbottom=False)  
 
 # Formatação do eixo y.
-plt.ylabel('Umidade Relativa (%)', fontsize=8)  # Título do eixo y e o seu tamanho.
+plt.ylabel('Umidade Relativa (%)', fontsize=8)  # Título do eixo y e o tamanho da fonte.
 plt.ylim(0, 100)  # Mínimo e máximo valor do eixo y.
 plt.yticks(ticks=range(0, 110, 10), fontsize=8)  # Rótulos do eixo y definido pelo usuário.
 plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.

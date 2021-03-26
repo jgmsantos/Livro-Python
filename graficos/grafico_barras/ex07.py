@@ -58,7 +58,7 @@ plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
 plt.xticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], datas, fontsize=8)
 
 #  Formatação do eixo y:
-plt.ylabel('SPI (Adimensional)', fontsize=8)  # Tamanho do título do eixo y.
+plt.ylabel('SPI (Adimensional)', fontsize=8)  # Tamanho da fonte do título do eixo y.
 plt.ylim(minimo_valor_y, maximo_valor_y-0.5)  # Define o mínimo e máximo valor do eixo y.
 # Define o mínimo e máximo valor do eixo y, tamanho dos seus rótulos.
 plt.yticks(np.arange(minimo_valor_y, maximo_valor_y, step=0.5), fontsize=8)  

@@ -16,13 +16,13 @@ ax.hist(x, bins=[15, 30, 45, 60, 75, 90], histtype='bar', color='green', alpha=0
 plt.title('Histograma de Umidade Relativa: 2003-2020', fontsize=8)
 
 # Formatação do eixo x.
-plt.xlabel('Classes (%)', fontsize=8)  # Título do eixo x e o seu tamanho.
+plt.xlabel('Classes (%)', fontsize=8)  # Título do eixo x e o tamanho da fonte.
 ax.set_xlim(15, 110)  # Define o mínimo e o máximo valor do eixo x.
 plt.setp(ax.get_xticklabels(), rotation=0, ha="center", rotation_mode="anchor")
 plt.xticks([22.5, 37.5, 52.5, 67.5, 82.5, 97.5], classes, fontsize=8)  # Rótulos do eixo x e tamanho.
 
 # Formatação do eixo y.
-plt.ylabel('Frequência', fontsize=8)  # Título do eixo y e o seu tamanho.
+plt.ylabel('Frequência', fontsize=8)  # Título do eixo y e o tamanho da fonte.
 ax.set_ylim(0, 140)  # Mínimo e máximo valor do eixo y.
 ax.set_yticks(ticks=range(0, 145, 20))  # Rótulos do eixo y definido pelo usuário.
 plt.yticks(fontsize=8)  # Tamanho dos rótulos do eixo y.

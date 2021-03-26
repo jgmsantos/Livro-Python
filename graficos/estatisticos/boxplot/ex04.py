@@ -34,7 +34,7 @@ plt.title('Boxplot de Precipitação - 1979 a 2005', fontsize=8)
 
 # Formatação do eixo x.
 plt.xlim(0, 12)  # Mínimo e máximo valor do eixo y.
-plt.ylabel('Precipitação (mm/mês)', fontsize=8)  # Título do eixo y e o seu tamanho.
+plt.ylabel('Precipitação (mm/mês)', fontsize=8)  # Título do eixo y e o tamanho da fonte.
 plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
 plt.xticks(ticks=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], labels=['OBSERVADO', 'ACCESS1-0', 'BCC-CSM1.1', 'BESM', 'CANESM', 'CCSM4', 'CNRM-CM5', 'CSIRO-MK3-6-0', 'FGOALS-G2', 'GFDL-CM3', 'GFDL-ESM2G'], fontsize=8)  # Rótulos do eixo x definido pelo usuário.
 
