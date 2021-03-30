@@ -1,8 +1,11 @@
 import xarray as xr
 from climate_indices import indices
+#from icclim import icclim
+import ESMF
+
 
 # Abertura do arquivo com o xarray.
-ds = xr.open_dataset('GPCP.nc')
+ds = xr.open_dataset('../dados/netcdf/GPCP.nc')
 
 # Importação da variável do arquivo.
 prec = ds['precip']
@@ -36,7 +39,7 @@ spi = spi.to_dataset(name='spi')
 
 # 1) Dado espacial:
 # Inserindo atributos.
-spi.spi.attrs['long_name'] = 'Standardized Precipitation Index (SPI);'
+spi.spi.attrs['long_name'] = f'Standardized Precipitation Index (SPI) - {scale} meses;'
 spi.spi.attrs['units'] = 'Adimensional;'
 spi.lat.attrs['units'] = 'degrees_north;'
 spi.lon.attrs['units'] = 'degrees_east;'
@@ -59,7 +62,7 @@ spi.to_netcdf(path='spi_espacial.nc',
 x = spi.mean(dim=('lon', 'lat'))  # time: 492
 
 # Inserindo atributos.
-x.spi.attrs['long_name'] = 'Standardized Precipitation Index (SPI);'
+x.spi.attrs['long_name'] = f'Standardized Precipitation Index (SPI) - {scale} meses;'
 x.spi.attrs['units'] = 'Adimensional;'
 
 # Opções de personalização do NetCDF.
