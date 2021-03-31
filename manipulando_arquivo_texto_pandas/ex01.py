@@ -58,5 +58,17 @@ df1 = pd.read_csv('../dados/texto/eca_cdd.R.txt')
 #print(x)
 
 # Seleciona linhas específicas de acordo com a sua posição especifica por linhas e colunas. Retorna os 6 primeiros valores das colunas Jan e Fev.
-x = df1.iloc[:3,:3]
-print(x)
+#x = df1.iloc[:3,:3]
+#print(x)
+
+# Seleciona valores por intervalo de interesse. Seleciona os valores de Jul maiores que 15 e menores que 25.
+#x = df1.query('15 < Jul < 25').head()
+#print(x)
+
+# Definir a coluna como index. Definindo a coluna Ano como index.
+#print(df1.set_index('Ano').head(4))
+
+# Definir a coluna como index. Definindo a coluna Ano como index.
+x = df1.set_index('Ano').head(4)
+
+print(x['Ano'].sort_value(by='Ano'))
