@@ -12,5 +12,5 @@ num_dias = xclim.atmos.maximum_consecutive_dry_days(prec, thresh = '2 mm/day', f
 # Total de dias: 1.
 print(f'Total de dias: {int(num_dias)}.')
 
-https://xclim.readthedocs.io/en/stable/indicators_api.html#xclim.indicators.atmos.dry_days
-https://xclim.readthedocs.io/en/stable/notebooks/example.html#Threshold-indices
+#https://xclim.readthedocs.io/en/stable/indicators_api.html#xclim.indicators.atmos.dry_days
+#https://xclim.readthedocs.io/en/stable/notebooks/example.html#Threshold-indices
