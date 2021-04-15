@@ -62,4 +62,4 @@ cbar.ax.tick_params(labelsize=7)
 plt.subplots_adjust(left=None, bottom=0.3, right=None, top=None, wspace=None, hspace=None)
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
-plt.savefig('ex01.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
+ax.savefig('ex01.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
