@@ -28,7 +28,7 @@ lons = fu.variables['lon'][:]
 
 ax = plt.axes(projection=ccrs.PlateCarree())
 
-# Criação do mapa com as divisão dos estados brasileiro.
+# Criação do mapa com a divisão dos estados brasileiros.
 ax.set_global()
 ax.coastlines(linewidth=1.0, color='black')
 ax.add_feature(cfeature.BORDERS, linestyle='-', linewidth=1.0, edgecolor='black')

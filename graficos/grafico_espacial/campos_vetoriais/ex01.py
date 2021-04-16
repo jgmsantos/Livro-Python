@@ -14,7 +14,7 @@ LatN=10.0
 
 fig, ax = plt.subplots(figsize=(3,3), subplot_kw={'projection': ccrs.PlateCarree()}, ncols=1, nrows=1)
 
-# Criação do mapa com as divisão dos estados brasileiros.
+# Criação do mapa com a divisão dos estados brasileiros.
 ax.set_global()
 ax.coastlines(linewidth=1.0, color='black')
 ax.add_feature(cfeature.BORDERS, linestyle='-', linewidth=1.0, edgecolor='black')
