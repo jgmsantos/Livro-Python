@@ -9,17 +9,18 @@ ds = xr.open_dataset('../../../dados/netcdf/tmed.clima.amazonia.nc', decode_time
 
 tmed = ds.tmed[0,:,:]
 
-ax.format(coast=True, borders=True, innerborders=False,
+ax.format(coast=True, borders=True, innerborders=True,
           labels=True, latlines=5, lonlines=5,
           latlim=(5.75, -17.75), lonlim=(-75, -43),
           title='Temperatura no bioma Amazônia')
 
 ax.set_ylabel('Latitude', fontsize=7)  # Define o tamanho do título do eixo y.
-ax.set_xlabel('Latitude', fontsize=7)  # Define o tamanho do título do eixo y.
+ax.set_xlabel('Latitude', fontsize=7)  # Define o tamanho do título do eixo x.
 
 map = ax.contourf(ds['lon'], ds['lat'],
                    tmed,
-                   cmap='coolwarm', levels=plot.arange(25, 29, 0.5),
+                   cmap='coolwarm', 
+                   levels=plot.arange(25, 29, 0.5),
                    extend='both')
 
 fig.colorbar(map, loc='b', label='Temperatura ($\degree$C)', orientation='horizontal')
