@@ -12,13 +12,13 @@ np.seterr(divide='ignore', invalid='ignore')
 plot.rc.fontsize = 10  
 
 # Abertura do arquivo.
-tsm = xr.open_dataset('../dados/netcdf/sst.1981.2010.nc')
+sst = xr.open_dataset('../dados/netcdf/sst.1981.2010.nc')
 
 # Cálculo da anomalia (valor observado - média).
-atsm = tsm.groupby('time.month') - tsm.groupby('time.month').mean('time')
+asst = sst.groupby('time.month') - sst.groupby('time.month').mean('time')
 
 # Anomalia de SST na região do Niño 3.4
-nino34 = atsm.sel(lon=slice(190, 240), lat=slice(5, -5)).mean(("lon", "lat"))
+nino34 = asst.sel(lon=slice(190, 240), lat=slice(5, -5)).mean(("lon", "lat"))
 
 fig, ax = plot.subplots(figsize=(8, 4))
 
@@ -44,9 +44,28 @@ ax.axhline(0.5, color='red', linestyle='--')
 # Adiciona linha no valor -0.5C no eixo y que define o evento La Niña.
 ax.axhline(-0.5, color='blue', linestyle='--')
 
+# Correlação entre a Anomalia de SST e a anomalia na região do Niño 3.4.
+corr_asst_nino34 = corr(asst['sst'], nino34['sst'], dim='time')
+
+fig1, ax1 = plot.subplots(axwidth=5, tight=True,
+                          proj='ortho', proj_kw={'lon_0': 220})
+
+# Formatação do mapa.
+ax1.format(coast=True, borders=True, innerborders=False,
+          labels=False, latlines=10, lonlines=10,
+          facecolor='gray',
+          title='Correlação entre as anomalias de SST e do Niño 3.4')
+
+# Plota da figura.
+map1 = ax1.contourf(asst['lon'], asst['lat'], corr_asst_nino34,
+                   levels=plot.arange(-1.0, 1.0, 0.2), cmap='RdBu_r')
+
+# Adicona a barra de cores.
+fig1.colorbar(map1, loc='b', label='Correlação de Pearson (0-1)')
+
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
-fig.savefig('ex05.jpg', 
-             transparent=True, 
-             dpi=300, 
-             bbox_inches='tight', 
-             pad_inches=0)
+fig1.savefig('ex06.jpg', 
+              transparent=True, 
+              dpi=300, 
+              bbox_inches='tight', 
+              pad_inches=0)
