@@ -1,44 +1,52 @@
-import matplotlib.pyplot as plt
+import proplot as plot
 import xarray as xr
-from matplotlib.cm import get_cmap
+import matplotlib.pyplot as plt
+import cartopy.crs as crs
 from cartopy.feature import ShapelyFeature
-import cartopy.io.shapereader as shpreader
-import cartopy.crs as ccrs
+from cartopy.io.shapereader import Reader
 
-fig, ax = plt.subplots(figsize=(3,3))  #  Define a largura e altura da figura.
-ax = plt.axes(projection=ccrs.PlateCarree())  # Projeção do mapa.
 
-# Abertura do arquivo com o xarray.
-ds = xr.open_dataset('../../../dados/netcdf/tmed.clima.amazonia.nc', decode_times=False)
+# Abertura do arquivo NetCDF.
+ds = xr.open_dataset('../../../dados/netcdf/Umidade.Solo.amazonia.2019.2020.nc', decode_times=False)
 
-# Abertura do arquivo shapefile.
-shape_bioma_amazonia = ShapelyFeature(shpreader.Reader('../../../dados/shapefile/bioma_amazonia/amazonia.shp').geometries(), ccrs.PlateCarree(), facecolor='none', edgecolor='black', linewidth=1.0)
-shape_estados_brasil = ShapelyFeature(shpreader.Reader('../../../dados/shapefile/brasil/Brasil.shp').geometries(), ccrs.PlateCarree(), facecolor='none', edgecolor='black', linewidth=0.5)
+#print(ds)  # Informações sobre o arquivo.
 
-# Adiciona o shapefile ao mapa.
-ax.add_feature(shape_bioma_amazonia)
-ax.add_feature(shape_estados_brasil)
+# Valores de umidade do solo.
+valores_de_umidade = [2, 5, 10, 20, 30, 70, 80, 90, 95, 98]  # 10 cores.
 
-# Seleciona o primeiro tempo e visualiza a variável. O plt.contour representa apenas o contorno.
-# O plt.contourf, o campo preenchido.
-plt.contour(ds['lon'], ds['lat'], ds['tmed'][0,:,:], colors="black", linestyles='solid', linewidths=0.5, levels=[25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29])
-plt.contourf(ds['lon'], ds['lat'], ds['tmed'][0,:,:], cmap=get_cmap("jet"), levels=[25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29])
+# Cores de interesse. Sempre número de cores + 1, ou seja, 10 + 1 = 11 cores.
+cores = ['dark maroon', 'blood', 'orange8', 'orange2', 'yellow', 'white', 
+          'cyan', 'blue4', 'blue6', 'blue8', 'royal blue']
 
-# Título principal da figura e tamanho.
-plt.title('Temperatura no bioma Amazônia', fontsize=8)
+# Importação da variável.
+umidade_solo = ds.sel(lat=slice(-17, 6), lon=slice(-75, -43))
 
-# Formatação do eixo x.
-plt.xlabel('Longitude', fontsize=8)  # Define o tamanho do título do eixo x.
-plt.xticks(fontsize=8)  # Define o tamanho dos rótulos do eixo x.
+# Linhas do continente.
+# Nome do shapefile do bioma de interesse.
+bioma = ShapelyFeature(Reader(f'../../../dados/shapefile/bioma_amazonia/states_amazon_biome.shp').geometries(), 
+        crs.PlateCarree(), facecolor='none')
 
-# Formatação do eixo y.
-plt.ylabel('Latitude', fontsize=8)  # Define o tamanho do título do eixo y.
-plt.yticks(fontsize=8)  # Define o tamanho dos rótulos do eixo y.
-plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
+fig, ax = plot.subplots(figsize=(7, 4), tight=True, proj='pcarree',)
 
-# Gera a barra de corres, sua orientação, proximidade (pad) do eixo x inferior e valores de temperatura definidos pelo usuário.
-cbar = plt.colorbar(ax = ax, shrink=0.98, orientation='horizontal', pad=0.03, ticks=[25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29])
-cbar.ax.tick_params(labelsize=6)  # Tamanho dos rótulos da barra de cores.
+# Formatação do mapa.
+ax.format(coast=False, borders=False, innerborders=False,
+          labels=True, grid=True, latlines=5, lonlines=5,
+          latlim=(-17, 6), lonlim=(-75, -43),
+          title='Percentil de Umidade do Solo')
 
-# Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
-plt.savefig('ex02.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
+# Plot da variável.
+map = ax.pcolormesh(umidade_solo['lon'], umidade_solo['lat'], 
+                   umidade_solo['sfsm'][0, :, :], cmap=cores, 
+                   levels=valores_de_umidade, extend='both')
+
+# Adiciona o contorno dos estados e países.
+ax.add_feature(bioma, linewidth=1, edgecolor="k")
+
+#  Adiciona a barra de cores.
+x = fig.colorbar(map, loc='b', width='1.5em', extendsize='2em', 
+                 shrink=0.57, ticks=valores_de_umidade)
+plt.tick_params(labelsize=8)  # Tamanho da fonte da barra de cores.
+x.set_label('Percentil (%)', fontsize=8)  # Unidade da barra de cores.
+
+# Salva a figura no formato ".jpg" com dpi=300.
+fig.save('ex02.jpg', transparent=True, dpi=300)

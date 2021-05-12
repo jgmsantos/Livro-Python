@@ -1,65 +1,50 @@
-import matplotlib.pyplot as plt
+import proplot as plot
 import xarray as xr
-from matplotlib.cm import get_cmap
-import cartopy.crs as ccrs
-import cartopy.feature as cfeature
+import matplotlib.pyplot as plt
+import cartopy.crs as crs
 from cartopy.feature import NaturalEarthFeature
-from cartopy.mpl.ticker import LongitudeFormatter, LatitudeFormatter
-import numpy as np
 
-# Área de interesse.
-LonW=-75
-LonE=-43
-LatS=-17.75
-LatN=5.75
 
-# Largura, altura da figura e projeção do mapa.
-fig, ax = plt.subplots(figsize=(3,3), subplot_kw={'projection': ccrs.PlateCarree()}, ncols=1, nrows=1)
+# Abertura do arquivo NetCDF.
+ds = xr.open_dataset('../../../dados/netcdf/Umidade.Solo.amazonia.2019.2020.nc', decode_times=False)
 
-# Criação do mapa com as divisão dos estados brasileiro.
-ax.set_global()
-ax.coastlines(linewidth=1.0, color='black')
-ax.add_feature(cfeature.BORDERS, linestyle='-', linewidth=1.0, edgecolor='black')
-ax.spines['geo'].set_linewidth(0.5)
-ax.tick_params(width=0.5)
+#print(ds)  # Informações sobre o arquivo.
 
-# Define os rótulos dos eixos e bordas do mapa.
-ax.tick_params(direction='out', length=6, width=1.0, colors='black', grid_color='black', grid_alpha=0.0)
-ax.set_xticks(np.linspace(LonW, LonE, 5), crs=ccrs.PlateCarree())
-ax.set_yticks(np.linspace(LatS, LatN, 6), crs=ccrs.PlateCarree())
-ax.set_extent([LonW, LonE, LatS, LatN], crs=ccrs.PlateCarree())
+# Valores de umidade do solo.
+valores_de_umidade = [2, 5, 10, 20, 30, 70, 80, 90, 95, 98]  # 10 cores.
 
-lon_formatter = LongitudeFormatter(number_format='.0f', degree_symbol='', dateline_direction_label=False)
-lat_formatter = LatitudeFormatter(number_format='.0f', degree_symbol='') 
-ax.xaxis.set_major_formatter(lon_formatter)
-ax.yaxis.set_major_formatter(lat_formatter)
+# Cores de interesse. Sempre número de cores + 1, ou seja, 10 + 1 = 11 cores.
+cores = ['dark maroon', 'blood', 'orange8', 'orange2', 'yellow', 'white', 
+         'cyan', 'blue4', 'blue6', 'blue8', 'royal blue']
 
-states = NaturalEarthFeature(category='cultural', scale='50m', facecolor='none', name='admin_1_states_provinces_shp')
-ax.add_feature(states, edgecolor='black', linestyle='-', linewidth=0.5)
+# Importação da variável e definição da área de interesse.
+umidade_solo = ds.sel(lat=slice(-17, 6), lon=slice(-75, -43))
 
-# Abertura do arquivo com o xarray.
-ds = xr.open_dataset('../../../dados/netcdf/tmed.clima.amazonia.nc', decode_times=False)
+# Linhas do continente.
+estados = NaturalEarthFeature(category="cultural", scale="50m", 
+          facecolor="none", name="admin_1_states_provinces_shp")
+
+fig, ax = plot.subplots(figsize=(7, 4), tight=True, proj='pcarree',)
+
+# Formatação do mapa.
+ax.format(coast=False, borders=False, innerborders=False,
+          labels=True, grid=True, latlines=5, lonlines=5,
+          latlim=(-17, 6), lonlim=(-75, -43),
+          title='Percentil de Umidade do Solo')
 
 # Plot da variável.
-plot = ds.tmed[0,:,:].plot.contourf(levels=[25, 25.5, 26, 26.5, 27, 27.5, 28, 28.5, 29], ax=ax, transform=ccrs.PlateCarree(), cmap='jet', vmin=25, vmax=29, add_colorbar=False)
+map = ax.pcolormesh(umidade_solo['lon'], umidade_solo['lat'], 
+                   umidade_solo['sfsm'][0, :, :], cmap=cores, 
+                   levels=valores_de_umidade, extend='both')
 
-# Título principal da figura e tamanho.
-plt.title('Temperatura no bioma Amazônia', fontsize=8)
+# Adiciona o contorno dos estados e países.
+ax.add_feature(estados, linewidth=1, edgecolor="k")
 
-# Formatação do eixo x e tamanho.
-plt.xlabel('Longitude', fontsize=7)  # Define o tamanho do título do eixo x.
-plt.xticks(fontsize=7)  # Define o tamanho dos rótulos do eixo x.
+#  Adiciona a barra de cores.
+x = fig.colorbar(map, loc='b', width='1.5em', extendsize='2em', 
+                 shrink=0.57, ticks=valores_de_umidade)
+plt.tick_params(labelsize=8)  # Tamanho da fonte da barra de cores.
+x.set_label('Percentil (%)', fontsize=8)  # Unidade da barra de cores.
 
-# Formatação do eixo y e tamanho.
-plt.ylabel('Latitude', fontsize=7)  # Define o tamanho do título do eixo y.
-plt.yticks(fontsize=7)  # Define o tamanho dos rótulos do eixo y.
-plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
-
-cbaxes1 = fig.add_axes([0.01, 0.11, 0.95, 0.05]) 
-cbar = fig.colorbar(plot, cax=cbaxes1, drawedges=True, orientation='horizontal')
-cbar.ax.tick_params(labelsize=7)
-
-plt.subplots_adjust(left=None, bottom=0.3, right=None, top=None, wspace=None, hspace=None)
-
-# Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
-ax.savefig('ex01.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
+# Salva a figura no formato ".jpg" com dpi=300.
+fig.save('ex01.jpg', transparent=True, dpi=300)
