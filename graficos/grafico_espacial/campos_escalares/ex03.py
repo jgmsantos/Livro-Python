@@ -22,24 +22,25 @@ lon = dsu['lon']
 estados = NaturalEarthFeature(category="cultural", scale="50m", facecolor="none",
           name="admin_1_states_provinces_shp")
 
-fig, ax = plot.subplots(axwidth=5, tight=True, proj='pcarree',)
+fig, ax = plot.subplots(tight=True, proj='pcarree')
 
 # Formatação do mapa.
 ax.format(coast=True, borders=True, innerborders=True,
-          labels=True, grid=True, latlines=10, lonlines=5,
+          labels=True, grid=False, latlines=10, lonlines=5,
           latlim=(-60, 10), lonlim=(-90, -30))
 
 # Título da figura.
-plt.title('Vento Meridional em 1000 hPa', fontsize=15)
+plt.title('Vento Meridional em 1000 hPa', fontsize=8)
 
 # Plot da variável.
-map = ax.contourf(lon, lat, vel, cmap='Spectral', 
+map = plt.contourf(lon, lat, vel, cmap='Spectral', 
                   levels=plot.arange(2, 10, 1), extend='both')
 
 #  Adiciona a barra de cores.
-x = fig.colorbar(map, loc='r', shrink=0.95, orientation='vertical')
-plt.tick_params(labelsize=13)  # Tamanho da fonte da barra de cores.
-x.set_label('Velocidade (m/s)', fontsize=13)  # Unidade da barra de cores.
+x = fig.colorbar(map, loc='r', shrink=1, width='1em', extendsize='0.7em', 
+                 orientation='vertical', ticks=plot.arange(2, 10, 1))
+plt.tick_params(labelsize=6)  # Tamanho da fonte da barra de cores.
+x.set_label('Velocidade (m/s)', fontsize=6)  # Unidade da barra de cores.
 
 # Adiciona o contorno dos estados e países.
 ax.add_feature(estados, linewidth=0.5, edgecolor="k")

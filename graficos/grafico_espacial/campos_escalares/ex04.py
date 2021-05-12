@@ -69,4 +69,4 @@ plt.tick_params(labelsize=30)  # Tamanho da fonte da barra de cores.
 x.set_label('Percentil (%)', fontsize=30)  # Unidade da barra de cores.
 
 # Salva a figura no formato ".jpg" com dpi=300.
-fig.save('ex04.jpg', transparent=True, dpi=300)
+fig.save('ex04.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)

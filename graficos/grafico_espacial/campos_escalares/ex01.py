@@ -24,7 +24,7 @@ umidade_solo = ds.sel(lat=slice(-17, 6), lon=slice(-75, -43))
 estados = NaturalEarthFeature(category="cultural", scale="50m", 
           facecolor="none", name="admin_1_states_provinces_shp")
 
-fig, ax = plot.subplots(figsize=(7, 4), tight=True, proj='pcarree',)
+fig, ax = plot.subplots(tight=True, proj='pcarree',)
 
 # Formatação do mapa.
 ax.format(coast=False, borders=False, innerborders=False,
@@ -33,7 +33,7 @@ ax.format(coast=False, borders=False, innerborders=False,
           title='Percentil de Umidade do Solo')
 
 # Plot da variável.
-map = ax.pcolormesh(umidade_solo['lon'], umidade_solo['lat'], 
+map = plt.pcolormesh(umidade_solo['lon'], umidade_solo['lat'], 
                    umidade_solo['sfsm'][0, :, :], cmap=cores, 
                    levels=valores_de_umidade, extend='both')
 
@@ -41,10 +41,10 @@ map = ax.pcolormesh(umidade_solo['lon'], umidade_solo['lat'],
 ax.add_feature(estados, linewidth=1, edgecolor="k")
 
 #  Adiciona a barra de cores.
-x = fig.colorbar(map, loc='b', width='1.5em', extendsize='2em', 
-                 shrink=0.57, ticks=valores_de_umidade)
+x = fig.colorbar(map, loc='b', width='1.em', extendsize='2.5em', 
+                 shrink=1, ticks=valores_de_umidade)
 plt.tick_params(labelsize=8)  # Tamanho da fonte da barra de cores.
 x.set_label('Percentil (%)', fontsize=8)  # Unidade da barra de cores.
 
 # Salva a figura no formato ".jpg" com dpi=300.
-fig.save('ex01.jpg', transparent=True, dpi=300)
+fig.save('ex01.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0.02)
