@@ -2,14 +2,13 @@ import proplot as plot
 import xarray as xr
 import matplotlib.pyplot as plt
 import numpy as np
+
 from cartopy.feature import NaturalEarthFeature
 
 
 # Abertura do arquivo NetCDF.
 dsu = xr.open_dataset('../../../dados/netcdf/uwnd.nc')
 dsv = xr.open_dataset('../../../dados/netcdf/vwnd.nc')
-
-#print(ds)  # Informações sobre o arquivo.
 
 # Importando variáveis.
 u = dsu['uwnd'][0,0,:,:]  # (time, level, lat, lon)
@@ -22,25 +21,23 @@ lon = dsu['lon']
 estados = NaturalEarthFeature(category="cultural", scale="50m", facecolor="none",
           name="admin_1_states_provinces_shp")
 
+
 fig, ax = plot.subplots(tight=True, proj='pcarree')
 
 # Formatação do mapa.
 ax.format(coast=True, borders=True, innerborders=True,
           labels=True, grid=False, latlines=10, lonlines=5,
-          latlim=(-60, 10), lonlim=(-90, -30))
-
-# Título da figura.
-plt.title('Vento Meridional em 1000 hPa', fontsize=8)
+          latlim=(-60, 10), lonlim=(-90, -30),
+          small='10px', large='12px',
+          title='Vento Meridional em 1000 hPa')
 
 # Plot da variável.
-map = plt.contourf(lon, lat, vel, cmap='Spectral', 
+map = ax.contourf(lon, lat, vel, cmap='Spectral', 
                   levels=plot.arange(2, 10, 1), extend='both')
 
-#  Adiciona a barra de cores.
-x = fig.colorbar(map, loc='r', shrink=1, width='1em', extendsize='0.7em', 
-                 orientation='vertical', ticks=plot.arange(2, 10, 1))
-plt.tick_params(labelsize=6)  # Tamanho da fonte da barra de cores.
-x.set_label('Velocidade (m/s)', fontsize=6)  # Unidade da barra de cores.
+#  Barra de cores.
+fig.colorbar(map, loc='r', shrink=0.95, label='Velocidade (m/s)',
+             labelsize=8, ticklabelsize=8)
 
 # Adiciona o contorno dos estados e países.
 ax.add_feature(estados, linewidth=0.5, edgecolor="k")
