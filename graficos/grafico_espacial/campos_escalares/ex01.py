@@ -18,7 +18,7 @@ cores = ['dark maroon', 'blood', 'orange8', 'orange2', 'yellow', 'white',
          'cyan', 'blue4', 'blue6', 'blue8', 'royal blue']
 
 # Importação da variável e definição da área de interesse.
-umidade_solo = ds.sel(lat=slice(-17, 6), lon=slice(-75, -43))
+variavel = ds.sel(lat=slice(-17, 6), lon=slice(-75, -43))
 
 # Linhas do continente.
 estados = NaturalEarthFeature(category="cultural", scale="50m", 
@@ -30,21 +30,22 @@ fig, ax = plot.subplots(tight=True, proj='pcarree',)
 ax.format(coast=False, borders=False, innerborders=False,
           labels=True, grid=True, latlines=5, lonlines=5,
           latlim=(-17, 6), lonlim=(-75, -43),
+          small='8px', large='11px',
           title='Percentil de Umidade do Solo')
 
 # Plot da variável.
-map = plt.pcolormesh(umidade_solo['lon'], umidade_solo['lat'], 
-                   umidade_solo['sfsm'][0, :, :], cmap=cores, 
+map = ax.pcolormesh(variavel['lon'], variavel['lat'], 
+                   variavel['sfsm'][0, :, :], cmap=cores, 
                    levels=valores_de_umidade, extend='both')
 
 # Adiciona o contorno dos estados e países.
 ax.add_feature(estados, linewidth=1, edgecolor="k")
 
 #  Adiciona a barra de cores.
-x = fig.colorbar(map, loc='b', width='1.em', extendsize='2.5em', 
-                 shrink=1, ticks=valores_de_umidade)
-plt.tick_params(labelsize=8)  # Tamanho da fonte da barra de cores.
-x.set_label('Percentil (%)', fontsize=8)  # Unidade da barra de cores.
+x = fig.colorbar(map, loc='b', width='12px', shrink=0.95, 
+                 label='Percentil (%)', labelsize=5, 
+                 ticklabelsize=5, ticks=valores_de_umidade)
 
 # Salva a figura no formato ".jpg" com dpi=300.
-fig.save('ex01.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0.02)
+fig.save('ex01.jpg', transparent=True, dpi=300, 
+          bbox_inches='tight', pad_inches=0.02)

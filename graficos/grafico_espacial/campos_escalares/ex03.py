@@ -19,16 +19,16 @@ lon = dsu['lon']
 
 # Linhas do continente/estados do Brasil.
 estados = NaturalEarthFeature(category="cultural", scale="50m", facecolor="none",
-          name="admin_1_states_provinces_shp")
+                              name="admin_1_states_provinces_shp")
 
 
-fig, ax = plot.subplots(tight=True, proj='pcarree')
+fig, ax = plot.subplots(axwidth=5, tight=True, proj='pcarree')
 
 # Formatação do mapa.
 ax.format(coast=True, borders=True, innerborders=True,
           labels=True, grid=False, latlines=10, lonlines=5,
           latlim=(-60, 10), lonlim=(-90, -30),
-          small='10px', large='12px',
+          small='13px', large='17px',
           title='Vento Meridional em 1000 hPa')
 
 # Plot da variável.
@@ -37,10 +37,11 @@ map = ax.contourf(lon, lat, vel, cmap='Spectral',
 
 #  Barra de cores.
 fig.colorbar(map, loc='r', shrink=0.95, label='Velocidade (m/s)',
-             labelsize=8, ticklabelsize=8)
+             labelsize=10, ticklabelsize=10)
 
 # Adiciona o contorno dos estados e países.
 ax.add_feature(estados, linewidth=0.5, edgecolor="k")
 
 # Salva a figura no formato ".jpg" com dpi=300.
-fig.save('ex03.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
+fig.save('ex03.jpg', transparent=True, dpi=300, 
+         bbox_inches='tight', pad_inches=0)
