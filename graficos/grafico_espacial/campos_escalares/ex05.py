@@ -47,8 +47,12 @@ map = ax.pcolormesh(variavel['lon'], variavel['lat'],
 ax.add_feature(bioma, linewidth=1, edgecolor="k")
 
 #  Adiciona a barra de cores.
-x = fig.colorbar(map, loc='b', width='12px', shrink=0.95, ticklabelsize=6, 
+x = fig.colorbar(map, loc='b', width='12px', shrink=0.87, ticklabelsize=6, 
                  ticks=posicao_categoria, ticklabels=categorias_de_rf)
+
+# Posicionamemnto na barra das categorias do risco de fogo.
+x.ax.xaxis.set_tick_params(pad=-7)
+x.ax.tick_params(size=0)
 
 # Salva a figura no formato ".jpg" com dpi=300.
 fig.save('ex05.jpg', transparent=True, dpi=300, 
