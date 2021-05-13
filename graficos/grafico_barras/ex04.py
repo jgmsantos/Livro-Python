@@ -10,7 +10,7 @@ x = df['Mês']  # Importa os valores da coluna Mês.
 y1 = df['Climatologia']  # Importa os valores da coluna Climatologia.
 y2 = df['2020']  # Importa os valores da coluna 2020.
 
-anomalia = y2 - y1  # Anomalia = desvio em relação a média (climatologia).
+anomalia = y2 - y1  # Anomalia = desvio em relação ao valor médio (climatologia).
 
 # Separa os valores positivos e negativos.
 acima_limiar = np.maximum(anomalia - 0, 0)
