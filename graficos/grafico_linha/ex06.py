@@ -33,7 +33,7 @@ plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
 plt.xticks([0, 14, 31, 45, 62, 76, 92, 106, 122], ['01Jul', '15Jul', '01Ago', '15Ago', '01Set', '15Set', '01Out', '15Out', '31Out'], fontsize=9)  
 
 #  Formatação do eixo y:
-plt.ylabel('Risco de Fogo (0-1)', fontsize=9)  # Tamanho do título do eixo y.
+plt.ylabel('Risco de Fogo', fontsize=9)  # Tamanho do título do eixo y.
 plt.ylim(0, 1.1)  # Define o mínimo e máximo valor do eixo y.
 plt.yticks([0.15, 0.40, 0.70, 0.95, 1], ['Mínimo', 'Baixo', 'Médio', 'Alto', 'Crítico'], fontsize=9)  # Define o mínimo e máximo valor do eixo y, tamanho dos seus rótulos.
 plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.

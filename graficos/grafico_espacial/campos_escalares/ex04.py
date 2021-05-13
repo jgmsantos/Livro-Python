@@ -2,7 +2,6 @@ import proplot as plot
 import xarray as xr
 import matplotlib.pyplot as plt
 import cartopy.crs as crs
-from cartopy.feature import NaturalEarthFeature
 from cartopy.feature import ShapelyFeature
 from cartopy.io.shapereader import Reader
 

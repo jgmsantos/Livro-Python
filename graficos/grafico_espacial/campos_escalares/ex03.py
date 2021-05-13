@@ -1,6 +1,5 @@
 import proplot as plot
 import xarray as xr
-import matplotlib.pyplot as plt
 import numpy as np
 
 from cartopy.feature import NaturalEarthFeature
