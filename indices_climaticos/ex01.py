@@ -1,7 +1,5 @@
 import xarray as xr
 from climate_indices import indices
-#from icclim import icclim
-import ESMF
 
 
 # Abertura do arquivo com o xarray.
@@ -23,13 +21,13 @@ periodicity = periodicity = indices.compute.Periodicity.monthly
 
 # Chama a função para calcular o SPI.
 spi = xr.apply_ufunc(indices.spi,
-                        prec_agrupado,
-                        scale,
-                        distribution,
-                        data_start_year,
-                        calibration_year_initial,
-                        calibration_year_final,
-                        periodicity)
+                     prec_agrupado,
+                     scale,
+                     distribution,
+                     data_start_year,
+                     calibration_year_initial,
+                     calibration_year_final,
+                     periodicity)
 
 # Função retorna o dado para o formato espacial (time, lat, lon).
 spi = spi.unstack('point')  # <xarray.DataArray (time: 492, lat: 16, lon: 20)
