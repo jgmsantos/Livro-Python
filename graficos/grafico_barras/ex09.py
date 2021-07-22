@@ -1,46 +1,72 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 
-# Função que adiciona o label nas barras e a unidade.
-def define_label (ax, rects, values):
-    for rect, value in zip(rects, values):
-        height = rect.get_height()
-        ax.text(rect.get_x() + rect.get_width() / 2, height, f'{value}', ha='center', va='bottom', fontsize=8)
+# Abertura do arquivo utilizando o separador TAB e adiciona o título 
+# como primeira linha.
+df = pd.read_csv('../../dados/texto/variaveis_meteorologicas.txt', 
+                 sep= '\t', 
+                 names=['Data','UR','Temp','PREC','VelVento','DirVento'])
 
-# Abertura do arquivo vento_direcao_velocidade_porcentagem.txt com o separador TAB. Adiciona também o título de cada coluna.
-# A primeira coluna é o mês, a segunda, a climatologia, a terceria, o ano de 2019 e a quarta, o ano de 2020.
-df = pd.read_csv('../../dados/texto/vento_direcao_velocidade_porcentagem.txt', sep= '\t', names=['Direção', 'dirPorcentagem', 'velPorcentagem'])
+# Período de interesse.
+data_inicial = "2003-01"
+data_final = "2020-12"
 
-x = df['Direção']  # Importa a Direção no formato string.
-y = df['velPorcentagem']  # Importa a coluna com os valores percentuais.
+# Cria a lista de 12 meses para ser utilizado 
+# no gráfico (200301, 200401, ..., 202001).
+x1 = [i.strftime("%Y%m") for i in pd.date_range(start=data_inicial, 
+     end=data_final, freq='12M')]
 
-r1 = np.arange(16)  # [0, 1, 2, ..., 15]. Vetor com os índices do eixo x.
-x1 = [y - 0.13 for y in r1]
-x2 = [y + 0.13 for y in r1]
+# Cria a lista com todos os meses desde 200301 a 202012.
+x2 = [i.strftime("%Y%m") for i in pd.date_range(start=data_inicial, 
+     end=data_final, freq='MS')]
 
-fig, ax = plt.subplots(figsize=(7, 4))  # Largura e altura da figura.
+x = np.arange(len(x2))  # 215.
 
-# Gera o plot.
-plt.bar(x, y, color='bisque', width=0.6, alpha=0.90) 
+ur = df['UR']
+temp = df['Temp']
 
-# Chama a função para adicionar os valores em cada uma das barras.
-define_label(ax, ax.containers[0].patches, y)
+fig, ax = plt.subplots(figsize=(6,3))  # Largua e altura da figura.
 
-# Título principal da figura.
-plt.title('Categorias de Velocidade do Vento - Julho a Outubro de 2020', fontsize=8)
+# Plot do gráfico de barra.
+ax.bar(x, ur, 0.75, color="green", alpha=0.5, label='Umidade Relativa')
 
-# Formatação do eixo x.
-plt.xlabel('Direção', fontsize=8)  # Título do eixo x e o tamanho da fonte.
-plt.xticks(fontsize=8)  # Tamanho dos rótulos do eixo x.
-# Rótulos do eixo y definido pelo usuário.
-ax.set_xticks(ticks=['N', 'NNE', 'NE', 'ENE', 'E', 'SE', 'ESE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'])  
+ax2 = ax.twinx()
 
-#  Formatação do eixo y.
-plt.ylabel('Velocidade do vento (m/s)', fontsize=8)  #  Título do eixo y e o tamanho da fonte.
-plt.yticks(fontsize=8)  #  Tamanho dos rótulos do eixo y.
-plt.tick_params(axis='y', right=True)  #  Habilita o tickmark do eixo direito.
-ax.set_ylim(0, 4)  #  Mínimo e máximo valor do eixo y.
+# Plot do gráfico de linha.
+ax2.plot(x, temp, color="chocolate", alpha=0.8, label='Temperatura')
+
+# Título da figura.
+plt.title('Umidade Relativa e Temperatura - 2003 a 2020', fontsize=8)
+
+#  Formatação do eixo x.
+ax.set_xlim(-1, 216, 1)  # Define o mínimo e o máximo valor do eixo x.
+plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
+# Rótulos do eixo x, tamanho e orientação.
+plt.xticks(np.arange(0,len(x)-1,12), x1, fontsize=8)
+
+#  Formatação do eixo y esquerdo.
+ax.set_ylabel('Umidade Relativa (%)', fontsize=8)
+ax.set_ylim(0, 100)
+ax.set_yticks(np.arange(0, 105, step=10))
+ax.tick_params(labelsize=8)
+
+#  Formatação do eixo y direito.
+ax2.set_ylabel('Temperatura (ºC)', fontsize=8)
+ax2.set_ylim(15, 25)
+ax2.set_yticks(np.arange(15, 26, step=1))
+ax2.tick_params(labelsize=8)
+
+# Gera a legenda sem borda, define localização e o seu tamanho.
+ax.legend(frameon =False, 
+          loc='upper left', 
+          fontsize=8, 
+          bbox_to_anchor=(0.4, 0.96))
+ax2.legend(frameon =False, 
+           loc='upper left', 
+           fontsize=8, 
+           bbox_to_anchor=(0.4, 1.02))
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
-plt.savefig('ex09.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
+plt.savefig('ex09.jpg', transparent=True, dpi=300, bbox_inches='tight', 
+            pad_inches=0)

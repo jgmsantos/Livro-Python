@@ -1,68 +1,58 @@
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
-import netCDF4 as nc
-import xarray as xr
+import numpy as np
 
-# Abertura do arquivo.
-ds = nc.Dataset('../../dados/netcdf/spi.nc')
+# Função que adiciona o label nas barras e a unidade de porcentagem (%).
+def define_label (ax, rects, values):
+    for rect, value in zip(rects, values):
+        height = rect.get_height()
+        ax.text(rect.get_x() + rect.get_width() / 2, 
+                height, f'{value}%', 
+                ha='center', 
+                va='bottom', 
+                fontsize=8)
 
-maximo_valor_y = 3.0  # Máximo valor do eixo y.
-minimo_valor_y = -2.5  # Mínimo valor do eixo y.
-x = np.arange(21)  # Desde 01/2019 a 09/2020 = 21 meses.
-datas = ['201901', '201902', '201903', '201904', '201905', '201906', '201907', '201908', '201909', '201910', '201911', '201912', '202001', '202002', '202003', '202004', '202005', '202006', '202007', '202008', '202009']
+# Abertura do arquivo vento_direcao_velocidade_porcentagem.txt com 
+# o separador TAB. Adiciona também o título de cada coluna.
+# A primeira coluna é o mês, a segunda, a climatologia, a terceira, 
+# o ano de 2019 e a quarta, o ano de 2020.
+df = pd.read_csv('vento_direcao_velocidade_porcentagem.txt', 
+                 sep= '\t', 
+                 names=['Direção', 'dirPorcentagem', 'velPorcentagem'])
 
-# Seleciona o SPI de interesse:
-# Formato: spi(time, spi, lat, lon) = (492, 6, 1, 1)
-# Valor  => spi = 1, 3, 6, 12, 24, 36 meses
-# Índice => spi = 0, 1, 2,  3,  4,  5 
-y = ds['spi'][468:489, 0, 0, 0]
+x = df['Direção']  # Importa a Direção no formato string.
+y = df['dirPorcentagem']  # Importa a coluna com os valores percentuais.
 
-# Separa os valores mínimos e máximos.
-acima_limiar = np.maximum(y - 0, 0)
-abaixo_limiar = np.minimum(y, 0)
+r1 = np.arange(16)  # Vetor com os índices do eixo x.
+x1 = [y - 0.13 for y in r1]
+x2 = [y + 0.13 for y in r1]
 
-fig, ax = plt.subplots(figsize=(6,3))  # Largura e altura da figura.
+fig, ax = plt.subplots(figsize=(7, 4))  # Largura e altura da figura.
 
-# Gera o plot com base nos limiares e separa o que é positivo (negativo) com vermelho (azul).
-ax.bar(x, abaixo_limiar, 0.75, color="r", alpha=0.5)
-ax.bar(x, acima_limiar, 0.75, color="b", bottom=abaixo_limiar, alpha=0.5)
+# Gera o plot.
+plt.bar(x, y, color='blue', label='Precipitação', width=0.6, alpha=0.30) 
 
-plt.axhline(linestyle='--', y=2, linewidth=0.5, color='black')  # Linha no valor 2, espessura = 0.5 e cor = black.
-plt.axhline(linestyle='--', y=1.5, linewidth=0.5, color='black')  # Linha no valor 1.5, espessura = 0.5 e cor = black.
-plt.axhline(linestyle='--', y=1, linewidth=0.5, color='black')  # Linha no valor 1, espessura = 0.5 e cor = black.
-plt.axhline(linestyle='-', y=0, linewidth=0.5, color='black')  # Linha no valor zero, espessura = 0.5 e cor = black.
-plt.axhline(linestyle='--', y=-2, linewidth=0.5, color='black')  # Linha no valor -2, espessura = 0.5 e cor = black.
-plt.axhline(linestyle='--', y=-1.5, linewidth=0.5, color='black')  # Linha no valor -1.5, espessura = 0.5 e cor = black.
-plt.axhline(linestyle='--', y=-1, linewidth=0.5, color='black')  # Linha no valor -1, espessura = 0.5 e cor = black.
+# Chama a função para adicionar os valores em cada uma das barras.
+define_label(ax, ax.containers[0].patches, y)
 
-# Linhas horizontal dos valores positivos de SPI.
-plt.text(-0.3, 2.05, 'Extremamente Úmido', fontsize=8)
-plt.text(-0.3, 1.55, 'Muito Úmido', fontsize=8)
-plt.text(-0.3, 1.05, 'Moderadamente Úmido', fontsize=8)
-plt.text(-0.3, 0.80, 'Próximo do normal', fontsize=8)
+# Título principal da figura.
+plt.title('Direção predominante do vento - Julho a Outubro/2020', fontsize=8)
 
-# Linhas horizontal dos valores negativos de SPI.
-plt.text(-0.3, -2.18, 'Extremamente seco', fontsize=8)
-plt.text(-0.3, -1.68, 'Severamente seco', fontsize=8)
-plt.text(-0.3, -1.18, 'Moderadamente seco', fontsize=8)
-plt.text(-0.3, -0.92, 'Próximo do normal', fontsize=8)
+# Formatação do eixo x.
+plt.xlabel('Direção', fontsize=8)  # Título do eixo x e o tamanho da fonte.
+plt.xticks(fontsize=8)  # Tamanho dos rótulos do eixo x.
+# Rótulos do eixo x definido pelo usuário.
+ax.set_xticks(ticks=['N', 'NNE', 'NE', 'ENE', 'E', 
+                      'SE', 'ESE', 'SSE', 'S', 'SSW', 
+                      'SW', 'WSW', 'W', 'WNW', 'NW', 
+                      'NNW'])  
 
-# Título da figura.
-plt.title('SPI no bioma Pantanal', fontsize=8)
-
-#  Formatação do eixo x:
-plt.xlim(-0.5, 20.5)  # Define o mínimo e o máximo valor do eixo x.
-# Rótulos do eixo x, tamanho e orientação.
-plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
-plt.xticks([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20], datas, fontsize=8)
-
-#  Formatação do eixo y:
-plt.ylabel('SPI (Adimensional)', fontsize=8)  # Tamanho da fonte do título do eixo y.
-plt.ylim(minimo_valor_y, maximo_valor_y-0.5)  # Define o mínimo e máximo valor do eixo y.
-# Define o mínimo e máximo valor do eixo y, tamanho dos seus rótulos.
-plt.yticks(np.arange(minimo_valor_y, maximo_valor_y, step=0.5), fontsize=8)  
-plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
+#  Formatação do eixo y.
+plt.ylabel('Frequência (%)', fontsize=8)
+plt.yticks(fontsize=8)
+plt.tick_params(axis='y', right=True)
+ax.set_ylim(0, 45)
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
-plt.savefig('ex07.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
+plt.savefig('ex07.jpg', transparent=True, dpi=300, bbox_inches='tight', 
+            pad_inches=0)

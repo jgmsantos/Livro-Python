@@ -1,40 +1,78 @@
 import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 
-# Função que adiciona o label nas barras e a unidade.
-def define_label (ax, rects, values):
-    for rect, value in zip(rects, values):
-        height = rect.get_height()
-        ax.text(rect.get_x() + rect.get_width() / 2, height, f'{value}', ha='center', va='bottom')
+# Abertura do arquivo utilizando o separador espaço e adiciona o título 
+# como primeira linha.
+df1 = pd.read_csv('../../dados/texto/ERA5.Climatologia.txt', 
+                  sep='\t', 
+                  names=['Mês','UR', 'TEMP', 'VEL', 'DIR'])
+df2 = pd.read_csv('../../dados/texto/precipitacao.txt', 
+                  sep='\t', 
+                  names=['Mês', 'Clima', '2019', '2020'])
 
+meses = df1['Mês']  # Nome dos rótulos que vão aparecer no eixo x.
+ur = df1['UR']
+temp = df1['TEMP']
+prec = df2['Clima']
 
-# Abertura do arquivo utilizando o separador espaço e adiciona o título como primeira linha.
-df = pd.read_csv('../../dados/texto/media_mensal.txt', sep= '\t', names=['Mês','NDSC', 'UR', 'TEMP', 'PREC'])
+fig, ax = plt.subplots(figsize=(6,3))  # Largura e altura da figura.
 
-meses = df['Mês']  # Nome dos rótulos que vão aparecer no eixo x.
-ndsc = df['NDSC']  # Valores percentuais.
+twin1 = ax.twinx()  # Qual eixo copiar? 
+twin2 = ax.twinx()  # No caso, o eixo x.
 
-fig, ax = plt.subplots(figsize=(7, 3))  # Largura e altura da figura.
+# Distância do eixo y2 em relação ao y1.
+twin2.spines.right.set_position(("axes", 1.15))
 
-# Plota o gráfico.
-ax.bar(meses, ndsc, width=0.25, color='#81d4fa', label=meses)
+# Plot do gráfico de barra.
+p1 = ax.bar(meses, prec, 0.35, color="blue", alpha=0.5, label='Precipitação')
+# Plota do eixo esquerdo gráfico de linha (Umidade Relativa).
+p2, = twin1.plot(meses, 
+                 ur, 
+                 color="green", 
+                 marker='o', 
+                 linestyle='solid', 
+                 linewidth=2, 
+                 markersize=5, 
+                 alpha=0.5, 
+                 label='Umidade Relativa')
 
-# Chama a função para adicionar os valores em cada uma das barras.
-define_label(ax, ax.containers[0].patches, ndsc)
+# Plota do eixo direito do gráfico de linha (Umidade Temperatura).
+p3, = twin2.plot(meses, 
+                 temp, 
+                 color="red", 
+                 marker='o', 
+                 linestyle='solid', 
+                 linewidth=2, 
+                 markersize=5,
+                 alpha=0.5, 
+                 label='Temperatura')
 
 # Título da figura.
-plt.title('Número de Dias Sem Chuva', fontsize=8)
+plt.title('Média Mensal - 2003 a 2020', fontsize=8)
 
-# Formatação do eixo x.
-plt.xticks(meses, fontsize=8)  # Rótulos do eixo x e o tamanho da fonte.
-plt.xlabel('Mês', fontsize=8)  # Tamanho do título do eixo x.
+#  Formatação do eixo x.
+#ax.xticks(meses, fontsize=8)  # Rótulos do eixo x e o tamanho da fonte.
+ax.set_xlabel('Mês', fontsize=8)  # Tamanho do título do eixo x.
 
-# Formatação do eixo y.
-plt.ylim(0, 35)  # Define o mínimo e máximo valor do eixo y.
-plt.ylabel('Total de dias', fontsize=8)  # Tamanho do título do eixo y.
-plt.yticks(fontsize=8)  # Tamanho dos rótulos do eixo y.
-plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
+# Formatação do eixo y esquerdo.
+ax.set_ylabel('Precipitação (mm/mês)', fontsize=8, color="blue")
+ax.set_ylim(0, 300)
+ax.set_yticks(np.arange(0, 310, step=50))
+ax.tick_params('y', labelsize=8, colors='blue')
+
+# Formatação do eixo y direito - Umidade Relativa.
+twin1.set_ylabel('Umidade Relativa (%)', fontsize=8, color='green')
+twin1.set_ylim(40, 100)
+twin1.set_yticks(np.arange(40, 110, step=10))
+twin1.tick_params('y', labelsize=8, colors='green')
+
+# Formatação do eixo y direito - Temperatura.
+twin2.set_ylabel('Temperatura (ºC)', fontsize=8, color='red')
+twin2.set_ylim(16, 24)
+twin2.set_yticks(np.arange(16, 25, step=1))
+twin2.tick_params('y', labelsize=8, colors='red')
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
-plt.savefig('ex10.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
+plt.savefig('ex10.jpg', transparent=True, dpi=300, bbox_inches='tight', 
+            pad_inches=0)

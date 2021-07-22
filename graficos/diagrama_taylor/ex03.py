@@ -46,7 +46,7 @@ ccoef = make_arrange(taylor_stats, 'ccoef')
 # Rótulos do gráfico.
 label1 = ["OBS", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10"]
 
-# Rótulos que vão aparacer na legenda.
+# Rótulos que vão aparecer na legenda.
 label2 = [
     "M1: ACCESS1-0",
     "M2: BCC-CSM1.1",
@@ -110,4 +110,5 @@ for nome_modelo in label2:
     y = y - 5
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
-plt.savefig("ex03.jpg", transparent=True, dpi=300, bbox_inches="tight", pad_inches=0)
+plt.savefig("ex03.jpg", transparent=True, dpi=300, bbox_inches="tight", 
+            pad_inches=0)

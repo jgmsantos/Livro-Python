@@ -1,44 +1,64 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 
-# Abertura do arquivo temperatura.txt com o separador TAB. Adiciona também o título de cada coluna.
-# A primeira coluna é o mês, a segunda, a climatologia, a terceria, o ano de 2019 e a quarta, o ano de 2020.
-df = pd.read_csv('../../dados/texto/temperatura.txt', sep= '\t', names=['Mês', 'Climatologia', '2019', '2020'])
+# Função que adiciona o label nas barras e a unidade de porcentagem (%).
+def define_label (ax, rects, values):
+    for rect, value in zip(rects, values):
+        height = rect.get_height()
+        ax.text(rect.get_x() + rect.get_width() / 2, 
+                height, f'{value}%', 
+                ha='center', 
+                va='bottom', 
+                fontsize=8)
 
-x = df['Mês']  # Importa os valores da coluna Mês.
-y1 = df['Climatologia']  # Importa os valores da coluna Climatologia.
-y2 = df['2020']  # Importa os valores da coluna 2020.
 
-anomalia = y2 - y1  # Anomalia = desvio em relação ao valor médio (climatologia).
+# Abertura do arquivo utilizando o separador espaço e 
+# adiciona o título como primeira linha.
+df = pd.read_csv('../../dados/texto/spi.classes.txt', 
+                 sep= ' ', 
+                 names=['2019','2020'])
+df = df.astype(int)  # Define o conjunto de dados como valor inteiro.
 
-# Separa os valores positivos e negativos.
-acima_limiar = np.maximum(anomalia - 0, 0)
-abaixo_limiar = np.minimum(anomalia, 0)
+total_classes = 3  # Total de classes avaliada.
+classes = ['Eventos Úmidos', 'Eventos Normais', 'Eventos Secos'] 
+ANO_ANTERIOR='2019'
+ANO_ATUAL='2020'
+ano2019 = df[ANO_ANTERIOR].values  # Valores percentuais.
+ano2020 = df[ANO_ATUAL].values  # Valores percentuais.
+largura_barra = 0.25  # Largura da barra.
 
-fig, ax = plt.subplots(figsize=(6,3))  # Largua e altura da figura.
+r1 = np.arange(len(classes))  # Vetor com os índices.
+x1 = [y - 0.13 for y in r1]  
+x2 = [y + 0.13 for y in r1]
 
-# Gera o plot com base nos limiares e separa o que é positivo (negativo) com vermelho (azul).
-ax.bar(x, acima_limiar, 0.75, color="red", alpha=0.5)
-ax.bar(x, abaixo_limiar, 0.75, color="blue", alpha=0.5)
+fig, ax = plt.subplots()
 
-# Título principal da figura.
-plt.title('Anomalia de Temperatura entre o ano 2020 e a Climatologia', fontsize=8)
+# Plota o gráfico da primeira barra.
+ax.bar(x1, ano2019, width=largura_barra, color='#81d4fa', label=ANO_ANTERIOR)
+# Plota o gráfico da segunda barra.
+ax.bar(x2, ano2020, width=largura_barra, color='#dceec8', label=ANO_ATUAL)
+
+# Chama a função para adicionar os rótulos em cada uma das barras.
+define_label(ax, ax.containers[0].patches, ano2019)
+define_label(ax, ax.containers[1].patches, ano2020)
 
 # Formatação do eixo x.
-plt.xlabel('Mês', fontsize=8)  # Título do eixo x e o tamanho da fonte.
-plt.xticks(fontsize=8)  # Tamanho dos rótulos do eixo x.
-plt.xlim(0.5, 12.5)  # Define o mínimo e o máximo valor do eixo x.
+plt.xticks(np.arange(total_classes),classes,fontsize=8)
 
 # Formatação do eixo y.
-plt.ylabel('Temperatura (ºC)', fontsize=8)  # Título do eixo y e o tamanho da fonte.
-ax.set_ylim(-1.5, 1.5)  # Mínimo e máximo valor do eixo y.
-ax.set_yticks(ticks=[-1.5, -1.0, -0.5, 0, 0.5, 1.0, 1.5])  # Rótulos do eixo y definido pelo usuário.
+plt.ylim(0, 100)  # Define o mínimo e máximo valor do eixo y.
 plt.yticks(fontsize=8)  # Tamanho dos rótulos do eixo y.
-plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
+# Desabilita os rótulos de ambos os eixos esquerdo e direito.
+plt.tick_params(axis='y', 
+                which='both', 
+                left=False, 
+                right=False, 
+                labelleft=False)
 
-# Linha no valor zero, espessura = 0.5 e cor = black.
-plt.axhline(linestyle='-', y=0, linewidth=0.5, color='black')
+# Gera a legenda:
+plt.legend(frameon =False)  # Desabilita a borda da legenda.
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
-plt.savefig('ex04.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)  
+plt.savefig('ex04.jpg', transparent=True, dpi=300, bbox_inches='tight', 
+             pad_inches=0)

@@ -1,46 +1,49 @@
 import pandas as pd
-import matplotlib.pyplot as plt
 import numpy as np
+import matplotlib.pyplot as plt
 
-# Função que adiciona o label nas barras e a unidade de porcentagem (%).
-def define_label (ax, rects, values):
-    for rect, value in zip(rects, values):
-        height = rect.get_height()
-        ax.text(rect.get_x() + rect.get_width() / 2, height, f'{value}%', ha='center', va='bottom', fontsize=8)
+# Abertura do arquivo utilizando o separador TAB e adiciona o título 
+# como primeira linha.
+df = pd.read_csv('../../dados/texto/variaveis_meteorologicas.txt', 
+                 sep= '\t', 
+                 names=['Data','UR','Temp','PREC','VelVento','DirVento'])
 
-# Abertura do arquivo vento_direcao_velocidade_porcentagem.txt com o separador TAB. Adiciona também o título de cada coluna.
-# A primeira coluna é o mês, a segunda, a climatologia, a terceria, o ano de 2019 e a quarta, o ano de 2020.
-df = pd.read_csv('../../dados/texto/vento_direcao_velocidade_porcentagem.txt', sep= '\t', names=['Direção', 'dirPorcentagem', 'velPorcentagem'])
+# Período de interesse.
+data_inicial = "2003-01"
+data_final = "2020-12"
 
-x = df['Direção']  # Importa a Direção no formato string.
-y = df['dirPorcentagem']  # Importa a coluna com os valores percentuais.
+# Cria a lista de 12 meses para ser utilizado 
+# no gráfico (200301, 200401, ..., 202001).
+x1 = [i.strftime("%Y%m") for i in pd.date_range(start=data_inicial, 
+     end=data_final, freq='12M')]
 
-r1 = np.arange(16)  # [0, 1, 2, ..., 15]. Vetor com os índices do eixo x.
-x1 = [y - 0.13 for y in r1]
-x2 = [y + 0.13 for y in r1]
+# Cria a lista com todos os meses desde 200301 a 202012.
+x2 = [i.strftime("%Y%m") for i in pd.date_range(start=data_inicial, 
+     end=data_final, freq='MS')]
 
-fig, ax = plt.subplots(figsize=(7, 4))  # Largura e altura da figura.
+x = np.arange(len(x2))  # 215.
 
-# Gera o plot.
-plt.bar(x, y, color='blue', label='Precipitação', width=0.6, alpha=0.30) 
+y = df['PREC']
 
-# Chama a função para adicionar os valores em cada uma das barras.
-define_label(ax, ax.containers[0].patches, y)
+fig, ax = plt.subplots(figsize=(6,3))  # Largura e altura da figura.
 
-# Título principal da figura.
-plt.title('Direção predominante do vento - Julho a Outubro/2020', fontsize=8)
+ax.bar(x, y, 0.75, color="blue", alpha=0.5)
 
-# Formatação do eixo x.
-plt.xlabel('Direção', fontsize=8)  # Título do eixo x e o tamanho da fonte.
-plt.xticks(fontsize=8)  # Tamanho dos rótulos do eixo x.
-# Rótulos do eixo x definido pelo usuário.
-ax.set_xticks(ticks=['N', 'NNE', 'NE', 'ENE', 'E', 'SE', 'ESE', 'SSE', 'S', 'SSW', 'SW', 'WSW', 'W', 'WNW', 'NW', 'NNW'])  
+# Título da figura.
+plt.title('Precipitação mensal - 2003 a 2020', fontsize=8)
+
+#  Formatação do eixo x.
+plt.xlim(-1, 216, 1)  # Define o mínimo e o máximo valor do eixo x.
+plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
+# Rótulos do eixo x, tamanho da fonte e orientação.
+plt.xticks(np.arange(0,len(x)-1,12), x1, fontsize=8)
 
 #  Formatação do eixo y.
-plt.ylabel('Frequência (%)', fontsize=8)  #  Título do eixo y e o tamanho da fonte.
-plt.yticks(fontsize=8)  #  Tamanho dos rótulos do eixo y.
-plt.tick_params(axis='y', right=True)  #  Habilita o tickmark do eixo direito.
-ax.set_ylim(0, 45)  #  Mínimo e máximo valor do eixo y.
+plt.ylabel('Precipitação (mm/mês)', fontsize=8)
+plt.ylim(0, 500)
+plt.yticks(np.arange(0, 505, step=50), fontsize=8)
+plt.tick_params(axis='y', right=True)
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
-plt.savefig('ex08.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
+plt.savefig('ex08.jpg', transparent=True, dpi=300, bbox_inches='tight', 
+            pad_inches=0)  
