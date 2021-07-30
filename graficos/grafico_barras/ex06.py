@@ -110,7 +110,6 @@ plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 plt.xticks(np.arange(0,len(x)), x, fontsize=8)
 
 #  Formatação do eixo y.
-# Tamanho da fonte do título do eixo y.
 plt.ylabel('SPI (Adimensional)', fontsize=8)  
 # Define o mínimo e máximo valor do eixo y.
 plt.ylim(minimo_valor_y, maximo_valor_y-0.5)  

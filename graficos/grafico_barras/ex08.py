@@ -21,7 +21,7 @@ x1 = [i.strftime("%Y%m") for i in pd.date_range(start=data_inicial,
 x2 = [i.strftime("%Y%m") for i in pd.date_range(start=data_inicial, 
      end=data_final, freq='MS')]
 
-x = np.arange(len(x2))  # 215.
+x = np.arange(len(x2))  # 215 valores.
 
 y = df['PREC']
 

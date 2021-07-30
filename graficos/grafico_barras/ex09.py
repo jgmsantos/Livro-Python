@@ -48,21 +48,22 @@ plt.xticks(np.arange(0,len(x)-1,12), x1, fontsize=8)
 #  Formatação do eixo y esquerdo.
 ax.set_ylabel('Umidade Relativa (%)', fontsize=8)
 ax.set_ylim(0, 100)
-ax.set_yticks(np.arange(0, 105, step=10))
+ax.set_yticks(np.arange(0, 105, 10))
 ax.tick_params(labelsize=8)
 
 #  Formatação do eixo y direito.
 ax2.set_ylabel('Temperatura (ºC)', fontsize=8)
 ax2.set_ylim(15, 25)
-ax2.set_yticks(np.arange(15, 26, step=1))
+ax2.set_yticks(np.arange(15, 26, 1))
 ax2.tick_params(labelsize=8)
 
 # Gera a legenda sem borda, define localização e o seu tamanho.
-ax.legend(frameon =False, 
+ax.legend(frameon=False, 
           loc='upper left', 
           fontsize=8, 
           bbox_to_anchor=(0.4, 0.96))
-ax2.legend(frameon =False, 
+          
+ax2.legend(frameon=False, 
            loc='upper left', 
            fontsize=8, 
            bbox_to_anchor=(0.4, 1.02))

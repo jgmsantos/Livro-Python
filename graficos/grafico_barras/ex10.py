@@ -26,7 +26,8 @@ twin2.spines.right.set_position(("axes", 1.15))
 
 # Plot do gráfico de barra.
 p1 = ax.bar(meses, prec, 0.35, color="blue", alpha=0.5, label='Precipitação')
-# Plota do eixo esquerdo gráfico de linha (Umidade Relativa).
+
+# Plota do eixo esquerdo do gráfico de linha (Umidade Relativa).
 p2, = twin1.plot(meses, 
                  ur, 
                  color="green", 
@@ -37,7 +38,7 @@ p2, = twin1.plot(meses,
                  alpha=0.5, 
                  label='Umidade Relativa')
 
-# Plota do eixo direito do gráfico de linha (Umidade Temperatura).
+# Plota do eixo direito do gráfico de linha (Temperatura).
 p3, = twin2.plot(meses, 
                  temp, 
                  color="red", 
@@ -52,25 +53,25 @@ p3, = twin2.plot(meses,
 plt.title('Média Mensal - 2003 a 2020', fontsize=8)
 
 #  Formatação do eixo x.
-#ax.xticks(meses, fontsize=8)  # Rótulos do eixo x e o tamanho da fonte.
 ax.set_xlabel('Mês', fontsize=8)  # Tamanho do título do eixo x.
+ax.tick_params('x', labelsize=8)
 
-# Formatação do eixo y esquerdo.
+# Formatação do eixo y esquerdo (Precipitação).
 ax.set_ylabel('Precipitação (mm/mês)', fontsize=8, color="blue")
 ax.set_ylim(0, 300)
-ax.set_yticks(np.arange(0, 310, step=50))
+ax.set_yticks(np.arange(0, 310, 50))
 ax.tick_params('y', labelsize=8, colors='blue')
 
-# Formatação do eixo y direito - Umidade Relativa.
+# Formatação do eixo y direito (Umidade Relativa).
 twin1.set_ylabel('Umidade Relativa (%)', fontsize=8, color='green')
 twin1.set_ylim(40, 100)
-twin1.set_yticks(np.arange(40, 110, step=10))
+twin1.set_yticks(np.arange(40, 110, 10))
 twin1.tick_params('y', labelsize=8, colors='green')
 
-# Formatação do eixo y direito - Temperatura.
+# Formatação do eixo y direito (Temperatura).
 twin2.set_ylabel('Temperatura (ºC)', fontsize=8, color='red')
 twin2.set_ylim(16, 24)
-twin2.set_yticks(np.arange(16, 25, step=1))
+twin2.set_yticks(np.arange(16, 25, 1))
 twin2.tick_params('y', labelsize=8, colors='red')
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.

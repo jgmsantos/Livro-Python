@@ -17,9 +17,9 @@ y3 = df['2020']  # Importa os valores da coluna 2020.
 plt.figure(figsize=(8, 4))  # Largura e altura da figura.
 
 # Posição onde serão geradas as barras.
-x1 = np.arange(len(y1))  # Vetor com os índices.
-x2 = [y + 0.25 for y in x1]  # Valores do eixo x para desenhar a primeira barra.
-x3 = [y + 0.25 for y in x2]  # Valores do eixo x para desenhar a segunda barra.
+x1 = np.arange(len(y1))  # Valores do eixo x para desenhar a primeira barra.
+x2 = [y + 0.25 for y in x1]  # Valores do eixo x para desenhar a segunda barra.
+x3 = [y + 0.25 for y in x2]  # Valores do eixo x para desenhar a terceira barra.
 
 # Plot da figura. color = cor da barra, width = largura da barra, 
 # label = nome que vai aparecer na legenda e alpha = aplica efeito 
@@ -35,7 +35,7 @@ plt.title('Precipitação no bioma Amazônia')
 plt.xlabel('Mês', fontsize=8)  # Título do eixo x e o tamanho da fonte.
 # Adiciona os rótulos e define o tamanho deles.
 plt.xticks([r + 0.25 for r in range(len(y1))], x, fontsize=8)
-plt.xlim(0.5, 13)  # Mínimo e máximo valor do eixo x.
+plt.xlim(-0.5, 12)  # Mínimo e máximo valor do eixo x.
 
 # Formatação do eixo y.
 plt.ylabel('Precipitação (mm/mês)', fontsize=8)
@@ -46,7 +46,8 @@ plt.yticks(fontsize=8)  # Tamanho dos rótulos do eixo y.
 plt.tick_params(axis='y', right=True)  # Habilita o tickmark do eixo direito.
 
 # Gera a legenda sem borda, define localização e o tamanho da fonte.
-plt.legend(frameon =False, loc='upper right', fontsize=8)
+plt.legend(frameon=False, loc='upper right', fontsize=8)
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
-plt.savefig('ex02.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
+plt.savefig('ex02.jpg', transparent=True, dpi=300, bbox_inches='tight', 
+            pad_inches=0)

@@ -18,6 +18,7 @@ def define_label (ax, rects, values):
 df = pd.read_csv('../../dados/texto/spi.classes.txt', 
                  sep= ' ', 
                  names=['2019','2020'])
+
 df = df.astype(int)  # Define o conjunto de dados como valor inteiro.
 
 total_classes = 3  # Total de classes avaliada.
@@ -35,16 +36,16 @@ x2 = [y + 0.13 for y in r1]
 fig, ax = plt.subplots()
 
 # Plota o gráfico da primeira barra.
-ax.bar(x1, ano2019, width=largura_barra, color='#81d4fa', label=ANO_ANTERIOR)
+ax.bar(x1, ano2019, width=largura_barra, color='blue', label=ANO_ANTERIOR)
 # Plota o gráfico da segunda barra.
-ax.bar(x2, ano2020, width=largura_barra, color='#dceec8', label=ANO_ATUAL)
+ax.bar(x2, ano2020, width=largura_barra, color='green', label=ANO_ATUAL)
 
 # Chama a função para adicionar os rótulos em cada uma das barras.
 define_label(ax, ax.containers[0].patches, ano2019)
 define_label(ax, ax.containers[1].patches, ano2020)
 
 # Formatação do eixo x.
-plt.xticks(np.arange(total_classes),classes,fontsize=8)
+plt.xticks(np.arange(total_classes), classes, fontsize=8)
 
 # Formatação do eixo y.
 plt.ylim(0, 100)  # Define o mínimo e máximo valor do eixo y.
@@ -57,7 +58,7 @@ plt.tick_params(axis='y',
                 labelleft=False)
 
 # Gera a legenda:
-plt.legend(frameon =False)  # Desabilita a borda da legenda.
+plt.legend(frameon=False)  # Desabilita a borda da legenda.
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
 plt.savefig('ex04.jpg', transparent=True, dpi=300, bbox_inches='tight', 
