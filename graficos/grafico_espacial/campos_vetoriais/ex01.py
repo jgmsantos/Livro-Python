@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import proplot as plot
 import xarray as xr
-
 from cartopy.feature import NaturalEarthFeature
 
 
@@ -18,7 +17,6 @@ lon = dsu['lon']
 # Linhas do continente/estados do Brasil.
 estados = NaturalEarthFeature(category="cultural", scale="50m", facecolor="none",
                               name="admin_1_states_provinces_shp")
-
 
 fig, ax = plot.subplots(axwidth=5, tight=True, proj='pcarree')
 

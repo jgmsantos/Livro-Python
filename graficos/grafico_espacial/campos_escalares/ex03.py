@@ -1,7 +1,6 @@
 import proplot as plot
 import xarray as xr
 import numpy as np
-
 from cartopy.feature import NaturalEarthFeature
 
 
@@ -9,7 +8,7 @@ from cartopy.feature import NaturalEarthFeature
 dsu = xr.open_dataset('../../../dados/netcdf/uwnd.nc')
 dsv = xr.open_dataset('../../../dados/netcdf/vwnd.nc')
 
-# Importando variáveis.
+# Importando as variáveis.
 u = dsu['uwnd'][0,0,:,:]  # (time, level, lat, lon)
 v = dsv['vwnd'][0,0,:,:]  # (time, level, lat, lon)
 vel = np.sqrt(u ** 2 + v ** 2)  # Calcula a velocidade do vento (m/s).
@@ -19,7 +18,6 @@ lon = dsu['lon']
 # Linhas do continente/estados do Brasil.
 estados = NaturalEarthFeature(category="cultural", scale="50m", facecolor="none",
                               name="admin_1_states_provinces_shp")
-
 
 fig, ax = plot.subplots(axwidth=5, tight=True, proj='pcarree')
 

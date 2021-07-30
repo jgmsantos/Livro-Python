@@ -1,71 +1,58 @@
 import proplot as plot
 import xarray as xr
-import matplotlib.pyplot as plt
 import cartopy.crs as crs
 from cartopy.feature import ShapelyFeature
 from cartopy.io.shapereader import Reader
 
 
 # Abertura do arquivo NetCDF.
-ds = xr.open_dataset('../../../dados/netcdf/Umidade.Solo.amazonia.2019.2020.nc', 
-                     decode_times=False)
+ds = xr.open_dataset('../../../dados/netcdf/RF.nc')
 
-# Domínio espacial de interesse.
-latN = 6
-latS = -17
-lonW = -75
-lonE = -43
+#print(ds)  # Informações sobre o arquivo.
 
-# Importação da variação e seleção do domínio espacial de interesse.
-umidade_solo = ds.sel(lat=slice(latS, latN), lon=slice(lonW, lonE))
+# Valores de risco de fogo.
+valores_de_rf = [0, 0.15, 0.40, 0.70, 0.95, 1]
+# (0+0.15)/2=0.075; (0.15+0.40)/2=0.275; (0.40+0.70)/2=0.55; 
+# (0.70+0.95)/2=0.825; (0.95+1)/2=0.975.
+posicao_categoria = [0.075, 0.275, 0.55, 0.82, 0.975]
+categorias_de_rf = ['Mínimo', 'Baixo', 'Médio', 'Alto', 'Crítico']
 
+# Cores de interesse. Sempre número de valores + 1, ou seja, 5 + 1 = 6 cores.
+cores = ['green', 'vivid green', 'yellow', 'orange', 'red']
+
+# Definição da área de interesse.
+variavel = ds.sel(lat=slice(-25, -2), lon=slice(-61, -41))
+
+# Linhas do continente.
 # Nome do shapefile do bioma de interesse.
-shape_bioma = ShapelyFeature(Reader(f'../../../dados/shapefile/bioma_amazonia/states_amazon_biome.shp').geometries(), 
-              crs.PlateCarree(), facecolor='none')
+bioma = ShapelyFeature(Reader(f'../../../dados/shapefile/bioma_cerrado/states_cerrado_biome.shp').geometries(), 
+        crs.PlateCarree(), facecolor='none')
 
-nlinhas = 3  # Linhas do painel.
-ncolunas = 4  # Colunas do painel.
-total_paineis = (nlinhas * ncolunas) + 1
-
-fig, ax = plot.subplots(axheight=5, nrows=nlinhas, ncols=ncolunas, 
-                        tight=True, proj='pcarree')
+fig, ax = plot.subplots(tight=True, proj='pcarree',)
 
 # Formatação do mapa.
-ax.format(coast=False, borders=False, grid=False, 
-          latlim=(latS, latN), lonlim=(lonW, lonE))
+ax.format(coast=False, borders=False, innerborders=False,
+          labels=True, grid=True, latlines=3, lonlines=3,
+          latlim=(-25, -2), lonlim=(-61, -41),
+          small='8px', large='11px',
+          title='Risco de Fogo')
 
-# Título da figura.
-plt.suptitle('Percentil de Umidade do Solo: 2019', fontsize=35)
+# Plot da variável. Nome da variável do arquivo: "rf".
+map = ax.pcolormesh(variavel['lon'], variavel['lat'], 
+                   variavel['rf'][0, :, :], cmap=cores, 
+                   levels=valores_de_rf)
 
-# Título de cada figura.
-mes = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 
-       'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro']
-
-# Valores de umidade do solo.
-valores_de_umidade = [2, 5, 10, 20, 30, 70, 80, 90, 95, 98]
-
-# Cores de interesse.
-cores = ['dark maroon', 'blood', 'orange8', 'orange2', 'yellow', 
-         'white', 'cyan', 'blue4', 'blue6', 'blue8', 
-         'royal blue']
-
-for i in range(1, total_paineis):
-
-     # Plot da variável.
-     map = ax[i-1].pcolormesh(umidade_solo['lon'], umidade_solo['lat'], 
-                   umidade_solo['sfsm'][i-1, :, :],
-                   cmap=cores, levels=valores_de_umidade, extend='both')
-
-     # Insere o mês em cada figura.
-     ax[i-1].set_title(mes[i-1], fontsize=30)
-     # Adiciona o contorno do bioma de interesse.
-     ax[i-1].add_feature(shape_bioma, linewidth=4., edgecolor='k')
+# Adiciona o contorno dos estados e países.
+ax.add_feature(bioma, linewidth=1, edgecolor="k")
 
 #  Adiciona a barra de cores.
-x = fig.colorbar(map, loc='b', width='4em', extendsize='12em', shrink=0.8, 
-                 ticks=valores_de_umidade)
-plt.tick_params(labelsize=30)  # Tamanho da fonte da barra de cores.
-x.set_label('Percentil (%)', fontsize=30)  # Unidade da barra de cores.
+x = fig.colorbar(map, loc='b', width='12px', shrink=0.87, ticklabelsize=6, 
+                 ticks=posicao_categoria, ticklabels=categorias_de_rf)
+
+# Posicionamemnto das categorias do risco de fogo na barra de cores.
+x.ax.xaxis.set_tick_params(pad=-7)
+x.ax.tick_params(size=0)
 
 # Salva a figura no formato ".jpg" com dpi=300.
-fig.save('ex04.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0)
+fig.save('ex04.jpg', transparent=True, dpi=300, 
+         bbox_inches='tight', pad_inches=0.02)

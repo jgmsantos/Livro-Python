@@ -6,7 +6,8 @@ from cartopy.io.shapereader import Reader
 
 
 # Abertura do arquivo NetCDF.
-ds = xr.open_dataset('../../../dados/netcdf/Umidade.Solo.amazonia.2019.2020.nc', decode_times=False)
+ds = xr.open_dataset('../../../dados/netcdf/Umidade.Solo.amazonia.2019.2020.nc', 
+                     decode_times=False)
 
 #print(ds)  # Informações sobre o arquivo.
 
@@ -24,7 +25,6 @@ variavel = ds.sel(lat=slice(-17, 6), lon=slice(-75, -43))
 # Nome do shapefile do bioma de interesse.
 bioma = ShapelyFeature(Reader(f'../../../dados/shapefile/bioma_amazonia/states_amazon_biome.shp').geometries(), 
         crs.PlateCarree(), facecolor='none')
-
 
 fig, ax = plot.subplots(tight=True, proj='pcarree',)
 

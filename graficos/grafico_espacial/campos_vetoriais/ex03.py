@@ -2,7 +2,6 @@ import matplotlib.pyplot as plt
 import proplot as plot
 import xarray as xr
 import numpy as np
-
 from cartopy.feature import NaturalEarthFeature
 
 
@@ -21,7 +20,6 @@ lon = dsu['lon']
 estados = NaturalEarthFeature(category="cultural", scale="50m", 
                               facecolor="none",
                               name="admin_1_states_provinces_shp")
-
 
 fig, ax = plot.subplots(axwidth=5, tight=True, proj='pcarree')
 
@@ -54,4 +52,5 @@ fig.colorbar(vetor, loc='r', shrink=0.95, label='Velocidade (m/s)',
 ax.add_feature(estados, linewidth=0.5, edgecolor="k")
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
-plt.savefig('ex03.jpg', transparent=True, dpi=300, bbox_inches='tight', pad_inches=0.1)
+plt.savefig('ex03.jpg', transparent=True, dpi=300, bbox_inches='tight', 
+            pad_inches=0.1)

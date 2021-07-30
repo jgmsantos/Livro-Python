@@ -4,7 +4,8 @@ from cartopy.feature import NaturalEarthFeature
 
 
 # Abertura do arquivo NetCDF.
-ds = xr.open_dataset('../../../dados/netcdf/Umidade.Solo.amazonia.2019.2020.nc', decode_times=False)
+ds = xr.open_dataset('../../../dados/netcdf/Umidade.Solo.amazonia.2019.2020.nc', 
+                     decode_times=False)
 
 #print(ds)  # Informações sobre o arquivo.
 
@@ -15,10 +16,11 @@ valores_de_umidade = [2, 5, 10, 20, 30, 70, 80, 90, 95, 98]  # 10 cores.
 cores = ['dark maroon', 'blood', 'orange8', 'orange2', 'yellow', 'white', 
          'cyan', 'blue4', 'blue6', 'blue8', 'royal blue']
 
-# Importação da variável e definição da área de interesse.
+# Definição da área de interesse.
 variavel = ds.sel(lat=slice(-17, 6), lon=slice(-75, -43))
 
 # Linhas do continente.
+# O admin_1_states_provinces_shp é um arquivo do Python.
 estados = NaturalEarthFeature(category="cultural", scale="50m", 
           facecolor="none", name="admin_1_states_provinces_shp")
 
@@ -31,7 +33,7 @@ ax.format(coast=False, borders=False, innerborders=False,
           small='8px', large='11px',
           title='Percentil de Umidade do Solo')
 
-# Plot da variável.
+# Plot da variável. Nome da variável do arquivo: "sfsm".
 map = ax.pcolormesh(variavel['lon'], variavel['lat'], 
                    variavel['sfsm'][0, :, :], cmap=cores, 
                    levels=valores_de_umidade, extend='both')
