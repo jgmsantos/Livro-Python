@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 # Abertura do arquivo temperatura.txt com o separador TAB. Adiciona 
 # também o título de cada coluna. O arquivo tem formato de 12 linhas 
 # por 4 colunas. A primeira coluna é o mês, a segunda, a climatologia, 
-# a terceria, o ano de 2019 e a quarta, o ano de 2020.
+# a terceira, o ano de 2019 e a quarta, o ano de 2020.
 df = pd.read_csv('../../dados/texto/temperatura.txt', 
                  sep= '\t', 
                  names=['Mês', 'Climatologia', '2019', '2020'])
@@ -20,7 +20,7 @@ fig, ax = plt.subplots()
 # Gera o plot
 ax.plot(x, y1, x, y2, color='black')
 
-# Preenche as curvas com veremlho e azul.
+# Preenche as curvas com vermelho e azul.
 ax.fill_between(x, y1, y2, where=(y2 > y1), 
                 interpolate=True, 
                 facecolor='red', 
