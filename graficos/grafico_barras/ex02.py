@@ -4,7 +4,7 @@ import numpy as np
 
 # Abertura do arquivo temperatura.txt com o separador TAB. Adiciona 
 # também o título de cada coluna. A primeira coluna é o mês, a segunda, 
-# a climatologia, a terceria, o ano de 2019 e a quarta, o ano de 2020.
+# a climatologia, a terceira, o ano de 2019 e a quarta, o ano de 2020.
 df = pd.read_csv('../../dados/texto/precipitacao.txt', 
                  sep= '\t', 
                  names=['Mês', 'Climatologia', '2019', '2020'])
