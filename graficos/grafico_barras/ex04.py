@@ -21,7 +21,7 @@ df = pd.read_csv('../../dados/texto/spi.classes.txt',
 
 df = df.astype(int)  # Define o conjunto de dados como valor inteiro.
 
-total_classes = 3  # Total de classes avaliada.
+total_classes = 3  # Total de classes avaliadas.
 classes = ['Eventos Úmidos', 'Eventos Normais', 'Eventos Secos'] 
 ANO_ANTERIOR='2019'
 ANO_ATUAL='2020'

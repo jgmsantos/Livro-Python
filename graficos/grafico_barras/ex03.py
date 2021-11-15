@@ -4,7 +4,7 @@ import numpy as np
 
 # Abertura do arquivo temperatura.txt com o separador TAB. Adiciona 
 # também o título de cada coluna. A primeira coluna é o mês, a segunda, 
-# a climatologia, a terceria, o ano de 2019 e a quarta, o ano de 2020.
+# a climatologia, a terceira, o ano de 2019 e a quarta, o ano de 2020.
 df = pd.read_csv('../../dados/texto/temperatura.txt', 
                  sep= '\t', 
                  names=['Mês', 'Climatologia', '2019', '2020'])
@@ -20,7 +20,7 @@ anomalia = y2 - y1
 acima_limiar = np.maximum(anomalia - 0, 0)
 abaixo_limiar = np.minimum(anomalia, 0)
 
-fig, ax = plt.subplots(figsize=(6,3))  # Largua e altura da figura.
+fig, ax = plt.subplots(figsize=(6,3))  # Largura e altura da figura.
 
 # Gera o plot com base nos limiares e separa o que é 
 # positivo (negativo) com vermelho (azul).
