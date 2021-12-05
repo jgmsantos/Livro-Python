@@ -26,7 +26,7 @@ x = np.arange(len(x2))  # 215.
 ur = df['UR']
 temp = df['Temp']
 
-fig, ax = plt.subplots(figsize=(6,3))  # Largua e altura da figura.
+fig, ax = plt.subplots(figsize=(6,3))  # Largura e altura da figura.
 
 # Plot do gráfico de barra.
 ax.bar(x, ur, 0.75, color="green", alpha=0.5, label='Umidade Relativa')

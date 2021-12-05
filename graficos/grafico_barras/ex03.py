@@ -28,8 +28,7 @@ ax.bar(x, acima_limiar, 0.75, color="red", alpha=0.5)
 ax.bar(x, abaixo_limiar, 0.75, color="blue", alpha=0.5)
 
 # Título principal da figura.
-plt.title('Anomalia de Temperatura', 
-           fontsize=8)
+plt.title('Anomalia de Temperatura', fontsize=8)
 
 # Formatação do eixo x.
 plt.xlabel('Mês', fontsize=8)
