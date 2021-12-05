@@ -17,7 +17,7 @@ fig, ax = plt.subplots()
 
 # Gera o plot.
 # frequencia = frequência, a função calcula a porcentagem, 
-# explode = destaca a maior fatia da pizza, labels = rórulos 
+# explode = destaca a maior fatia da pizza, labels = rótulos 
 # que vão aparecer na pizza, autopct = formatação do número.
 ax.pie(frequencia, 
        explode=explode, 

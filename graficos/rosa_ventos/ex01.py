@@ -15,9 +15,9 @@ direcao_graus = df['Direcao']  # Importa a direção do vento (graus).
 
 ax = WindroseAxes.from_ax()
 
-# normed = normaliza os dados para mostrar em porcentagemTrue, 
+# normed = True normaliza os dados para mostrar em porcentagem, 
 # opening = largura das pétalas da rosa dos ventos, edgecolor = cor da 
-# borda das pétalas, bins = número de intervalos da velocidad do vento, 
+# borda das pétalas, bins = número de intervalos da velocidade do vento, 
 # alpha = aplica efeito de transparência na cor.
 x = ax.bar(direcao_graus, 
            velocidade, 

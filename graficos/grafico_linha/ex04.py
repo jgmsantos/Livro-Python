@@ -11,7 +11,7 @@ x = np.arange(123)  # Desde 01/07/2020 a 31/10/2020 = 123 dias.
 
 y = ds['rf'][:, 0, 0]
 
-fig, ax = plt.subplots(figsize=(6,3))  # Largua e altura da figura.
+fig, ax = plt.subplots(figsize=(6,3))  # Largura e altura da figura.
 
 # Gera o plot.
 ax.plot(x, y, 

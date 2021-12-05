@@ -4,7 +4,7 @@ import numpy as np
 
 # Abertura do arquivo temperatura.txt com o separador TAB. Adiciona também 
 # o título de cada coluna. O arquivo tem formato de 12 linhas por 4 colunas. 
-# A primeira coluna é o mês, a segunda, a climatologia, a terceria, o ano 
+# A primeira coluna é o mês, a segunda, a climatologia, a terceira, o ano 
 # de 2019 e a quarta, o ano de 2020.
 df = pd.read_csv('../../dados/texto/temperatura.txt', 
                  sep= '\t', 
