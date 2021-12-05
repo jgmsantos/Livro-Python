@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-df = pd.read_csv('../../../dados/texto/variaveis_meteorologicas.txt', 
+df = pd.read_csv('variaveis_meteorologicas.txt', 
                  sep= '\t', 
                  names=['Data', 
                  'Umidade Relativa', 
@@ -24,7 +24,7 @@ plt.boxplot([UR, TEMP],
 
 box = plt.boxplot([UR, TEMP], patch_artist=True)
 
-colors = ['powderblue', 'tan']  # Define cores para cara caixa.
+colors = ['powderblue', 'tan']  # Define cores para cada caixa.
  
 for patch, color in zip(box['boxes'], colors):
     patch.set_facecolor(color)

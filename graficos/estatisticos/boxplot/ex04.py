@@ -50,7 +50,8 @@ plt.setp(ax.get_xticklabels(), rotation=45, ha="right", rotation_mode="anchor")
 plt.xticks(ticks=[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], 
            labels=['OBSERVADO', 'ACCESS1-0', 'BCC-CSM1.1', 'BESM', 'CANESM', 
                    'CCSM4', 'CNRM-CM5', 'CSIRO-MK3-6-0', 'FGOALS-G2', 'GFDL-CM3', 
-                   'GFDL-ESM2G'], fontsize=8)  # Rótulos do eixo x definido pelo usuário.
+                   'GFDL-ESM2G'], fontsize=8)  # Rótulos do eixo x definido 
+                                               # pelo usuário.
 
 # Formatação do eixo y.
 plt.ylim(0, 400)
