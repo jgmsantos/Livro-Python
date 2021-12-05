@@ -40,7 +40,7 @@ map = ax.pcolormesh(variavel['lon'], variavel['lat'],
                    variavel['sfsm'][0, :, :], cmap=cores, 
                    levels=valores_de_umidade, extend='both')
 
-# Adiciona o contorno dos estados e países.
+# Adiciona o contorno dos estados.
 ax.add_feature(bioma, linewidth=1, edgecolor="k")
 
 #  Adiciona a barra de cores.

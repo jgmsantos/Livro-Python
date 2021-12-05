@@ -37,7 +37,7 @@ vetor = ax.quiver(lon, lat, u, v, vel, headwidth=6, headlength=6,
                   cmap='vik', levels=plot.arange(3, 30, 3), extend='both')
 
 # Posição x, y onde desenhar o vetor, 30 = unidade (m/s) que representa 
-# o vetor, r'$30 \frac{m}{s}$' = texto que vai aparecer na igura, 
+# o vetor, r'$30 \frac{m}{s}$' = texto que vai aparecer na figura, 
 # labelpos = em qual posição do vetor deve-se adicionar o label, 
 # coordinates = qual eixo deve-se inserir o label.
 vetorkey = ax.quiverkey(vetor, 0.83, 0.97, 30, r'$30\ m.s^{-1}$', 

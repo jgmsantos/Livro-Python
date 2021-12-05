@@ -42,14 +42,14 @@ map = ax.pcolormesh(variavel['lon'], variavel['lat'],
                    variavel['rf'][0, :, :], cmap=cores, 
                    levels=valores_de_rf)
 
-# Adiciona o contorno dos estados e países.
+# Adiciona o contorno do bioma.
 ax.add_feature(bioma, linewidth=1, edgecolor="k")
 
 #  Adiciona a barra de cores.
 x = fig.colorbar(map, loc='b', width='12px', shrink=0.87, ticklabelsize=6, 
                  ticks=posicao_categoria, ticklabels=categorias_de_rf)
 
-# Posicionamemnto das categorias do risco de fogo na barra de cores.
+# Posicionamento das categorias de risco de fogo na barra de cores.
 x.ax.xaxis.set_tick_params(pad=-7)
 x.ax.tick_params(size=0)
 
