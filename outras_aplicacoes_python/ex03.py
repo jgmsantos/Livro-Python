@@ -56,4 +56,4 @@ plt.ylabel("Pressão atmosférica (hPa)")
 plt.xlabel("Temperatura (°C)")
  
 # Salvando a figura.
-fig.savefig('skew_SBBR.png', dpi=300, bbox_inches='tight', pad_inches=0.01)
+fig.savefig('ex03.png', dpi=300, bbox_inches='tight', pad_inches=0.01)
