@@ -1,0 +1,91 @@
+# Preparação do ambiente para plot da previsão do modelo WRF operacional do CPTEC/INPE
+
+**Isso é necessário? Ou pode ser qualquer versão do Linux?** No terminal (usado Ubuntu 20.04 LTS)
+
+O exemplo a seguir considera apenas os produtos relacionados com a variável precipitação acumulada. 
+
+O catálogo completo pode ser acessado em:
+
+[http://ftp.cptec.inpe.br/modelos/tempo/WRF/ams_05km](http://ftp.cptec.inpe.br/modelos/tempo/WRF/ams_05km)
+
+Vá para o seu diretório no seu computador onde ficarão as simulações de interesse.
+ 
+**Não entendi** ==> O acervo histórico dos dados gerados pelo CPTEC/INPE possui apenas as últimas semanas, por exemplo, exemplo: 00 UTC 17/fev/2022.
+
+Digite o comando abaixo:
+
+```
+wget -r -np -A "WRF_*" http://ftp.cptec.inpe.br/modelos/tempo/WRF/ams_05km/recortes/prec/2022/02/17/00/ -q --show-progress
+```
+
+>Não esqueça de alterar a data da simulação, neste exemplo, utiliza-se o ano 2022, mês, 02 e dia, 17 referente a simulação das 00 UTC.
+
+## Organizando arquivos baixados
+
+Após realizar o download dos dados com o comando `wget` acima, cria-se o diretório `wrf2022021700` para organizar as simulações.
+
+```
+mkdir wrf2022021700
+```
+
+```
+mv ftp.cptec.inpe.br/modelos/tempo/WRF/ams_05km/recortes/prec/2022/02/17/00/* wrf2022021700/
+```
+
+```
+rm -rf ftp.cptec.inpe.br
+```
+
+## Instalação e download do OpenGrADS
+
+O OpenGrADS é necessário para o `py3grads`. Caso a instalação já tenha sido feita, pode-se ignorar os passos a seguir.
+
+```
+wget'https://sourceforge.net/projects/opengrads/files/grads2/2.2.1.oga.1/Linux%20%2864%20Bits%29/opengrads-2.2.1.oga.1-bundle-x86_64-pc-linux-gnu-glibc_2.17.tar.gz'
+```
+
+```
+tar -zxf opengrads-2.2.1.oga.1-bundle-x86_64-pc-linux-gnu-glibc_2.17.tar.gz
+export PATH=$PATH:"opengrads-2.2.1.oga.1/Contents/"
+```
+
+```
+export PATH=$PATH:"opengrads-2.2.1.oga.1/Contents/"
+```
+
+
+## Instalando o git
+
+O git é necessário para clonar o repositório do `py3grads`. Caso o git já tenha sido instalado, ignore essa etapa.
+
+```
+sudo apt install git
+```
+
+## Instalando o PyGrADS
+
+Clonado o repositório do py3grads.
+
+```
+git clone https://github.com/meridionaljet/py3grads
+```
+
+Entre no diretório `py3grads`:
+
+```
+cd py3grads
+```
+
+Caso seja utilizado um ambiente virtual instalado via Conda ou virtualenv, ative-o para depois instalar o `py3grads` nele.
+
+Para ativar um ambiente virtual:
+
+```
+conda activate <Nome_Ambiente_Virtual>
+```
+
+Instalando o `py3grads`.
+
+```
+python py3grads/setup.py install
+```
