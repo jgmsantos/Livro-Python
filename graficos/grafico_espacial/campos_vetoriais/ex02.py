@@ -1,7 +1,9 @@
 import matplotlib.pyplot as plt
 import proplot as plot
 import xarray as xr
-from cartopy.feature import NaturalEarthFeature
+import cartopy.crs as crs
+from cartopy.feature import ShapelyFeature
+from cartopy.io.shapereader import Reader
 
 
 # Abertura do arquivo com o xarray.
@@ -14,9 +16,9 @@ v = dsv['vwnd'][0,9,:,:]
 lat = dsu['lat']
 lon = dsu['lon']
 
-# Linhas do continente/estados do Brasil.
-estados = NaturalEarthFeature(category="cultural", scale="50m", facecolor="none",
-                              name="admin_1_states_provinces_shp")
+# Linhas do contorno dos estados do Brasil.
+estados = ShapelyFeature(Reader('../../../dados/shapefile/Brasil_estados/BRUFE250GC_SIR.shp').geometries(), 
+          crs.PlateCarree(), facecolor='none')
 
 fig, ax = plot.subplots(axwidth=5, tight=True, proj='pcarree')
 

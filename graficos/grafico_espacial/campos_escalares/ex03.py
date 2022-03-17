@@ -1,44 +1,57 @@
 import proplot as plot
 import xarray as xr
-import numpy as np
-from cartopy.feature import NaturalEarthFeature
+import cartopy.crs as crs
+from cartopy.feature import ShapelyFeature
+from cartopy.io.shapereader import Reader
 
 
 # Abertura do arquivo NetCDF.
-dsu = xr.open_dataset('../../../dados/netcdf/uwnd.nc')
-dsv = xr.open_dataset('../../../dados/netcdf/vwnd.nc')
+ds = xr.open_dataset('../../../dados/netcdf/RF.nc')
 
-# Importando as variáveis.
-u = dsu['uwnd'][0,0,:,:]  # (time, level, lat, lon)
-v = dsv['vwnd'][0,0,:,:]  # (time, level, lat, lon)
-vel = np.sqrt(u ** 2 + v ** 2)  # Calcula a velocidade do vento (m/s).
-lat = dsu['lat']
-lon = dsu['lon']
+#print(ds)  # Informações sobre o arquivo.
 
-# Linhas do continente/estados do Brasil.
-estados = NaturalEarthFeature(category="cultural", scale="50m", facecolor="none",
-                              name="admin_1_states_provinces_shp")
+# Valores de risco de fogo.
+valores_de_rf = [0, 0.15, 0.40, 0.70, 0.95, 1]
+# (0+0.15)/2=0.075; (0.15+0.40)/2=0.275; (0.40+0.70)/2=0.55; 
+# (0.70+0.95)/2=0.825; (0.95+1)/2=0.975.
+posicao_categoria = [0.075, 0.275, 0.55, 0.82, 0.975]
+categorias_de_rf = ['Mínimo', 'Baixo', 'Médio', 'Alto', 'Crítico']
 
-fig, ax = plot.subplots(axwidth=5, tight=True, proj='pcarree')
+# Cores de interesse. Sempre número de valores + 1, ou seja, 5 + 1 = 6 cores.
+cores = ['green', 'vivid green', 'yellow', 'orange', 'red']
+
+# Definição da área de interesse.
+variavel = ds.sel(lat=slice(-25, -2), lon=slice(-61, -41))
+
+# Linhas do contorno do bioma.
+bioma = ShapelyFeature(Reader('../../../dados/shapefile/bioma_cerrado/states_cerrado_biome.shp').geometries(), 
+        crs.PlateCarree(), facecolor='none')
+
+fig, ax = plot.subplots(tight=True, proj='pcarree',)
 
 # Formatação do mapa.
-ax.format(coast=True, borders=True, innerborders=True,
-          labels=True, grid=False, latlines=10, lonlines=5,
-          latlim=(-60, 10), lonlim=(-90, -30),
-          small='13px', large='17px',
-          title='Vento Meridional em 1000 hPa')
+ax.format(coast=False, borders=False, innerborders=False,
+          labels=True, grid=True, latlines=3, lonlines=3,
+          latlim=(-25, -2), lonlim=(-61, -41),
+          small='8px', large='11px',
+          title='Risco de Fogo')
 
-# Plot da variável.
-map = ax.contourf(lon, lat, vel, cmap='Spectral', 
-                  levels=plot.arange(2, 10, 1), extend='both')
+# Plot da variável. Nome da variável do arquivo: "rf".
+map = ax.pcolormesh(variavel['lon'], variavel['lat'], 
+                   variavel['rf'][0, :, :], cmap=cores, 
+                   levels=valores_de_rf)
 
-#  Barra de cores.
-fig.colorbar(map, loc='r', shrink=0.95, label='Velocidade (m/s)',
-             labelsize=10, ticklabelsize=10)
+# Adiciona o contorno do bioma.
+ax.add_feature(bioma, linewidth=1, edgecolor="k")
 
-# Adiciona o contorno dos estados e países.
-ax.add_feature(estados, linewidth=0.5, edgecolor="k")
+#  Adiciona a barra de cores.
+x = fig.colorbar(map, loc='b', width='12px', shrink=0.87, ticklabelsize=6, 
+                 ticks=posicao_categoria, ticklabels=categorias_de_rf)
+
+# Posicionamento das categorias de risco de fogo na barra de cores.
+x.ax.xaxis.set_tick_params(pad=-7)
+x.ax.tick_params(size=0)
 
 # Salva a figura no formato ".jpg" com dpi=300.
 fig.save('ex03.jpg', transparent=True, dpi=300, 
-         bbox_inches='tight', pad_inches=0)
+         bbox_inches='tight', pad_inches=0.02)

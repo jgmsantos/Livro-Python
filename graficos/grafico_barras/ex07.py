@@ -16,7 +16,7 @@ def define_label (ax, rects, values):
 # o separador TAB. Adiciona também o título de cada coluna.
 # A primeira coluna é o mês, a segunda, a climatologia, a terceira, 
 # o ano de 2019 e a quarta, o ano de 2020.
-df = pd.read_csv('vento_direcao_velocidade_porcentagem.txt', 
+df = pd.read_csv('../../dados/texto/vento_direcao_velocidade_porcentagem.txt', 
                  sep= '\t', 
                  names=['Direção', 'dirPorcentagem', 'velPorcentagem'])
 

@@ -2,7 +2,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 
-df = pd.read_csv('variaveis_meteorologicas.txt', 
+df = pd.read_csv('../../../dados/texto/variaveis_meteorologicas.txt', 
                  sep= '\t', 
                  names=['Data', 
                  'Umidade Relativa', 
