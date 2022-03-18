@@ -1,6 +1,7 @@
 # Preparação do ambiente para plot da previsão do modelo WRF operacional do CPTEC/INPE
 
-**Isso é necessário? Ou pode ser qualquer versão do Linux?** No terminal (usado Ubuntu 20.04 LTS)
+**Isso é necessário? Ou pode ser qualquer versão do Linux?** 
+Os procedimentos a seguir foram testados em um sistema operacional Ubuntu 20.04 LTS. Portanto, a aplicação destes passos em outros sistemas podem ser parcial ou totalmente diferentes. 
 
 O exemplo a seguir considera apenas os produtos relacionados com a variável precipitação acumulada. 
 
@@ -10,7 +11,9 @@ O catálogo completo pode ser acessado em:
 
 Vá para o seu diretório no seu computador onde ficarão as simulações de interesse.
  
-**Não entendi** ==> O acervo histórico dos dados gerados pelo CPTEC/INPE possui apenas as últimas semanas, por exemplo, exemplo: 00 UTC 17/fev/2022.
+É importante ressaltar que o acervo histórico das previsões numéricas geradas pelo CPTEC/INPE retém apenas os últimos 30 dias. Portanto, dependendo do momento que você esteja reproduzido os exemplos que consultam a base das previsões do WRF, a data considerada no script pode não estar mais disponível na base de dados. 
+
+Por exemplo, o tutorial abaixo considera os dados WRF da previsão iniciada em **00 UTC 17/fev/2022**, que ainda estava disponível durante a preparação deste tutorial.
 
 Digite o comando abaixo:
 
