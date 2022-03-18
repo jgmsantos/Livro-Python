@@ -22,7 +22,6 @@ def get_gfs(year, month, day, fcst_hr, cycle):
     
   '''
   
-  
   dtime = f"{year}{str(month).zfill(2)}{str(day).zfill(2)}"
   fname = f"{year}{str(month).zfill(2)}{str(day).zfill(2)}{str(cycle).zfill(2)}.f{str(fcst_hr).zfill(3)}"
  
@@ -70,12 +69,20 @@ def get_gfs(year, month, day, fcst_hr, cycle):
   return dataset
  
 # Coletando hora/data para calcular tempo de execução do código.
-stime_run =datetime.now() 
-yr = 2018; mm = 2; day=20;cycle=0; fcst_hr=36
+stime_run = datetime.now() 
+yr = 2018       ## Ano
+mm = 2          ## Mês
+day = 20        ## Dia
+cycle = 0       ## Ciclo de assimilação
+fcst_hr = 36    ## Hora da previsão
  
+## Obtendo data/hora antes da função get_gfs para mensurar tempo de execução final.
 stime = datetime(yr,mm,day,cycle)
+
 valid = stime + timedelta(hours=int(fcst_hr))
+
+## Chamando a função get_gfs para baixar previsões a partir da data/hora definida acima.
 ds = get_gfs(yr,mm,day,fcst_hr,cycle)
+
 print(f"Download do GFS 0.25p || Data/Hora de inicialização: {stime} | Data/Hora válida: {valid} (fcst_hr={str(fcst_hr).zfill(3)}; cycle={str(cycle).zfill(2)})")
- 
-print("\nTempo total de execução do script: ", datetime.now() - stime_run)
+print("\nTempo total de execução do script: ", datetime.now() - stime_run) 
