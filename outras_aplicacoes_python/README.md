@@ -1,8 +1,8 @@
 # Preparação do ambiente para plot da previsão do modelo WRF operacional do CPTEC/INPE
 
-Os procedimentos a seguir foram testados em um sistema operacional Ubuntu 20.04 LTS. Portanto, a aplicação destes passos em outros sistemas podem ser parcial ou totalmente diferentes. 
+>Os procedimentos a seguir foram testados em um sistema operacional Ubuntu 20.04 LTS. Portanto, a aplicação destes passos em outros sistemas podem ser parcial ou totalmente diferentes. 
 
-O exemplo a seguir considera apenas os produtos relacionados com a variável precipitação acumulada. 
+>O exemplo abaixo considera apenas os produtos relacionados com a variável precipitação acumulada. 
 
 O catálogo completo pode ser acessado em:
 
