@@ -1,7 +1,6 @@
-from windrose import WindroseAxes
-from matplotlib import pyplot as plt
 import pandas as pd
-
+from matplotlib import pyplot as plt
+from windrose import WindroseAxes
 
 # Abertura do arquivo variaveis_meteorologicas.txt com o separador TAB.
 # Adiciona também o título de cada coluna.

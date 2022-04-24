@@ -1,7 +1,6 @@
 import xarray as xr
 from climate_indices import indices
 
-
 # Abertura do arquivo com o xarray.
 ds = xr.open_dataset("../dados/netcdf/GPCP.nc")
 

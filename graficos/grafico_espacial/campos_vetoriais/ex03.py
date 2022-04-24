@@ -1,11 +1,10 @@
+import cartopy.crs as crs
 import matplotlib.pyplot as plt
+import numpy as np
 import proplot as plot
 import xarray as xr
-import numpy as np
-import cartopy.crs as crs
 from cartopy.feature import ShapelyFeature
 from cartopy.io.shapereader import Reader
-
 
 # Abertura do arquivo com o xarray.
 dsu = xr.open_dataset("../../../dados/netcdf/uwnd.nc")

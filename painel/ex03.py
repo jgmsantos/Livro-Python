@@ -1,5 +1,5 @@
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
 
 # Leitura do arquivo.
 df1 = pd.read_csv(

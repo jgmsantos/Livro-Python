@@ -1,5 +1,5 @@
-import pandas as pd
 import matplotlib.pyplot as plt
+import pandas as pd
 
 # Abertura do arquivo temperatura.txt com o separador TAB. Adiciona
 # também o título de cada coluna. O arquivo tem formato de 12 linhas

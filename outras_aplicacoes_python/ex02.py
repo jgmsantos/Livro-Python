@@ -1,8 +1,8 @@
 import cartopy.crs as ccrs
-import matplotlib.pyplot as plt
 import cartopy.feature as cfeature
-import xarray as xr
 import matplotlib
+import matplotlib.pyplot as plt
+import xarray as xr
 
 font = {"family": "normal", "weight": "normal", "size": 16}
 

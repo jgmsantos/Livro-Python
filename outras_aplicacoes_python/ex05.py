@@ -1,8 +1,8 @@
-from py3grads import Grads
+import matplotlib.dates as mdates
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import matplotlib.dates as mdates
+from py3grads import Grads
 
 """
 Nota: O py3grads funciona apenas se haver uma instalação prévia do grads (ou opengrads) no sistema operacional em uso,

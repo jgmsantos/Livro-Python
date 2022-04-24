@@ -1,6 +1,7 @@
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+
 
 # Função que adiciona o label nas barras e a unidade de porcentagem (%).
 def define_label(ax, rects, values):

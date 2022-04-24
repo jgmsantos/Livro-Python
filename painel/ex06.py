@@ -1,6 +1,6 @@
+import matplotlib.gridspec as gridspec
 import matplotlib.pyplot as plt
 import pandas as pd
-import matplotlib.gridspec as gridspec
 
 # Leitura do arquivo.
 df = pd.read_csv(

@@ -1,6 +1,6 @@
-import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 
 # Abertura do arquivo temperatura.txt com o separador TAB. Adiciona
 # também o título de cada coluna. A primeira coluna é o mês, a segunda,

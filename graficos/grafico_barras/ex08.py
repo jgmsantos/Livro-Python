@@ -1,6 +1,6 @@
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
 
 # Abertura do arquivo utilizando o separador TAB e adiciona o título
 # como primeira linha.

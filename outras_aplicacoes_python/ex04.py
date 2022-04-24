@@ -1,10 +1,9 @@
-from py3grads import Grads
+import cartopy.crs as crs
+import matplotlib.colors as mcolors
 import matplotlib.pyplot as plt
 import numpy as np
-import cartopy.crs as crs
 from cartopy.feature import NaturalEarthFeature
-import matplotlib.colors as mcolors
-
+from py3grads import Grads
 
 # Carregando ambiente GrADS.
 ga = Grads(verbose=False)

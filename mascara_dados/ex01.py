@@ -1,7 +1,7 @@
-import xarray as xr
-import proplot as pplt
 import cartopy.crs as crs
+import proplot as pplt
 import salem
+import xarray as xr
 from cartopy.feature import ShapelyFeature
 from cartopy.io.shapereader import Reader
 

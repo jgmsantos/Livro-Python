@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
-import seaborn as sns
 import pandas as pd
+import seaborn as sns
 
 df = pd.read_csv(
     "../../dados/texto/pr.GPCP.txt", sep="\t", names=["Ano", "Mês", "Prec"]

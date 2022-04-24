@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
-from matplotlib import rcParams
 import numpy as np
-import skill_metrics as sm
 import pandas as pd
+import skill_metrics as sm
+from matplotlib import rcParams
 
 # Leitura do arquivo no formato ".csv".
 data = pd.read_csv(

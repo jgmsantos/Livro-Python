@@ -1,9 +1,10 @@
+import os
+from datetime import datetime, timedelta
+
+import numpy as np
+import xarray as xr
 from siphon.catalog import TDSCatalog
 from siphon.ncss import NCSS
-import numpy as np
-from datetime import datetime, timedelta
-import xarray as xr
-import os
 
 
 def get_gfs(year, month, day, fcst_hr, cycle):

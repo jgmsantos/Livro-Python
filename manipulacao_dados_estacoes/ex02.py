@@ -1,11 +1,10 @@
 # Realiza a importação das bibliotecas necessárias.
-import numpy as np
 import cartopy
 import cartopy.crs as ccrs
-from cartopy.feature import NaturalEarthFeature
-from cartopy.mpl.ticker import LongitudeFormatter, LatitudeFormatter
 import matplotlib.pyplot as plt
-
+import numpy as np
+from cartopy.feature import NaturalEarthFeature
+from cartopy.mpl.ticker import LatitudeFormatter, LongitudeFormatter
 # Importa recursos necessÁrios para interpolar os dados de estação.
 from scipy.interpolate import griddata
 

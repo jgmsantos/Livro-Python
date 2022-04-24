@@ -1,8 +1,7 @@
-import pandas as pd
-import numpy as np
 import matplotlib.pyplot as plt
 import netCDF4 as nc
-
+import numpy as np
+import pandas as pd
 
 # Abertura do arquivo.
 ds = nc.Dataset("../../dados/netcdf/rf.serie.julaout2020.nc")

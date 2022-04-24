@@ -1,11 +1,11 @@
+from datetime import datetime
+
 import matplotlib.pyplot as plt
-import pandas as pd
 import metpy.calc as mpcalc
+import pandas as pd
 from metpy.plots import SkewT
 from metpy.units import units
-from datetime import datetime
 from siphon.simplewebservice.wyoming import WyomingUpperAir
-
 
 """
 Abaixo, a solicitação da radiossonda é baseada no código ICAO do aeroporto. A lista completa de códigos ICAO dos aeroportos brasileiros está disponível no link: https://pt.wikipedia.org/wiki/Lista_de_aeroportos_do_Brasil_por_c%C3%B3digo_aeroportu%C3%A1rio_ICAO

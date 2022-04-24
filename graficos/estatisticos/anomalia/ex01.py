@@ -1,7 +1,6 @@
-import xarray as xr
-import proplot as plot
 import numpy as np
-
+import proplot as plot
+import xarray as xr
 
 ## Ignora mensagem de aviso pois no cálculo da correlação
 # são encontrados valores UNDEF.
