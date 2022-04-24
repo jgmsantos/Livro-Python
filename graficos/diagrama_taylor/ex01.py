@@ -5,11 +5,11 @@ import skill_metrics as sm
 import pandas as pd
 
 # Leitura do arquivo no formato ".csv".
-data = pd.read_csv('../../dados/texto/cmip5/cmip5.csv',
-                 sep=',', 
-                 names=['OBS', 'M1', 'M2', 'M3', 'M4', 
-                        'M5', 'M6', 'M7', 'M8', 'M9', 
-                        'M10'])
+data = pd.read_csv(
+    "../../dados/texto/cmip5/cmip5.csv",
+    sep=",",
+    names=["OBS", "M1", "M2", "M3", "M4", "M5", "M6", "M7", "M8", "M9", "M10"],
+)
 
 # Define propriedades da figura.
 rcParams["figure.figsize"] = [8.0, 6.4]
@@ -39,11 +39,12 @@ def make_arrange(taylor_stats, key):
         data.append(stats[key][1])
     return np.array(data)
 
-# Armazena os resultados em arranjos de sdev (desvio padrão), 
+
+# Armazena os resultados em arranjos de sdev (desvio padrão),
 # crmsd (erro quadrático médio) e ccoef (correlação).
-sdev = make_arrange(taylor_stats, 'sdev')
-crmsd = make_arrange(taylor_stats, 'crmsd')
-ccoef = make_arrange(taylor_stats, 'ccoef')
+sdev = make_arrange(taylor_stats, "sdev")
+crmsd = make_arrange(taylor_stats, "crmsd")
+ccoef = make_arrange(taylor_stats, "ccoef")
 
 # print(sm.taylor_diagram())  # Descomentar para mais opções de formatação.
 
@@ -114,5 +115,4 @@ for nome_modelo in label2:
     y = y - 5
 
 # Salva a figura no formato ".jpg" com dpi=300 e remove espaços excedentes.
-plt.savefig("ex01.jpg", transparent=True, dpi=300, bbox_inches="tight", 
-            pad_inches=0)
+plt.savefig("ex01.jpg", transparent=True, dpi=300, bbox_inches="tight", pad_inches=0)
