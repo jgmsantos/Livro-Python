@@ -26,7 +26,7 @@ ax = WindroseAxes.from_ax()
 # opening = largura das pétalas da rosa dos ventos, edgecolor = cor da
 # borda das pétalas, bins = número de intervalos da velocidade do vento,
 # alpha = aplica efeito de transparência na cor.
-x = ax.bar(
+ax.bar(
     direcao_graus,
     velocidade,
     normed=True,
