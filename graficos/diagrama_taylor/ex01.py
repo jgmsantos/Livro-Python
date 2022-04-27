@@ -17,7 +17,7 @@ rcParams["lines.linewidth"] = 1  # Largura das linhas.
 rcParams.update({"font.size": 12})  # Tamanho da fonte do eixo.
 
 # Para editar o Diagrama de Taylor.
-# /home/guilherme/miniconda3/envs/inpe/lib/python3.9/site-packages/skill_metrics/plot_taylor_axes.py
+# /home/<usuario>/<programa_instalado>/envs/<nome_ambiente_virtual>/lib/python3.9/site-packages/skill_metrics/plot_taylor_axes.py
 
 # Fecha qualquer ambiente gráfico para evitar erros na geração do diagrama.
 plt.close("all")
@@ -26,7 +26,7 @@ obs_key = "OBS"  # Dado observado.
 
 # Função para filtar apenas os modelos.
 taylor_stats = [
-    sm.taylor_statistics(data[obs_key], data[column])
+    sm.taylor_statistics(data[column], data[obs_key])
     for column in data.columns
     if column != obs_key
 ]
