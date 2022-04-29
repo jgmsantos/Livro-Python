@@ -30,6 +30,9 @@ Os dados utilizados são de diferente fontes, por exemplo:
 * NASA (National Aeronautics and Space Administration)
     * GRACE: [https://nasagrace.unl.edu](https://nasagrace.unl.edu)
 
+
+Os passos a seguir deve ser digitados no terminal, pois eles instalam o miniconda (item 3) para criar o ambiente virtual (item 4) para instalar o Pyhton (item 5) e suas bibliotecas (item 6)
+
 ## 3. Instalação do Miniconda
 
 É preferível instalar as bibliotecas necessárias via Anaconda. Para instalar o Anaconda, faça a instalação usando o [Miniconda](https://docs.conda.io/en/latest/miniconda.html):
