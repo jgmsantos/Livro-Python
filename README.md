@@ -1,6 +1,6 @@
 # Python para Geociências
 
-## Introdução
+## 1. Introdução
 
 Este livro tem como objetivo ensinar Python para o público de Geociências. 
 
@@ -17,7 +17,7 @@ Este documento contou com a colaboração de excelentes profissionais (listados 
 * Diogo Ramos: [CV Lattes](http://lattes.cnpq.br/1800868291881642)
 * Cristiano Eichholz: [CV Lattes](http://lattes.cnpq.br/3933039769920991)
 
-## Fonte dos dados utilizados
+## 2. Fonte dos dados utilizados
 
 Os dados utilizados são de diferente fontes, por exemplo:
 * INPE (Instituto Nacional de Pesquisas Espaciais)
@@ -30,7 +30,7 @@ Os dados utilizados são de diferente fontes, por exemplo:
 * NASA (National Aeronautics and Space Administration)
     * GRACE: [https://nasagrace.unl.edu](https://nasagrace.unl.edu)
 
-## Instalação do Miniconda
+## 3. Instalação do Miniconda
 
 É preferível instalar as bibliotecas necessárias via Anaconda. Para instalar o Anaconda, faça a instalação usando o [Miniconda](https://docs.conda.io/en/latest/miniconda.html):
 
@@ -41,7 +41,7 @@ bash Miniconda3-latest-Linux-x86_64.sh
 
 [Conda-forge](https://conda.io/projects/conda-forge) é um repositório de pacotes adicionais que não estão no [Anaconda](https://www.anaconda.com/download/).
 
-## Criação do ambiente virtual para executar os scripts
+## 4. Criação do ambiente virtual para executar os scripts
 
 Será criado o ambiente virtual chamado `livro_python` para não danificar nada no seu ambiente de trabalho. **Isso é feito para não gerar conflitos de bibliotecas**.
 
@@ -49,7 +49,7 @@ Será criado o ambiente virtual chamado `livro_python` para não danificar nada 
 conda create --name livro_python
 ```
 
-### Habilitando o ambiente virtual criado
+### 4.1 Habilitando o ambiente virtual criado
 
 ```
 conda activate livro_python
@@ -67,7 +67,7 @@ Para:
 (livro_python) gui@DESKTOP-LD7TCRV:
 ```
 
-## Instalação do Python
+## 5. Instalação do Python
 
 Este documento utiliza a versão do Python [3.9.12](https://www.python.org/downloads/release/python-3912/).
 
@@ -75,7 +75,7 @@ Este documento utiliza a versão do Python [3.9.12](https://www.python.org/downl
 conda install -c conda-forge python==3.9.12
 ```
 
-## Lista de bibliotecas a serem instaladas
+## 6. Lista de bibliotecas a serem instaladas
 
 Os script são executados corretamente com as bibliotecas listadas abaixo. Para instalação, basta digitar os comandos no seu terminal.
 
