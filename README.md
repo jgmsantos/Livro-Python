@@ -31,7 +31,7 @@ Os dados utilizados são de diferente fontes, por exemplo:
     * GRACE: [https://nasagrace.unl.edu](https://nasagrace.unl.edu)
 
 
-Os passos a seguir deve ser digitados no terminal, pois eles instalam o miniconda (item 3) para criar o ambiente virtual (item 4) para instalar o Pyhton (item 5) e suas bibliotecas (item 6)
+Os passos a seguir devem ser digitados no terminal, pois eles instalam o miniconda (item 3) para criar o ambiente virtual (item 4) para instalar o Pyhton (item 5) e suas bibliotecas (item 6)
 
 ## 3. Instalação do Miniconda
 
