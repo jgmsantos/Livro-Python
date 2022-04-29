@@ -27,7 +27,7 @@ conda create --name livro_python
 conda activate livro_python
 ```
 
-Note-se a mudança do nome `(base)` para `(livro_python)` na linha do terminal Linux.
+Nota-se a mudança do nome `(base)` para `(livro_python)` na linha do terminal Linux.
 
 Mudou de:
 ```
