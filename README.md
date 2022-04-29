@@ -49,7 +49,7 @@ conda install -c conda-forge python==3.9.12
 
 # Lista de bibliotecas a serem instaladas
 
-Os script são executados corretamente com as bibliotecas abaixo. Para instalação, basta digitar os comandos no seu terminal.
+Os script são executados corretamente com as bibliotecas listadas abaixo. Para instalação, basta digitar os comandos no seu terminal.
 
 ```
 pip install matplotlib==3.4.3
