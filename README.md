@@ -44,6 +44,8 @@ bash Miniconda3-latest-Linux-x86_64.sh
 
 [Conda-forge](https://conda.io/projects/conda-forge) é um repositório de pacotes adicionais que não estão no [Anaconda](https://www.anaconda.com/download/).
 
+**Importante:** Uma vez a instalação concluída, deve-se reiniciar o terminal para que a instalação seja finalizada corretamente.
+
 ## 4. Criação do ambiente virtual para executar os scripts
 
 Será criado o ambiente virtual chamado `livro_python` para não danificar nada no seu ambiente de trabalho. **Isso é feito para não gerar conflitos de bibliotecas**.
