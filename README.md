@@ -46,6 +46,8 @@ bash Miniconda3-latest-Linux-x86_64.sh
 
 **Importante:** Uma vez a instalação concluída, deve-se reiniciar o terminal para que a instalação seja finalizada corretamente.
 
+Para mais informações sobre criação de ambiente virtual, basta clicar [aqui](https://guilherme.readthedocs.io/en/latest/pages/tutoriais/miniconda.html).
+
 ## 4. Criação do ambiente virtual para executar os scripts
 
 Será criado o ambiente virtual chamado `livro_python` para não danificar nada no seu ambiente de trabalho. **Isso é feito para não gerar conflitos de bibliotecas**.
