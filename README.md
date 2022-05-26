@@ -13,7 +13,7 @@ Os scripts fornecidos são comentados para facilitar o entendimento.
 Este documento contou com a colaboração de excelentes profissionais (listados abaixo) que possuem uma vasta experiência em Python e na manipulação e visualização de dados ambientais.
 
 * Guilherme Martins: [CV Lattes](http://lattes.cnpq.br/5997657584785803)
-* Jonatas Leon: [CV Lattes](http://lattes.cnpq.br/6707812894667096)
+* Jonatas Leon: [CV Lattes](http://lattes.cnpq.br/6707812894667096) | [Github](https://github.com/jonatasleon)
 * Diogo Ramos: [CV Lattes](http://lattes.cnpq.br/1800868291881642)
 * Cristiano Eichholz: [CV Lattes](http://lattes.cnpq.br/3933039769920991)
 
